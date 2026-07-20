@@ -39,25 +39,27 @@ namespace HelloBinX
             Console.WriteLine("Value type copy example");
             int number1 = 10;
             int number2 = number1; // Copying value type
+            Console.WriteLine("Befor any change:  " + "Number1=  " + number1 + "  " + "Number2=  " + number2); 
+           
             number2 = 20;
-            Console.WriteLine( "Befor any change:  "  + "Number1=  " +number1 + "  "+ "Number2=  " + number2); // Output: 10
-            Console.WriteLine("After the copy:  "+"Number1=  " + number1 + "  "+ "Number2=  "+number2); // Output: 20
+            
+            Console.WriteLine("After the copy:  "+"Number1=  " + number1 + "  "+ "Number2=  "+number2); 
             Console.WriteLine();
 
             // Reference type copy example
             int[] array1 = { 1, 2, 3 };
             int[] array2 = array1; // Copying reference type
-            Console.WriteLine("Befor any change:  " + "Array1[0]=  " + array1[0] + "  " + "Array2[0]=  " + array2[0]); // Output: 10
+            Console.WriteLine("Befor any change:  " + "Array1[0]=  " + array1[0] + "  " + "Array2[0]=  " + array2[0]); 
            
             array2[0] = 10;
           
-            Console.WriteLine("After the copy:  " + "Array1[0]=  " + array1[0] + "  " + "Array2[0]=  " +array2[0]);// Output: 10
+            Console.WriteLine("After the copy:  " + "Array1[0]=  " + array1[0] + "  " + "Array2[0]=  " +array2[0]);
         }
 
         //grade-classifier method using a switch expression
         public string Grade(int score)
         {
-            if (score < 0 || score > 100)
+            if (score < 0 || score > 100) // Check if the score is outside the valid range (0-100)
             {
                 return "Invalid score";
             }
@@ -77,14 +79,18 @@ namespace HelloBinX
             Console.WriteLine("Enter your age(It should be a positive Number): ");
             int? age = int.TryParse(Console.ReadLine(), out int result) ? result : (int?)null;
 
+            // Check if the age variable has a value and if it is greater than or equal to 0
             if (age.HasValue && age.Value >= 0)
             {
                 Console.WriteLine($"The value is: {age.Value}");
             }
+
+            // Check if the age variable has a value and if it is less than 0
             else if (age.HasValue && age.Value < 0)
             {
                 Console.WriteLine("The value is negative.");
             }
+            // Check if the age variable is null
             else
             {
                 Console.WriteLine("The value is null.");

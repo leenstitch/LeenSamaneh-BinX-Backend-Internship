@@ -19,14 +19,19 @@ class BinX
         // Method 1: Value types and Reference types
         example.ValueVsReferenceTypes();
         Console.WriteLine();
+
+
         // Method 2: Value vs Reference copy behavior
         example.ValueVsReferenceCopyBehavior();
         Console.WriteLine();
+
+
         // Method 3 Grade classifier
         Console.Write("Enter your score (It should be between 0 and 100): ");
         int score = int.Parse(Console.ReadLine());
         Console.WriteLine("Your Grade is: "+example.Grade(score));
         Console.WriteLine();
+
         // Method 4: Nullable values
         example.NullableValuesExample();
 
