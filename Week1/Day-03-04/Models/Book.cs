@@ -69,24 +69,26 @@ namespace Library.Models
         // Constructor for the Book class that initializes the book's properties and validates the input.
         public Book(string title, string author, int quantity, decimal price)
         {
-             Id = Guid.NewGuid();
-             this.title= title ?? throw new ArgumentNullException(nameof(title)+" cannot be null.");
-             this.author= author ?? throw new ArgumentNullException(nameof(author)+"Author cannot be null.");
+            Id = Guid.NewGuid();
+            this.title = title ?? throw new ArgumentNullException(nameof(title) + " cannot be null.");
+            this.author = author ?? throw new ArgumentNullException(nameof(author) + "Author cannot be null.");
 
-            if (quantity < 0)         
+            if (quantity < 0)
                 throw new ArgumentException("Quantity cannot be negative.");
-            
-            else       
+
+            else
                 Quantity = quantity;
-            
-            
-            if(price < 0)           
+
+
+            if (price < 0)
                 throw new ArgumentException("Price cannot be negative.");
-            
+
             else
                 Price = price;
+        }
+
+
+           
             
-               
         }
     }
-}
