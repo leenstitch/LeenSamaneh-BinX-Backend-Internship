@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LibrarySystem.Models
+{
+    // OrderItem class represents an item in an order, containing a Book and its quantity
+    public class OrderItem
+    {
+        public Book Book { get; private set; }
+
+
+        public int Quantity { get; private set; }
+
+
+        // Constructor for OrderItem class
+        public OrderItem(  Book book,int quantity)
+        {
+            Book = book;
+            Quantity = quantity;
+        }
+    }
+}
