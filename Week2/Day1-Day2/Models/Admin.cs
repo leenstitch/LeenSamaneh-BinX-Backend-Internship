@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*
+    File: Admin.cs
+
+    Purpose:
+    This file represents an administrator user in the library system.
+
+    Responsibility:
+    - Extends ApplicationUser with admin-specific behavior.
+
+    Used Files:
+    - ApplicationUser:
+      Parent class that provides common user properties.
+
+    Concepts Applied:
+    - Inheritance
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

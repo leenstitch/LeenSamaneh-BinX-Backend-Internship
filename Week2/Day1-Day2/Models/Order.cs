@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+    File: Order.cs
+
+    Purpose:
+    This file represents customer orders.
+
+    Responsibility:
+    - Stores order information.
+    - Manages order items.
+    - Calculates the total order price.
+
+    Used Files:
+    - Customer:
+      Represents the order owner.
+    - OrderItem:
+      Represents books inside the order.
+
+    Concepts Applied:
+    - Collections
+    - LINQ
+    - Object relationships
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*
+    File: OrderItem.cs
+
+    Purpose:
+    This file represents individual items inside an order.
+
+    Responsibility:
+    - Connects a Book with its requested quantity.
+    - Calculates the subtotal price.
+
+    Used Files:
+    - Book:
+      Provides book price information.
+
+    Concepts Applied:
+    - Object composition
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
