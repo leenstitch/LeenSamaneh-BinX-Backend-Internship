@@ -1,4 +1,25 @@
-﻿using System;
+﻿/*
+    File: Customer.cs
+
+    Purpose:
+    This file represents customers in the library system.
+
+    Responsibility:
+    - Stores customer information.
+    - Maintains the customer's orders collection.
+
+    Used Files:
+    - ApplicationUser:
+      Provides common user information.
+    - Order:
+      Represents customer's orders.
+
+    Concepts Applied:
+    - Inheritance
+    - Object relationships
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,25 @@
-﻿using System;
+﻿/*
+    File: Person.cs
+
+    Purpose:
+    This file defines the base class for people in the system.
+
+    Responsibility:
+    - Stores common information such as Id and Name.
+
+    Used Files:
+    - Author:
+      Inherits from Person.
+    - Translator:
+      Inherits from Person.
+
+    Concepts Applied:
+    - Abstract classes
+    - Inheritance
+    - Encapsulation
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

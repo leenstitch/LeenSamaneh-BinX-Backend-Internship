@@ -1,4 +1,24 @@
-﻿using System;
+﻿/*
+    File: Book.cs
+
+    Purpose:
+    This file represents books in the library system.
+
+    Responsibility:
+    - Stores book information.
+    - Maintains relationships with Author and Translator.
+
+    Used Files:
+    - Author:
+      Represents the book author.
+    - Translator:
+      Represents the optional translator.
+
+    Concepts Applied:
+    - Encapsulation
+    - Object relationships
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

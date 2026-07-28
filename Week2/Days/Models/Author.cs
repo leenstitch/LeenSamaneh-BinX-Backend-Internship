@@ -1,4 +1,25 @@
-﻿using System;
+﻿
+/*
+    File: Author.cs
+
+    Purpose:
+    This file represents book authors.
+
+    Responsibility:
+    - Stores author-specific information.
+    - Maintains the relationship between an author and books.
+
+    Used Files:
+    - Person:
+      Provides common person information.
+    - Book:
+      Represents books written by the author.
+
+    Concepts Applied:
+    - Inheritance
+    - Object relationships
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+    File: ApplicationUser.cs
+
+    Purpose:
+    This file contains the base class for system users.
+
+    Responsibility:
+    - Stores common user information shared between different user types.
+    - Provides properties such as Id, Email, Password, and Role.
+
+    Used Files:
+    - Admin:
+      Inherits from ApplicationUser.
+    - Customer:
+      Inherits from ApplicationUser.
+
+    Concepts Applied:
+    - Abstract classes
+    - Inheritance
+    - Encapsulation
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

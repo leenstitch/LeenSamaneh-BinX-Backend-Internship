@@ -1,4 +1,24 @@
-﻿using System;
+﻿/*
+    File: Translator.cs
+
+    Purpose:
+    This file represents translators in the library system.
+
+    Responsibility:
+    - Stores translator information.
+    - Maintains books translated by the translator.
+
+    Used Files:
+    - Person:
+      Provides common person information.
+    - Book:
+      Represents translated books.
+
+    Concepts Applied:
+    - Inheritance
+    - Object relationships
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

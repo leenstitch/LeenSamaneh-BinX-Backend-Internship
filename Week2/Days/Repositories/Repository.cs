@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+    File: Repository.cs
+
+    Purpose:
+    This file contains the generic repository implementation.
+
+    Responsibility:
+    - Stores and manages entities using a generic List<T>.
+    - Implements Add, GetAll, and Find operations.
+    - Provides reusable repository logic for different models.
+
+    Used Files:
+    - IRepository<T> defines the required operations.
+    - Book and Customer models are examples of entities stored in this repository.
+
+    Day 1 Concepts Applied:
+    - Generic classes using Repository<T>.
+    - Generic constraint where T : class.
+    - Generic methods working with different entity types.
+    - IReadOnlyList<T> to return read-only collections.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,9 +52,9 @@ namespace LibrarySystem.Repositories
 
 
         // Method to find an item of type T by its unique identifier (Guid)
-        public T? Find(Guid id)
+        public T? Find(Func<T, bool> predicate)
         {
-            return Items.FirstOrDefault();
+            return Items.FirstOrDefault(predicate);
         }
 
     }
