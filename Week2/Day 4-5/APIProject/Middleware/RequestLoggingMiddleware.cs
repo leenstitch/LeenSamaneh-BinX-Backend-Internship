@@ -1,4 +1,5 @@
-﻿namespace APIProject.Middleware
+﻿// This file contains custom middleware responsible for logging incoming requests.
+namespace APIProject.Middleware
 {
     public class RequestLoggingMiddleware
     {

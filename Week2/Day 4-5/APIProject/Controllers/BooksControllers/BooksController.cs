@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// This file contains the API Controller responsible for handling book requests.
+
+using Microsoft.AspNetCore.Mvc;
 using APIProject.Models;
 using APIProject.Interfaces;
 
@@ -11,13 +13,15 @@ namespace APIProject.Controllers
     public class BooksController : ControllerBase
     {
 
+        // Private field that stores the injected service.
         private readonly IBookService _bookService;
 
 
         // Constructor Injection
+        // ASP.NET Core automatically provides an IBookService object here.
         public BooksController(IBookService bookService)
         {
-            _bookService = bookService;
+            _bookService = bookService;// Store the received service inside the private field.
         }
 
 

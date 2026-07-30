@@ -1,11 +1,14 @@
-﻿using APIProject.Interfaces;
+﻿// This file contains the implementation of IBookService.
+// It contains the actual logic for retrieving books.
+using APIProject.Interfaces;
 using APIProject.Models;
 
 namespace APIProject.Services
 {
+    // BookService implements the IBookService contract.
     public class BookService : IBookService
     {
-
+        // Private list that stores book data.
         private readonly List<Book> books = new()
         {
             new Book
@@ -33,16 +36,19 @@ namespace APIProject.Services
             }
         };
 
-
+        // Returns all books.
         public IEnumerable<Book> GetBooks()
         {
             return books;
         }
 
 
-
+        // Searches for a book using its ID.
         public Book? GetBookById(int id)
         {
+
+            // Find the first book that matches the provided ID.
+            // If no book exists, FirstOrDefault returns null.
             return books.FirstOrDefault(b => b.Id == id);
         }
 
