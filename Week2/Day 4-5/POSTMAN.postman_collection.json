@@ -92,6 +92,26 @@
         "description": "Get Book By Id - Minimal API"
       },
       "response": []
+    },
+    {
+      "name": "By using middleware at the right place",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/Books",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "Books"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
