@@ -1,4 +1,8 @@
+using APIProject.Extensions;
+using APIProject.Interfaces;
+using APIProject.Middleware;
 using APIProject.Models;
+using APIProject.Services;
 
 // Create the WebApplication builder.
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Register MVC Controllers in the Dependency Injection container.
 builder.Services.AddControllers();
+
+builder.Services.AddApplicationServices();
+
+
 
 // Register services required for generating API documentation.
 builder.Services.AddEndpointsApiExplorer();
@@ -35,12 +43,20 @@ if (app.Environment.IsDevelopment())
 // Redirect HTTP requests to HTTPS for security.
 app.UseHttpsRedirection();
 
+//Using my own Middleware at the right place
+app.UseMiddleware<RequestLoggingMiddleware>();
+
+
 // Enables authorization middleware.
 app.UseAuthorization();
 
 
-// Maps Controller routes to the application.
-app.MapControllers();
+
+
+
+
+
+
 
 //========== Minimal API ==========
 
@@ -114,4 +130,8 @@ app.MapGet("/minimal/books/{id}", (int id) =>
 
 });
 
+// Maps Controller routes to the application.
+app.MapControllers();
+//using my own  middleware at the wrong place
+//app.UseMiddleware<RequestLoggingMiddleware>();
 app.Run();
