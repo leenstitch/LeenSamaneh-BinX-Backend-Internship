@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 // Create the WebApplication builder.
 var builder = WebApplication.CreateBuilder(args);
 
+//Database Configuration
 builder.Services.AddDbContext<LibraryDbContext>(options =>
 {
     options.UseInMemoryDatabase("LibraryDbContext");
@@ -31,6 +32,8 @@ builder.Services.AddSwaggerGen();
 
 // Build the WebApplication object.
 var app = builder.Build();
+
+// Database Initialization 
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider

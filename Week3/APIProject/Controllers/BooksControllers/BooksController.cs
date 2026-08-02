@@ -13,7 +13,7 @@ namespace APIProject.Controllers
     [ApiController]
     //[Route("api/[controller]")] //for week 2
 
-    [Route("api/v1/[controller]")] //for week 3 with versioning
+    [Route("api/v1/books")] //for week 3 with versioning
     public class BooksController : ControllerBase
     {
 
@@ -26,8 +26,6 @@ namespace APIProject.Controllers
         }
 
         //======= for  week 3 - day 1  ========
-
-
         // GET: api/v1/books
         //Api to get all of the books
         [HttpGet]

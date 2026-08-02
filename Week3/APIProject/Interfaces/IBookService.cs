@@ -20,25 +20,14 @@ namespace APIProject.Interfaces
         */
 
 
-        // ======== week 3 - Day 1 ========
+        // ======== week 3 ========
         //========CRUD Operations========
-
-        // Method to get all books.
-        IEnumerable<Book> GetAllBooks();
-
-        // Method to get a book by its ID.
-        Book? GetBookByItsId(int id);
-        // Method to add a new book.
+        IEnumerable<BookResponseDto> GetAllBooks();
         BookResponseDto AddBook(CreateBookDto bookDto);
-
-        // Method to update an existing book by ID.
-        BookResponseDto? UpdateBook(int id, UpdateBookDto bookDto);
-
-        // Method to delete a book by ID.
+        BookResponseDto ? UpdateBook(int id, UpdateBookDto bookDto);
         bool DeleteBook(int id);
+        BookResponseDto? GetBookByItsId(int id);
 
-      
-       
 
     }
 }
