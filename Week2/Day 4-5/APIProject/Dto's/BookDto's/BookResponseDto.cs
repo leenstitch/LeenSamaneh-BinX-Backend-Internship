@@ -1,17 +1,18 @@
-﻿// author model class that represents an Book in the system.
-using System.ComponentModel.DataAnnotations;
+﻿// this code is a C# class definition for a Data Transfer Object (DTO) named `BookResponseDto`.
+// it used to return a book's details in a response
 
-namespace APIProject.Models
+namespace APIProject.Dto_s.BookDto_s
 {
-    public class Book
+    public class BookResponseDto
     {
         public int Id { get; set; }
+
         public string Title { get; set; }
+
         public string ? Description { get; set; }
 
-        [Range(0, 10000)]
         public decimal Price { get; set; }
+
         public int AuthorId { get; set; }
-        public Author ? Author { get; set; }
     }
 }

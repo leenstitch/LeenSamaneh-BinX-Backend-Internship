@@ -1,4 +1,4 @@
-﻿// author model class that represents an Book in the system.
+﻿// a author model class to represent the Book entity
 using System.ComponentModel.DataAnnotations;
 
 namespace APIProject.Models

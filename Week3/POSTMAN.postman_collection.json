@@ -1,0 +1,204 @@
+{
+  "info": {
+    "_postman_id": "20fe3930-18fb-4332-bff0-0f6731e2572d",
+    "name": "Week3-Day1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-20fe3930-18fb-4332-bff0-0f6731e2572d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Return all of the books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create a new book",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"test final book\",\r\n  \"description\": \"good book\",\r\n  \"price\": 10,\r\n  \"authorId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Return a book with specific id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books/4",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update book information",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"test new\",\r\n  \"description\": \"not good\",\r\n  \"price\": 50,\r\n  \"authorId\": 2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books/4",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete book with a specific id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books/5",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Nested Resource(Return the author books)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/authors/1/books",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "authors",
+            "1",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "(Error 404 not found) return a book with a specific id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books/100",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books",
+            "100"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Error(Delete book with specific id)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books/50",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books",
+            "50"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -20,25 +20,48 @@ namespace APIProject.Services
             _context = context;
         }
 
-        //========= week 3 - Day 1 =========
+        //========= week 3 day 1 =========
 
 
         // Returns all books from the database, including their associated authors.
-        public IEnumerable<Book> GetAllBooks()
+        public IEnumerable<BookResponseDto> GetAllBooks()
         {
+            
             return _context.Books
-                .Include(b => b.Author)
+                .Select(b => new BookResponseDto
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Description = b.Description,
+                    Price = b.Price,
+                    AuthorId = b.AuthorId
+                })
                 .ToList();
         }
 
 
 
         // Searches for a book using its ID and returns it, including its associated author.
-        public Book? GetBookByItsId(int id)
+        public BookResponseDto? GetBookByItsId(int id)
         {
-            return _context.Books
-                .Include(b => b.Author)
+            var book = _context.Books
                 .FirstOrDefault(b => b.Id == id);
+
+
+            if (book == null)
+            {
+              return null;
+            }
+
+
+            return new BookResponseDto
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Description = book.Description,
+                Price = book.Price,
+                AuthorId = book.AuthorId
+            };
         }
 
 
@@ -56,7 +79,6 @@ namespace APIProject.Services
             _context.Books.Add(book);
             _context.SaveChanges();
 
-            // Return the newly created book as a BookResponseDto.
             return new BookResponseDto
             {
                 Id = book.Id,
@@ -69,7 +91,6 @@ namespace APIProject.Services
 
 
         // Updates an existing book in the database. If the book does not exist, it returns null.
-        // If a particular field in the UpdateBookDto is null, that field will not be updated otherwise it will be updated.
         public BookResponseDto? UpdateBook(int id, UpdateBookDto bookDto)
         {
             var existingBook = _context.Books
@@ -108,7 +129,7 @@ namespace APIProject.Services
 
             _context.SaveChanges();
 
-            // Return the updated book as a BookResponseDto.
+
             return new BookResponseDto
             {
                 Id = existingBook.Id,
