@@ -13,15 +13,32 @@ namespace APIProject.Data
 
         }
 
-
-        public DbSet<Book> Books { get; set; }
-
+        // ============= DBSETS ==========
         public DbSet<Author> Authors { get; set; }
+        public DbSet<Translator> Translators { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
 
         // ============= SEED DATA ==========
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Configure decimal precision for Price and Total properties
+            modelBuilder.Entity<Book>()
+              .Property(b => b.Price)
+              .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Order>()
+               .Property(o => o.Total)
+               .HasPrecision(10, 2);
+
+            modelBuilder.Entity<OrderItem>()
+                .Property(oi => oi.Subtotal)
+                .HasPrecision(10, 2);
+
+
             // Seed data for Authors and Books
             modelBuilder.Entity<Author>().HasData(
 

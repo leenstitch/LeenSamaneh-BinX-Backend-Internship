@@ -9,11 +9,16 @@ using Microsoft.EntityFrameworkCore;
 // Create the WebApplication builder.
 var builder = WebApplication.CreateBuilder(args);
 
-//Database Configuration
 builder.Services.AddDbContext<LibraryDbContext>(options =>
-{
-    options.UseInMemoryDatabase("LibraryDbContext");
-});
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
+
+//Database Configuration
+////builder.Services.AddDbContext<LibraryDbContext>(options =>
+////{
+////    options.UseInMemoryDatabase("LibraryDbContext");
+////});
 // ========== Services Configuration ==========
 
 // Register MVC Controllers in the Dependency Injection container.

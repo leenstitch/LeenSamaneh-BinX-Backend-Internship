@@ -64,7 +64,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://localhost:7150/api/v1/books/4",
+          "raw": "https://localhost:7150/api/v1/books/5",
           "protocol": "https",
           "host": [
             "localhost"
@@ -74,7 +74,7 @@
             "api",
             "v1",
             "books",
-            "4"
+            "5"
           ]
         }
       },
@@ -95,28 +95,6 @@
           }
         },
         "url": {
-          "raw": "https://localhost:7150/api/v1/books/4",
-          "protocol": "https",
-          "host": [
-            "localhost"
-          ],
-          "port": "7150",
-          "path": [
-            "api",
-            "v1",
-            "books",
-            "4"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Delete book with a specific id",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "url": {
           "raw": "https://localhost:7150/api/v1/books/5",
           "protocol": "https",
           "host": [
@@ -128,6 +106,28 @@
             "v1",
             "books",
             "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete book with a specific id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7150/api/v1/books/6",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7150",
+          "path": [
+            "api",
+            "v1",
+            "books",
+            "6"
           ]
         }
       },
