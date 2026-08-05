@@ -1,21 +1,19 @@
-﻿// This file contains the implementation of IBookService.
-// It contains the actual logic for retrieving books.
-using APIProject.Data;
-using APIProject.Dto_s.BookDto_s;
-using APIProject.Interfaces;
+﻿using APIProject.Data;
+using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
+using APIProject.Interfaces.InterfacesWeek3;
+
 using APIProject.Models;
-using Microsoft.EntityFrameworkCore;
-namespace APIProject.Services
+
+namespace APIProject.Services1.ServicesForWeek3
 {
-    // BookService implements the IBookService contract.
-    public class BookService : IBookService
+    public class BookServiceForDay1 : IBookServiceForDay1
     {
 
         // The BookService class is responsible for handling book-related operations.
         private readonly LibraryDbContext _context;
 
         // BookService constructor that takes a LibraryDbContext as a parameter and assigns it to the _context field.
-        public BookService(LibraryDbContext context)
+        public BookServiceForDay1(LibraryDbContext context)
         {
             _context = context;
         }
@@ -26,7 +24,7 @@ namespace APIProject.Services
         // Returns all books from the database, including their associated authors.
         public IEnumerable<BookResponseDto> GetAllBooks()
         {
-            
+
             return _context.Books
                 .Select(b => new BookResponseDto
                 {
@@ -34,6 +32,7 @@ namespace APIProject.Services
                     Title = b.Title,
                     Description = b.Description,
                     Price = b.Price,
+                    Quantity= b.Quantity,
                     AuthorId = b.AuthorId
                 })
                 .ToList();
@@ -50,7 +49,7 @@ namespace APIProject.Services
 
             if (book == null)
             {
-              return null;
+                return null;
             }
 
 
@@ -60,6 +59,7 @@ namespace APIProject.Services
                 Title = book.Title,
                 Description = book.Description,
                 Price = book.Price,
+                Quantity = book.Quantity,
                 AuthorId = book.AuthorId
             };
         }
@@ -73,6 +73,7 @@ namespace APIProject.Services
                 Title = bookDto.Title,
                 Description = bookDto.Description,
                 Price = bookDto.Price,
+                Quantity = bookDto.Quantity,
                 AuthorId = bookDto.AuthorId
             };
 
@@ -85,6 +86,7 @@ namespace APIProject.Services
                 Title = book.Title,
                 Description = book.Description,
                 Price = book.Price,
+                Quantity = book.Quantity,
                 AuthorId = book.AuthorId
             };
         }
@@ -119,7 +121,10 @@ namespace APIProject.Services
             {
                 existingBook.Price = bookDto.Price.Value;
             }
-
+            if(bookDto.Quantity.HasValue)
+            {
+                existingBook.Quantity = bookDto.Quantity.Value;
+            }
 
             if (bookDto.AuthorId.HasValue)
             {
@@ -136,6 +141,7 @@ namespace APIProject.Services
                 Title = existingBook.Title,
                 Description = existingBook.Description,
                 Price = existingBook.Price,
+                Quantity = existingBook.Quantity,
                 AuthorId = existingBook.AuthorId
             };
         }
@@ -163,34 +169,5 @@ namespace APIProject.Services
             return true;
         }
 
-
-
-
-       
-
-        
-
-
-        //========= week 2  =========
-        /*
-        // Returns all books.
-        public IEnumerable<Book> GetBooks()
-        {
-            return books;
-        }
-
-
-        // Searches for a book using its ID.
-        public Book? GetBookById(int id)
-        {
-
-            // Find the first book that matches the provided ID.
-            // If no book exists, FirstOrDefault returns null.
-            return books.FirstOrDefault(b => b.Id == id);
-        }
-
-        */
-        //========= week 3 day 1 =========
-        // Returns all books 
     }
 }

@@ -1,19 +1,19 @@
 ﻿// This file contains the API Controller responsible for handling Author requests.
-using APIProject.Interfaces;
+using APIProject.Interfaces.InterfacesWeek3;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIProject.Controllers.AuthorsControllers
+namespace APIProject.Controllers.Day3Controllers.AuthorsControllers
 {
 
     [ApiController]
-    [Route("api/v1/authors")]
-    public class AuthorsController : ControllerBase
+    [Route("api/v1/day1/authors")]
+    public class AuthorsControllerDay1 : ControllerBase
     {
 
 
         private readonly IAuthorService _authorService;
-        public AuthorsController(IAuthorService authorService)
+        public AuthorsControllerDay1(IAuthorService authorService)
         {
             _authorService = authorService;
         }

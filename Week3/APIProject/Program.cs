@@ -3,7 +3,7 @@ using APIProject.Extensions;
 using APIProject.Interfaces;
 using APIProject.Middleware;
 using APIProject.Models;
-using APIProject.Services;
+//using APIProject.Services;
 using Microsoft.EntityFrameworkCore;
 
 // Create the WebApplication builder.
@@ -44,7 +44,7 @@ using (var scope = app.Services.CreateScope())
     var context = scope.ServiceProvider
         .GetRequiredService<LibraryDbContext>();
 
-    context.Database.EnsureCreated();
+    context.Database.Migrate();
 }
 
 

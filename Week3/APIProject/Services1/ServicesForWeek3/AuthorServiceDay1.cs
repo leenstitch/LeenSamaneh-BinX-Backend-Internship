@@ -1,11 +1,12 @@
 ﻿// This file contains the implementation of IAuthorService.
 // It contains the actual logic for retrieving authors.
 using APIProject.Data;
-using APIProject.Interfaces;
+using APIProject.Dto_s.Week3Dto_s.AuthorBookDto_s;
+using APIProject.Interfaces.InterfacesWeek3;
 using APIProject.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace APIProject.Services
+namespace APIProject.Services1.ServicesForWeek3
 {
     public class AuthorService : IAuthorService
     {
@@ -20,16 +21,23 @@ namespace APIProject.Services
 
 
         // This method retrieves all books written by a specific author based on the provided authorId.
-        public IEnumerable<Book> GetBooksByAuthorId(int authorId)
+        public IEnumerable<AuthorBookResponseDto> GetBooksByAuthorId(int authorId)
         {
 
             // The method uses Entity Framework Core to query the database for books that have a matching AuthorId.
             // It includes the Author navigation property to load related author data along with the books.
             // Finally, it returns the list of books as an IEnumerable<Book>.
             return _context.Books
-               .Where(b => b.AuthorId == authorId)
-               .Include(b => b.Author)
-               .ToList();
+              .Where(b => b.AuthorId == authorId)
+              .Select(b => new AuthorBookResponseDto
+               {
+                 Id = b.Id,
+                 Title = b.Title,
+                 Price = b.Price,
+                 Description = b.Description,
+                 Quantity = b.Quantity
+              })
+                .ToList();
 
         }
 

@@ -1,8 +1,10 @@
 ﻿// This file contains extension methods used to register application services
 // inside the built-in Dependency Injection container.
 
-using APIProject.Interfaces;
-using APIProject.Services;
+using APIProject.Interfaces.InterfacesForWeek2;
+using APIProject.Interfaces.InterfacesWeek3;
+using APIProject.Services1.Services;
+using APIProject.Services1.ServicesForWeek3;
 
 namespace APIProject.Extensions
 {
@@ -18,6 +20,8 @@ namespace APIProject.Extensions
             // Register IBookService with BookService implementation.
            
             services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IBookServiceForDay4, BookServiceForDay4>();
+            services.AddScoped<IBookServiceForDay1, BookServiceForDay1>();
 
             // Register IAuthorService with AuthorService implementation.
             services.AddScoped<IAuthorService, AuthorService>(); 

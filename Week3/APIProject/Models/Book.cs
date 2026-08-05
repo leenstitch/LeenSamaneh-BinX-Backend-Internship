@@ -9,7 +9,7 @@ namespace APIProject.Models
         public string Title { get; set; } = string.Empty;
         public string ? Description { get; set; }
 
-        [Range(0, 10000)]
+        [Range(typeof(decimal), "0", "10000")]
         public decimal Price { get; set; } = 0;
         public int Quantity { get; set; } = 0;
         public int AuthorId { get; set; }
