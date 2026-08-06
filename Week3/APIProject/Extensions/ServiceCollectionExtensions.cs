@@ -19,12 +19,12 @@ namespace APIProject.Extensions
 
             // Register IBookService with BookService implementation.
            
-            services.AddScoped<IBookService, BookService>();
-            services.AddScoped<IBookServiceForDay4, BookServiceForDay4>();
-            services.AddScoped<IBookServiceForDay1, BookServiceForDay1>();
+            services.AddScoped<IBookService, BookService>();//for week 2
+            services.AddScoped<IBookServiceForDay4, BookServiceForDay4>(); //for week 3 day 4
+            services.AddScoped<IBookServiceForDay1, BookServiceForDay1>(); //for week 3 day 1
 
             // Register IAuthorService with AuthorService implementation.
-            services.AddScoped<IAuthorService, AuthorService>(); 
+            services.AddScoped<IAuthorService, AuthorServiceDay1>(); 
 
             return services; // Return the services collection after registration.
         }

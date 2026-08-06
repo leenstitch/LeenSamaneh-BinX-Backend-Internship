@@ -1,6 +1,6 @@
 ﻿// This file defines the contract for book-related operations.
 // Any class implementing this interface must provide these methods.
-// This Interfaces is For Week2 And Week3-Day1
+// This Interfaces is For Week2 
 using APIProject.Dto_s.BookDto_s;
 using APIProject.Models;
 

@@ -1,4 +1,6 @@
-﻿using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
+﻿// this file is a controller for week 3 day 4 it contains a crud api for books
+
+using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
 using APIProject.Interfaces.InterfacesWeek3;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,8 +21,8 @@ namespace APIProject.Controllers.BooksControllers.BooksControllersWeek3
 
 
 
-        // ================= GET ALL =================
-
+        //  Get all books
+        // GET: api/v1/day4/books
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
@@ -35,8 +37,8 @@ namespace APIProject.Controllers.BooksControllers.BooksControllersWeek3
 
 
 
-        // ================= GET BY ID =================
-
+        //  Get book by id 
+        // GET: api/v1/day4/books/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookById(int id)
         {
@@ -61,8 +63,8 @@ namespace APIProject.Controllers.BooksControllers.BooksControllersWeek3
 
 
 
-        // ================= CREATE =================
-
+        //  Create book 
+        // POST: api/v1/day4/books
         [HttpPost]
         public async Task<IActionResult> CreateBook(CreateBookDto bookDto)
         {
@@ -71,7 +73,7 @@ namespace APIProject.Controllers.BooksControllers.BooksControllersWeek3
             var createdBook = await _bookService.CreateBookAsync(bookDto);
 
 
-
+            // Return a 201 Created response with the location of the newly created book
             return CreatedAtAction(
                 nameof(GetBookById),
                 new { id = createdBook.Id },
@@ -84,8 +86,8 @@ namespace APIProject.Controllers.BooksControllers.BooksControllersWeek3
 
 
 
-        // ================= UPDATE =================
-
+        //  Update book 
+        // PUT: api/v1/day4/books/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook(
             int id,
@@ -116,8 +118,8 @@ namespace APIProject.Controllers.BooksControllers.BooksControllersWeek3
 
 
 
-        // ================= DELETE =================
-
+        //  Delete book 
+        // DELETE: api/v1/day4/books/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {

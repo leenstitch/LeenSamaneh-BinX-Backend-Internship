@@ -1,4 +1,5 @@
-﻿using APIProject.Data;
+﻿// this file is a service class that implements the IBookServiceForDay4 interface and provides methods for a crud operations .
+using APIProject.Data;
 using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
 using APIProject.Interfaces.InterfacesWeek3;
 using APIProject.Models;
@@ -15,6 +16,8 @@ namespace APIProject.Services1.ServicesForWeek3
         {
             _context = context;
         }
+
+        // Get all books
         public async Task<IEnumerable<BookResponseDto>> GetAllBooksAsync()
         {
             return await _context.Books
@@ -31,7 +34,7 @@ namespace APIProject.Services1.ServicesForWeek3
                 .ToListAsync();
         }
 
-        // ================= GET BY ID =================
+        // Get a book by its ID
 
         public async Task<BookResponseDto?> GetBookByIdAsync(int id)
         {
@@ -57,7 +60,7 @@ namespace APIProject.Services1.ServicesForWeek3
             };
         }
 
-        // ================= CREATE =================
+        // create a new book
 
         public async Task<BookResponseDto> CreateBookAsync(CreateBookDto bookDto)
         {
@@ -92,7 +95,7 @@ namespace APIProject.Services1.ServicesForWeek3
             };
         }
 
-        // ================= UPDATE =================
+        // update an existing book
 
         public async Task<BookResponseDto?> UpdateBookAsync(int id, UpdateBookDto bookDto)
         {
@@ -101,13 +104,13 @@ namespace APIProject.Services1.ServicesForWeek3
                 .FirstOrDefaultAsync(b => b.Id == id);
 
 
-
+            
             if (existingBook == null)
             {
                 return null;
             }
 
-
+            // Update the properties of the existing book with the values from the DTO if they are not null
 
             if (bookDto.Title != null)
             {
@@ -167,7 +170,7 @@ namespace APIProject.Services1.ServicesForWeek3
         }
 
 
-        // ================= DELETE =================
+        // Delete a book by its ID
 
         public async Task<bool> DeleteBookAsync(int id)
         {

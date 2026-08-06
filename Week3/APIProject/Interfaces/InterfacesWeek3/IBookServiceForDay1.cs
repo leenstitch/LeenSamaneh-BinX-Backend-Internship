@@ -1,4 +1,5 @@
-﻿using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
+﻿// interface for implementing CRUD operations for Book entity in Week 3 - Day 1
+using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
 
 namespace APIProject.Interfaces.InterfacesWeek3
 {

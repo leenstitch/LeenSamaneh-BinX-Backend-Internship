@@ -1,0 +1,914 @@
+{
+  "info": {
+    "_postman_id": "db7c456b-d59d-4e16-be4d-ec5bff4f3a0a",
+    "name": "Week3 - Day5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-db7c456b-d59d-4e16-be4d-ec5bff4f3a0a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All Books",
+      "item": [
+        {
+          "name": "Get All Books",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response is an array\", function () {\r",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Books",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:05:43 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Harry Potter\",\n        \"description\": \"Amazing book\",\n        \"price\": 25,\n        \"quantity\": 0,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Clean Code\",\n        \"description\": \"Great book\",\n        \"price\": 40,\n        \"quantity\": 0,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 3,\n        \"title\": \"The Hobbit\",\n        \"description\": \"Good book\",\n        \"price\": 30,\n        \"quantity\": 0,\n        \"authorId\": 2,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 4,\n        \"title\": \"test final book\",\n        \"description\": \"good book\",\n        \"price\": 10,\n        \"quantity\": 0,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 5,\n        \"title\": \"test new\",\n        \"description\": \"not good\",\n        \"price\": 50,\n        \"quantity\": 0,\n        \"authorId\": 2,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 7,\n        \"title\": \"update a book\",\n        \"description\": \"good\",\n        \"price\": 100,\n        \"quantity\": 5,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 9,\n        \"title\": \"update a book\",\n        \"description\": \"good\",\n        \"price\": 50,\n        \"quantity\": 50,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 10,\n        \"title\": \"test  book 10\",\n        \"description\": \"good book\",\n        \"price\": 10,\n        \"quantity\": 0,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Day4 test\",\n        \"description\": \"good\",\n        \"price\": 100,\n        \"quantity\": 40,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 12,\n        \"title\": \"test new\",\n        \"description\": \"good book\",\n        \"price\": 10,\n        \"quantity\": 30,\n        \"authorId\": 2,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 13,\n        \"title\": \"test  book 10\",\n        \"description\": \"good book\",\n        \"price\": 10,\n        \"quantity\": 4,\n        \"authorId\": 1,\n        \"translatorId\": null\n    },\n    {\n        \"id\": 14,\n        \"title\": \"update a book\",\n        \"description\": \"very good\",\n        \"price\": 100,\n        \"quantity\": 50,\n        \"authorId\": 1,\n        \"translatorId\": null\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get Book By Id",
+      "item": [
+        {
+          "name": "Get Book By Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Book has title\", function () {\r",
+                  "    pm.expect(pm.response.json()).to.have.property(\"title\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/14",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "14"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Book By Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/14",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "14"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:07:22 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 14,\n    \"title\": \"update a book\",\n    \"description\": \"very good\",\n    \"price\": 100,\n    \"quantity\": 50,\n    \"authorId\": 1,\n    \"translatorId\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Book  with error(404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Error message exists\", function () {\r",
+                  "    pm.expect(pm.response.json())\r",
+                  "    .to.have.property(\"message\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Day4 test\",\r\n  \"description\": \"good\",\r\n  \"price\": 100,\r\n  \"quantity\": 10,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/15",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "15"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Book  with error(404)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Day4 test\",\r\n  \"description\": \"good\",\r\n  \"price\": 100,\r\n  \"quantity\": 10,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/15",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "15"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:10:53 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Book not found\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Create Book",
+      "item": [
+        {
+          "name": "Create Book",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response has book id\", function () {\r",
+                  "    pm.expect(pm.response.json()).to.have.property(\"id\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Day4 test\",\r\n  \"description\": \"good\",\r\n  \"price\": 100,\r\n  \"quantity\": 40,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Book",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Day4 test\",\r\n  \"description\": \"good\",\r\n  \"price\": 100,\r\n  \"quantity\": 40,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:08:03 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Location",
+                  "value": "https://localhost:7150/api/v1/day4/books/17"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 17,\n    \"title\": \"Day4 test\",\n    \"description\": \"good\",\n    \"price\": 100,\n    \"quantity\": 40,\n    \"authorId\": 1,\n    \"translatorId\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Book  with error(400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\":null,\r\n  \"description\": \"good\",\r\n  \"price\": 50,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Book  with error(400)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\":null,\r\n  \"description\": \"good\",\r\n  \"price\": 50,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:11:26 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Title\": [\n            \"The Title field is required.\"\n        ]\n    },\n    \"traceId\": \"00-f39b0d5fa5dd79550aeb828a9983fc2a-e444bb7a34268ebc-00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Update Book",
+      "item": [
+        {
+          "name": "Update  book",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Book title was updated\", function () {\r",
+                  "    pm.expect(pm.response.json().title)\r",
+                  "    .to.eql(\"update a book\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"update a book\",\r\n  \"description\": \"very good\",\r\n  \"price\": null,\r\n  \"quantity\": 50,\r\n  \"authorId\": null,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/17",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "17"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update  book",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"update a book\",\r\n  \"description\": \"very good\",\r\n  \"price\": null,\r\n  \"quantity\": 50,\r\n  \"authorId\": null,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/17",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "17"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:09:39 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 17,\n    \"title\": \"update a book\",\n    \"description\": \"very good\",\n    \"price\": 100,\n    \"quantity\": 50,\n    \"authorId\": 1,\n    \"translatorId\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Book with error (400)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"update a book\",\r\n  \"description\": \"good\",\r\n  \"price\": -5,\r\n  \"quantity\": 5,\r\n  \"authorId\": null,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "7"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Book with error (400)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"update a book\",\r\n  \"description\": \"good\",\r\n  \"price\": -5,\r\n  \"quantity\": 5,\r\n  \"authorId\": null,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/7",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "7"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:12:02 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Price\": [\n            \"The field Price must be between 0 and 10000.\"\n        ]\n    },\n    \"traceId\": \"00-bdc050749badcf6d7454fb3c53a3f669-901551640f4b3ac2-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Book wit error(404)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"update a book\",\r\n  \"description\": \"good\",\r\n  \"price\": 50,\r\n  \"quantity\": 5,\r\n  \"authorId\": null,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/77",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "77"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Book wit error(404)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"update a book\",\r\n  \"description\": \"good\",\r\n  \"price\": 50,\r\n  \"quantity\": 5,\r\n  \"authorId\": null,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/77",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "77"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:13:02 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Book not found\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Delete book",
+      "item": [
+        {
+          "name": "Delete  book",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Day4 test\",\r\n  \"description\": \"good\",\r\n  \"price\": 100,\r\n  \"quantity\": 10,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/18",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "18"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete  book",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Day4 test\",\r\n  \"description\": \"good\",\r\n  \"price\": 100,\r\n  \"quantity\": 10,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/18",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "18"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:08:39 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Delete Book  with error (404)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/77",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "77"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Book  with error (404)",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/77",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "77"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 06 Aug 2026 07:14:06 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Book not found\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

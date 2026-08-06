@@ -1,4 +1,5 @@
-﻿// this code is a part of a C# project that defines a Data Transfer Object (DTO) for Updating a book entity.
+﻿// this file is used to defines a Data Transfer Object (DTO) for Updating a book entity.
+//it was just for week 2
 namespace APIProject.Dto_s.BookDto_s
 {
     public class UpdateBookDto

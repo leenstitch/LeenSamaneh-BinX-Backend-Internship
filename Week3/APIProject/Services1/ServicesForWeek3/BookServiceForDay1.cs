@@ -1,4 +1,5 @@
-﻿using APIProject.Data;
+﻿// this file is a service class that implements the IBookServiceForDay1 interface and provides methods for a crud operations .
+using APIProject.Data;
 using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
 using APIProject.Interfaces.InterfacesWeek3;
 

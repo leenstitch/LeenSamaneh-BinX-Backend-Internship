@@ -1,4 +1,4 @@
-﻿// this code is a part of a C# project that defines a Data Transfer Object (DTO).
+﻿//its just for week 2
 // its used as a response model for the book entity.
 namespace APIProject.Dto_s.BookDto_s
 {

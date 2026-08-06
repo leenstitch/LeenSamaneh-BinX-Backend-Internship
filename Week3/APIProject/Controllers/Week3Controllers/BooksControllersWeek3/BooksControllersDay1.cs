@@ -1,4 +1,5 @@
-﻿// This file contains the API Controller responsible for handling book requests.
+﻿// This file contains a crud api for books
+//everything in this file is for week 3 - day 1
 
 using APIProject.Data;
 using APIProject.Dto_s.BookDto_s.BookDto_sWeek3;
@@ -27,7 +28,7 @@ namespace APIProject.Controllers
             _bookService1 = bookService;
         }
 
-        //======= for  week 3 - day 1  ========
+        
         // GET: api/v1/books
         //Api to get all of the books
         [HttpGet]
@@ -115,7 +116,10 @@ namespace APIProject.Controllers
             }
 
 
-            return NoContent();
+            return NotFound(new
+            {
+                message = "Book not found"
+            });
 
         }
 

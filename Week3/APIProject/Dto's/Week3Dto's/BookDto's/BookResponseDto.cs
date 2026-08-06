@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿//this file is used for the response of the book entity.
+
+using System.ComponentModel.DataAnnotations;
 
 namespace APIProject.Dto_s.BookDto_s.BookDto_sWeek3
 {

@@ -1,4 +1,6 @@
-﻿namespace APIProject.Dto_s.Week3Dto_s.AuthorBookDto_s
+﻿// this dto is used as a response model for author and book entity.
+
+namespace APIProject.Dto_s.Week3Dto_s.AuthorBookDto_s
 {
     public class AuthorBookResponseDto
     {

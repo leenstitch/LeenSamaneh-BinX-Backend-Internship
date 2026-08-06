@@ -1,5 +1,6 @@
 ﻿// This file contains the implementation of IAuthorService.
 // It contains the actual logic for retrieving authors.
+//its for week 3 - day 1
 using APIProject.Data;
 using APIProject.Dto_s.Week3Dto_s.AuthorBookDto_s;
 using APIProject.Interfaces.InterfacesWeek3;
@@ -8,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APIProject.Services1.ServicesForWeek3
 {
-    public class AuthorService : IAuthorService
+    public class AuthorServiceDay1 : IAuthorService
     {
         // AuthorService implements the IAuthorService contract.
         private readonly LibraryDbContext _context;
 
         // authorService constructor that takes a LibraryDbContext as a parameter and assigns it to the _context field.
-        public AuthorService(LibraryDbContext context)
+        public AuthorServiceDay1(LibraryDbContext context)
         {
             _context = context;
         }

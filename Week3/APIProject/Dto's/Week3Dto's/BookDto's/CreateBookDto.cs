@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// this file is used to defines a Data Transfer Object (DTO) for creating a book entity.
+using System.ComponentModel.DataAnnotations;
 
 namespace APIProject.Dto_s.BookDto_s.BookDto_sWeek3
 {

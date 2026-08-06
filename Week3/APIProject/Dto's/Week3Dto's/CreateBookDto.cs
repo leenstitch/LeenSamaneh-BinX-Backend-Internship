@@ -1,4 +1,5 @@
-﻿// this code is a part of a C# project that defines a Data Transfer Object (DTO) for creating a book entity.
+﻿// this file is used to defines a Data Transfer Object (DTO) for creating a book entity.
+//this file just for week 2
 using System.ComponentModel.DataAnnotations;
 
 namespace APIProject.Dto_s.BookDto_s
