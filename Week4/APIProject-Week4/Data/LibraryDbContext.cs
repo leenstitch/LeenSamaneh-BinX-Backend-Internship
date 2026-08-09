@@ -1,11 +1,12 @@
 ﻿// this code defines a DbContext for an API project that manges models for a library system
 using APIProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace APIProject.Data
 {
-    public class LibraryDbContext : DbContext
+    // Identitydbcontext<applicationuser> is used to manage user authentication and authorization
+    public class LibraryDbContext : IdentityDbContext<ApplicationUser>
     {
         // ============= CONSTRUCTOR ==========
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options)
@@ -26,10 +27,12 @@ namespace APIProject.Data
         // ============= SEED DATA ==========
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             // Configure decimal precision for Price and Total properties
             modelBuilder.Entity<Book>()
-              .Property(b => b.Price)
-              .HasPrecision(10, 2);
+                  .Property(b => b.Price)
+                  .HasPrecision(10, 2);
 
             modelBuilder.Entity<Order>()
                .Property(o => o.Total)
@@ -39,6 +42,12 @@ namespace APIProject.Data
                 .Property(oi => oi.Subtotal)
                 .HasPrecision(10, 2);
 
+            // Configure the one-to-one relationship between Customer and ApplicationUser
+            modelBuilder.Entity<Customer>()
+                 .HasOne(c => c.User)
+                 .WithOne(u => u.Customer)
+                 .HasForeignKey<Customer>(c => c.UserId)
+                 .OnDelete(DeleteBehavior.Cascade);
 
             // Seed data for Authors and Books
             modelBuilder.Entity<Author>().HasData(
@@ -93,6 +102,6 @@ namespace APIProject.Data
                 }
 
             );
-        }
+        } 
     }
 }

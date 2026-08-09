@@ -1,10 +1,9 @@
-using System;
 using APIProject.Data;
 using APIProject.Extensions;
 using APIProject.Interfaces;
 using APIProject.Middleware;
 using APIProject.Models;
-
+using Microsoft.AspNetCore.Identity;
 
 //using APIProject.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,14 +16,23 @@ builder.Services.AddDbContext<LibraryDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 
+//========== Identity Configuration ==========
+builder.Services
+    .AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+        options.User.RequireUniqueEmail = true;
+    })
+    .AddEntityFrameworkStores<LibraryDbContext>();
 
-
-//Database Configuration
+/*Database Configuration
 ////builder.Services.AddDbContext<LibraryDbContext>(options =>
 ////{
 ////    options.UseInMemoryDatabase("LibraryDbContext");
 ////});
-// ========== Services Configuration ==========
+*/
+
+
+//========== Services Configuration ==========
 
 // Register MVC Controllers in the Dependency Injection container.
 builder.Services.AddControllers();
@@ -69,18 +77,16 @@ app.UseHttpsRedirection();
 //Using my own Middleware at the right place
 app.UseMiddleware<RequestLoggingMiddleware>();
 
+// Enables authentication middleware.
+app.UseAuthentication();
 
 // Enables authorization middleware.
 app.UseAuthorization();
 
 
 
-
-
-
-
-
-
+/*
+ // those are for the weeks befor week 4
 //========== Minimal API ==========
 
 
@@ -152,7 +158,7 @@ app.MapGet("/minimal/books/{id}", (int id) =>
     return Results.Ok(book);
 
 });
-
+*/
 // Maps Controller routes to the application.
 app.MapControllers();
 //using my own  middleware at the wrong place
