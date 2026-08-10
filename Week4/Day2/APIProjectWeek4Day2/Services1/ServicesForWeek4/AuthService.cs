@@ -1,25 +1,47 @@
-﻿//this service is used to register a new user and create a corresponding customer record in the database.
+﻿//this service is used to register a new user , create a corresponding customer record in the database
+//and handle user login by using jwt and refresh token generation.
 using APIProject.Data;
-using APIProject.Dto_s.RegisterDto_s;
+using APIProject.Dto_s.Week4Dto_s.LoginDto_s;
+using APIProject.Dto_s.Week4Dto_s.RegisterDto_s;
 using APIProject.Interfaces.InterfacesWeek4;
 using APIProject.Models;
+using APIProjectWeek4Day2.Dto_s.Week4Dto_s.LoginDto_s;
 using Microsoft.AspNetCore.Identity;
 
 namespace APIProject.Services1.ServicesForWeek4
 {
     public class AuthService : IAuthService
-{
-        private readonly UserManager<ApplicationUser> _userManager;//this is used to manage user-related operations.
+    {
+        //this is used to manage user-related operations.
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        // this is used to interact with the database.
         private readonly LibraryDbContext _context;
 
+        // this is used to handle user sign-in operations.
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        // this is used to generate JSON Web Tokens (JWTs) for authentication.
+        private readonly IJwtService _jwtService;
+
+        // this is used to manage refresh tokens for authentication.
+        private readonly IRefreshTokenService _refreshTokenService;
+
+        // Constructor to initialize the AuthService with required dependencies.
         public AuthService(
             UserManager<ApplicationUser> userManager,
-            LibraryDbContext context)
+            LibraryDbContext context,
+            SignInManager<ApplicationUser> signInManager,
+            IJwtService jwtService,
+            IRefreshTokenService refreshTokenService)
         {
             _userManager = userManager;
             _context = context;
+            _signInManager = signInManager;
+            _jwtService = jwtService;
+            _refreshTokenService = refreshTokenService;
         }
-        
+
 
         // Registers a new user and creates a corresponding Customer.
         public async Task<IdentityResult> RegisterAsync(RegisterDto dto)
@@ -92,6 +114,53 @@ namespace APIProject.Services1.ServicesForWeek4
                         Description = ex.Message
                     });
             }
+        }
+
+        // Logs in a user and returns a JWT and refresh token if successful.
+        public async Task<TokenResponseDto?> LoginAsync(LoginDto dto)
+        {
+            // Find the user using the email.
+            var user =
+                await _userManager.FindByEmailAsync(dto.Email);
+
+            // User does not exist.
+            if (user == null)
+                return null;
+
+            // Check the submitted password.
+            var result =
+                await _signInManager.CheckPasswordSignInAsync(
+                    user,
+                    dto.Password,
+                    lockoutOnFailure: false);
+
+            // Password is incorrect.
+            if (!result.Succeeded)
+                return null;
+
+            // Generate a JWT and refresh token for the authenticated user.
+            var accessToken = _jwtService.CreateToken(user);
+            var refreshToken = _refreshTokenService.GenerateRefreshToken();
+
+            // Store the refresh token in the database with an expiration date.
+            var refreshTokenEntity = new RefreshToken
+            {
+                Token = refreshToken,
+                UserId = user.Id,
+                ExpiresAt = DateTime.UtcNow.AddDays(7)
+            };
+
+            _context.RefreshTokens.Add(refreshTokenEntity);
+
+            // Save the refresh token to the database.
+            await _context.SaveChangesAsync();
+
+            // Create and return the JWT.
+            return new TokenResponseDto
+            {
+                AccessToken = accessToken,
+                RefreshToken = refreshToken
+            };
         }
     }
 }
