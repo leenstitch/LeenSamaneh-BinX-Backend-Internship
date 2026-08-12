@@ -1,0 +1,1003 @@
+{
+  "info": {
+    "_postman_id": "d1db9b77-e10f-4aa3-b7bd-d4d72111a1b6",
+    "name": "Week4 - Day4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-d1db9b77-e10f-4aa3-b7bd-d4d72111a1b6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create book validation",
+      "item": [
+        {
+          "name": "Create book with validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": -5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create book with validation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": -5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:02:17 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Title\": [\n            \"Book title is required.\"\n        ],\n        \"AuthorId\": [\n            \"AuthorId must be greater than 0.\"\n        ],\n        \"Quantity\": [\n            \"Book quantity cannot be negative.\"\n        ]\n    },\n    \"traceId\": \"00-b5b11db0c512a2108166d9d7acb7aad8-e75a86849fff2b98-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create book with title validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create book with title validation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:07:31 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Title\": [\n            \"Book title is required.\"\n        ]\n    },\n    \"traceId\": \"00-08c3706b670ffd160d32f67a357e3eb2-473868bca518760c-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create book with price validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": -100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create book with price validation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": -100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:09:15 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Price\": [\n            \"The field Price must be between 0 and 10000.\",\n            \"Book price must be greater than 0.\"\n        ]\n    },\n    \"traceId\": \"00-057f3543e4ea0bcc4a2416becf34396d-f99cb39632fd77fc-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create book with quantity validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\":-5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create book with quantity validation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\":-5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:11:04 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Quantity\": [\n            \"Book quantity cannot be negative.\"\n        ]\n    },\n    \"traceId\": \"00-676f49ba7f725892fd9b5d8d1108d780-6b94334295d05e4d-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create book with authorId validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\":5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create book with authorId validation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\":5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:14:25 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"AuthorId\": [\n            \"AuthorId must be greater than 0.\"\n        ]\n    },\n    \"traceId\": \"00-51a6d3fbcdee0433288e5f261526e0f5-b4691615e4405d5a-00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Update book validation",
+      "item": [
+        {
+          "name": "Update book with validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": -5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/9",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "9"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": -5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/9",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "9"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:04:18 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Title\": [\n            \"Book title is required.\"\n        ],\n        \"AuthorId\": [\n            \"AuthorId must be greater than 0.\"\n        ],\n        \"Quantity\": [\n            \"Book quantity cannot be negative.\"\n        ]\n    },\n    \"traceId\": \"00-a1705379fecd8423ba82f60e5ea9815a-9a549d71168c302f-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update book with title validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "3"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update book with title validation",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "3"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:17:01 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Title\": [\n            \"Book title is required.\"\n        ]\n    },\n    \"traceId\": \"00-41310614d7ba12f807e3e44d32f2a667-705142509eefd8f0-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update book with price validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": -100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "3"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update book with price validation",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": -100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "3"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:20:29 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Price\": [\n            \"The field Price must be between 0 and 10000.\",\n            \"Book price must be greater than 0.\"\n        ]\n    },\n    \"traceId\": \"00-59fcd6b5dc53c392ea91f6e27291f490-e1c3cecfbb118f47-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update book with quantity validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": -5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "3"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update book with quantity validation",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": -5,\r\n  \"authorId\": 1,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "3"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:22:50 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"Quantity\": [\n            \"Book quantity cannot be negative.\"\n        ]\n    },\n    \"traceId\": \"00-ed6b421c5684c64a49119a26958c9c52-f3cd17307e10c18a-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update book with authorId validation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/day4/books/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "day4",
+                "books",
+                "3"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update book with authorId validation",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"test\",\r\n  \"description\": \"test\",\r\n  \"price\": 100,\r\n  \"quantity\": 5,\r\n  \"authorId\": 0,\r\n  \"translatorId\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/day4/books/3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "day4",
+                    "books",
+                    "3"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Aug 2026 07:24:45 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"AuthorId\": [\n            \"AuthorId must be greater than 0.\"\n        ]\n    },\n    \"traceId\": \"00-947b2aa698b970cfe5474c6de1c540ca-f8f4651917e0fb01-00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Admin login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();\r",
+              "\r",
+              "pm.environment.set(\"adminAccessToken\", response.accessToken);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{adminAccessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@library.com\",\r\n  \"password\": \"Admin123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/accounts/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "accounts",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Admin login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@library.com\",\r\n  \"password\": \"Admin123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/accounts/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 12 Aug 2026 06:39:37 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Login successful\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMWYyM2FiMy00NWFlLTRlYWYtOGJhYy1iMzY5OGE1Yjc3NWMiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBsaWJyYXJ5LmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiUGVybWlzc2lvbiI6IlVwZGF0ZUJvb2siLCJleHAiOjE3ODY1MTc2NzYsImlzcyI6IkFQSVByb2plY3QiLCJhdWQiOiJBUElQcm9qZWN0VXNlcnMifQ.rogKylEvIE6xCvq6SOMgnofJAQLSLZaay0izBBmmPeI\",\n    \"refreshToken\": \"qZgAJhFFQgSBYXGK6OrqzwHBxUCl5zQYlp7ypEhyLF6mgLKvVwKUBGZo378oUgnax6PUq2oq+EwseHagz+soCg==\"\n}"
+        }
+      ]
+    }
+  ]
+}
