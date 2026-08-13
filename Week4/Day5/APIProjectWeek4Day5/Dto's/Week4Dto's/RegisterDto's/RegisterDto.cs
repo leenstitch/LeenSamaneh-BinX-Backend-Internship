@@ -1,0 +1,10 @@
+﻿//this dto is used to register a new user
+namespace APIProject.Dto_s.Week4Dto_s.RegisterDto_s
+{
+    public class RegisterDto
+{
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Name { get; set; }= string.Empty;
+    }
+}
