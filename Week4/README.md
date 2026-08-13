@@ -62,7 +62,7 @@ Day 5 — API Security & Hardening
 -Configured HSTS to tell browsers to always use HTTPS for the API domain.
 -Reviewed the project for possible SQL Injection vulnerabilities and confirmed that EF Core LINQ queries use parameterized SQL by default.
 -Reviewed raw SQL usage to make sure user input is not directly inserted into SQL queries.
--Finally, prepared a Week 4 summary in Notion covering Identity, JWT, Authorization, Validation, and API Security for the mentor check-in.
+
 
 Main concepts:
 Rate Limiting — CORS — HTTPS — HSTS — SQL Injection Prevention — EF Core
