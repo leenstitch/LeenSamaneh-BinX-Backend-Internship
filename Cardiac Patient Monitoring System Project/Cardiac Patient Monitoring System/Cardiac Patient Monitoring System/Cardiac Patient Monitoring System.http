@@ -1,0 +1,6 @@
+@Cardiac_Patient_Monitoring_System_HostAddress = http://localhost:5176
+
+GET {{Cardiac_Patient_Monitoring_System_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
