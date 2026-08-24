@@ -99,8 +99,8 @@ The ERD represents:
 
 The ERD was designed and reviewed to ensure that it matches the planned database schema and follows the normalization principles applied during schema design.
 
-<img width="1893" height="802" alt="image" src="https://github.com/user-attachments/assets/63a6fb8f-7ca2-45ad-b7df-ab7af2136986" />
-<img width="1889" height="586" alt="image" src="https://github.com/user-attachments/assets/b0d4bfb0-728b-43fc-9df9-d7aa42076c73" />
+<img width="1896" height="807" alt="image" src="https://github.com/user-attachments/assets/b4a9a3e3-e5ba-43af-a42f-b5df3016f2a4" />
+<img width="1891" height="521" alt="image" src="https://github.com/user-attachments/assets/f6045427-d595-40e6-a517-e7d531951ae7" />
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -121,6 +121,8 @@ The ERD was designed and reviewed to ensure that it matches the planned database
 | S1-11 | Wrap multi-step operations in a database transaction            | 4 hrs            | Pending |
 | S1-12 | Test Sprint 1 features using Postman                            | 4 hrs            | Pending |
 | S1-13 | Prepare and submit GitHub Pull Request                          | 2 hrs            | Pending |
+
+
 
 
 
