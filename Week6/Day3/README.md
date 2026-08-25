@@ -1,0 +1,11 @@
+## Day 3 — Core Routes I: Catalog & Read Operations
+- Implemented pagination for the Vital Signs GetAll endpoint using Page and PageSize.
+- Added TotalCount and TotalPages to the paginated response.
+- Implemented filtering by patient name and gender using query parameters.
+- Implemented sorting by measurement date using asc and descending order.
+- Created a reusable generic PaginatedResponseDto<T>.
+- Created VitalSignQueryDto to handle pagination, filtering, and sorting parameters.
+- Updated the Repository to use Skip() and Take() for pagination.
+- Updated the Service to validate pagination parameters, calculate total pages, and map entities to DTOs.
+- Improved error handling so invalid query values such as an invalid gender return 400 Bad Request.
+- Tested the endpoint with different pagination, filtering, and sorting combinations using Postman.
