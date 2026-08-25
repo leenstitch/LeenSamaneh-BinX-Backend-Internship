@@ -48,15 +48,14 @@ Adding two negative numbers
 Example:
 
 [Fact]
-public void Add_TwoPositiveNumbers_ReturnsCorrectSum()
+public void Add_TwoNumbers_ReturnsSum()
 {
     // Arrange
-    var calculator = new Calculator();
-
+    int a = 5;
+    int b = 3;
 
     // Act
-    var result = calculator.Add(5, 3);
-
+    int result = Add(a, b);
 
     // Assert
     Assert.Equal(8, result);
