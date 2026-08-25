@@ -8,8 +8,8 @@ Applied testing practices to the Cardiac Patient Monitoring System and completed
 - Added unit tests for:
   - Authentication
   - Vital Signs
-  - Medications
-- Added integration tests for the Patient Health Status endpoint.
+  - Medications.
+    
 - Used xUnit, Moq, and an in-memory database.
 - Ran the complete test suite using `dotnet test`.
 
