@@ -19,6 +19,8 @@
 * Configured the mock to throw an exception and tested the service's exception handling.
 * Used Moq's `.Verify()` to confirm that a repository method was called exactly once.
 * Added and committed the unit tests to the GitHub repository.
+<img width="741" height="712" alt="image" src="https://github.com/user-attachments/assets/cbad39f5-9a27-4f34-b99e-1d3a66efbd69" />
+
 
 ## Tools Used
 
