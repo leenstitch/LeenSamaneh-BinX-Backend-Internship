@@ -1,0 +1,545 @@
+{
+  "info": {
+    "_postman_id": "aeab5521-5e29-49b0-a411-9b0377a3cd58",
+    "name": "Week6-Day3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-aeab5521-5e29-49b0-a411-9b0377a3cd58?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AdminLogIn",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();\r",
+              "\r",
+              "pm.environment.set(\r",
+              "    \"AdminAccessToken\",\r",
+              "    response.accessToken\r",
+              ");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@cardiac.com\",\r\n  \"password\": \"Admin@12345\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/AuthController/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "AuthController",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "AdminLogIn",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@cardiac.com\",\r\n  \"password\": \"Admin@12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AuthController/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AuthController",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 10:05:48 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDA0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxMDA0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiYWRtaW5AY2FyZGlhYy5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIlBlcm1pc3Npb24iOlsiUGF0aWVudC5SZWFkIiwiUGF0aWVudC5VcGRhdGUiLCJQYXRpZW50LkRlbGV0ZSIsIkRpYWdub3Npcy5SZWFkIiwiRGlhZ25vc2lzLkNyZWF0ZSIsIk1lZGljYXRpb24uUmVhZCIsIk1lZGljYXRpb24uQ3JlYXRlIl0sImV4cCI6MTc4NzY1MzI0OSwiaXNzIjoiQ2FyZGlhY1BhdGllbnRNb25pdG9yaW5nU3lzdGVtIiwiYXVkIjoiQ2FyZGlhY1BhdGllbnRNb25pdG9yaW5nU3lzdGVtQ2xpZW50In0.85HpV-9a3HD8ccTqQPPfvSWX42CJA71ww38HzDukgDE\",\n    \"refreshToken\": \"N9mVfPZwPmfgNAh2poAd0hxzg6AISf2mDy7jvzGxR7IiGdA7Na/X3XG734twcrbuFELLju2B/IRztM0zUoK+mg==\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Patient Vital Data (when i dont apply any filter it returns one page with 10 records)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{AdminAccessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/VitalSignsController",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "VitalSignsController"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Patient Vital Data (when i dont apply any filter it returns one page with 10 records)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 10:05:59 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"vitalSignId\": 2002,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"Dr.majd\",\n            \"heartRate\": 200,\n            \"systolicPressure\": 120,\n            \"diastolicPressure\": 120,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:12:38.6359409\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2003,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:13:39.4641454\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2004,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:22:45.0621231\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1015,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 78,\n            \"systolicPressure\": 120,\n            \"diastolicPressure\": 80,\n            \"oxygenSaturation\": 98,\n            \"temperature\": 36.5,\n            \"measuredAt\": \"2026-08-19T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:26:13.5846601\",\n            \"notes\": \"Patient is stable.\"\n        },\n        {\n            \"vitalSignId\": 1007,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 10,\n            \"systolicPressure\": 80,\n            \"diastolicPressure\": 200,\n            \"oxygenSaturation\": 60,\n            \"temperature\": 35,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:33.383793\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1008,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:51.262618\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1009,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:38:18.8381302\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1017,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 85,\n            \"systolicPressure\": 130,\n            \"diastolicPressure\": 100,\n            \"oxygenSaturation\": 80,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-17T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:27:35.1357662\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"vitalSignId\": 1016,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 88,\n            \"systolicPressure\": 110,\n            \"diastolicPressure\": 90,\n            \"oxygenSaturation\": 90,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-15T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:26:52.7841354\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"vitalSignId\": 2005,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-14T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:22:55.2374965\",\n            \"notes\": \"string\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"totalCount\": 10,\n    \"totalPages\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Patients vital data(when i apply a filter<page=1,pagesize=10>)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{AdminAccessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "VitalSignsController"
+          ],
+          "query": [
+            {
+              "key": "Page",
+              "value": "1"
+            },
+            {
+              "key": "PageSize",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Patients vital data(when i apply a filter<page=1,pagesize=10>)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController"
+              ],
+              "query": [
+                {
+                  "key": "Page",
+                  "value": "1"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 10:10:42 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"vitalSignId\": 2002,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"Dr.majd\",\n            \"heartRate\": 200,\n            \"systolicPressure\": 120,\n            \"diastolicPressure\": 120,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:12:38.6359409\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2003,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:13:39.4641454\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2004,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:22:45.0621231\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1015,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 78,\n            \"systolicPressure\": 120,\n            \"diastolicPressure\": 80,\n            \"oxygenSaturation\": 98,\n            \"temperature\": 36.5,\n            \"measuredAt\": \"2026-08-19T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:26:13.5846601\",\n            \"notes\": \"Patient is stable.\"\n        },\n        {\n            \"vitalSignId\": 1007,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 10,\n            \"systolicPressure\": 80,\n            \"diastolicPressure\": 200,\n            \"oxygenSaturation\": 60,\n            \"temperature\": 35,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:33.383793\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1008,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:51.262618\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1009,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:38:18.8381302\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1017,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 85,\n            \"systolicPressure\": 130,\n            \"diastolicPressure\": 100,\n            \"oxygenSaturation\": 80,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-17T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:27:35.1357662\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"vitalSignId\": 1016,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 88,\n            \"systolicPressure\": 110,\n            \"diastolicPressure\": 90,\n            \"oxygenSaturation\": 90,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-15T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:26:52.7841354\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"vitalSignId\": 2005,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-14T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:22:55.2374965\",\n            \"notes\": \"string\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"totalCount\": 13,\n    \"totalPages\": 2\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Patients Vital Data(when i apply <page=2,pagesize=4>)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{AdminAccessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/VitalSignsController?Page=2&PageSize=4",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "VitalSignsController"
+          ],
+          "query": [
+            {
+              "key": "Page",
+              "value": "2"
+            },
+            {
+              "key": "PageSize",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Patients Vital Data(when i apply <page=2,pagesize=4>)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController?Page=2&PageSize=4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController"
+              ],
+              "query": [
+                {
+                  "key": "Page",
+                  "value": "2"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 10:13:48 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"vitalSignId\": 1007,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 10,\n            \"systolicPressure\": 80,\n            \"diastolicPressure\": 200,\n            \"oxygenSaturation\": 60,\n            \"temperature\": 35,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:33.383793\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1008,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:51.262618\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1009,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:38:18.8381302\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1017,\n            \"patientId\": 1004,\n            \"recordedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"heartRate\": 85,\n            \"systolicPressure\": 130,\n            \"diastolicPressure\": 100,\n            \"oxygenSaturation\": 80,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-17T11:25:22.993\",\n            \"createdAt\": \"2026-08-19T11:27:35.1357662\",\n            \"notes\": \"nothing\"\n        }\n    ],\n    \"page\": 2,\n    \"pageSize\": 4,\n    \"totalCount\": 13,\n    \"totalPages\": 4\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Patients Vital Data(when i apply<page=1,pagesize=10,gender=male,sort,asc)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{AdminAccessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10&Gender=male&Sort=asc\n",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "VitalSignsController"
+          ],
+          "query": [
+            {
+              "key": "Page",
+              "value": "1"
+            },
+            {
+              "key": "PageSize",
+              "value": "10"
+            },
+            {
+              "key": "Gender",
+              "value": "male"
+            },
+            {
+              "key": "Sort",
+              "value": "asc\n"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Patients Vital Data(when i apply<page=1,pagesize=10,gender=male,sort,asc)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10&Gender=male&Sort=asc\n",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController"
+              ],
+              "query": [
+                {
+                  "key": "Page",
+                  "value": "1"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "Gender",
+                  "value": "male"
+                },
+                {
+                  "key": "Sort",
+                  "value": "asc\n"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 10:18:34 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"vitalSignId\": 1007,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 10,\n            \"systolicPressure\": 80,\n            \"diastolicPressure\": 200,\n            \"oxygenSaturation\": 60,\n            \"temperature\": 35,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:33.383793\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1008,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:51.262618\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1009,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:38:18.8381302\",\n            \"notes\": \"string\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"totalCount\": 3,\n    \"totalPages\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Patinets Vital Data(when i apply <page=1,pagesize=10,patientname=leen>)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{AdminAccessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10&PatientName=leen",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "VitalSignsController"
+          ],
+          "query": [
+            {
+              "key": "Page",
+              "value": "1"
+            },
+            {
+              "key": "PageSize",
+              "value": "10"
+            },
+            {
+              "key": "PatientName",
+              "value": "leen"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Patinets Vital Data(when i apply <page=1,pagesize=10,patientname=leen>)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10&PatientName=leen",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController"
+              ],
+              "query": [
+                {
+                  "key": "Page",
+                  "value": "1"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "PatientName",
+                  "value": "leen"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 10:21:30 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"data\": [\n        {\n            \"vitalSignId\": 2002,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"Dr.majd\",\n            \"heartRate\": 200,\n            \"systolicPressure\": 120,\n            \"diastolicPressure\": 120,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 37,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:12:38.6359409\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2003,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:13:39.4641454\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2004,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-20T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:22:45.0621231\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 2005,\n            \"patientId\": 2006,\n            \"recordedByDoctorName\": \"dr.ahmad\",\n            \"heartRate\": 140,\n            \"systolicPressure\": 160,\n            \"diastolicPressure\": 110,\n            \"oxygenSaturation\": 70,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-14T12:06:34.344\",\n            \"createdAt\": \"2026-08-20T12:22:55.2374965\",\n            \"notes\": \"string\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"totalCount\": 4,\n    \"totalPages\": 1\n}"
+        }
+      ]
+    }
+  ]
+}
