@@ -33,9 +33,13 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
         Task<int?> GetPatientIdByUserIdAsync(int userId);
 
         // Filters medications belonging to the authenticated user.
-        Task<IEnumerable<Medication>>
-            FilterByUserIdAsync(
+        Task<IEnumerable<Medication>> FilterByUserIdAsync(
                 int userId,
                 MedicationFilterDto filter);
+
+        Task<IEnumerable<Medication>>GetHistoricalMedicationsAsync(
+        int patientId,
+        DateTime startDate,
+        DateTime eventDate);
     }
 }

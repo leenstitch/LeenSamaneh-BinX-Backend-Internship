@@ -38,5 +38,9 @@ namespace Cardiac_Patient_Monitoring_System.Repositories.Interfaces
 
         // Returns diagnoses belonging to the authenticated user.
         Task<IEnumerable<Diagnosis>> GetByUserIdAsync(int userId);
+
+        Task<IEnumerable<Diagnosis>>GetRecordedBeforeEventAsync(
+        int patientId,
+        DateTime eventDate);
     }
 }

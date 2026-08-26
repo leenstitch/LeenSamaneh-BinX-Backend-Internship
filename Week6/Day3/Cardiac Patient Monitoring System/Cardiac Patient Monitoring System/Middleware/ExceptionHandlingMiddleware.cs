@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Cardiac_Patient_Monitoring_System.Middleware
 {
     public class GlobalExceptionMiddleware
@@ -27,6 +26,30 @@ namespace Cardiac_Patient_Monitoring_System.Middleware
             {
                 await _next(context);
             }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(
+                    ex,
+                    "Invalid request input for {RequestPath}",
+                    context.Request.Path
+                );
+
+                context.Response.StatusCode =
+                    StatusCodes.Status400BadRequest;
+
+                context.Response.ContentType =
+                    "application/problem+json";
+
+                var problemDetails = new ProblemDetails
+                {
+                    Title = "Invalid request.",
+                    Detail = ex.Message,
+                    Status = StatusCodes.Status400BadRequest,
+                    Instance = context.Request.Path
+                };
+
+                await context.Response.WriteAsJsonAsync(problemDetails);
+            }
             catch (Exception ex)
             {
                 _logger.LogError(
@@ -35,8 +58,11 @@ namespace Cardiac_Patient_Monitoring_System.Middleware
                     context.Request.Path
                 );
 
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                context.Response.ContentType = "application/problem+json";
+                context.Response.StatusCode =
+                    StatusCodes.Status500InternalServerError;
+
+                context.Response.ContentType =
+                    "application/problem+json";
 
                 var problemDetails = new ProblemDetails
                 {
@@ -47,6 +73,8 @@ namespace Cardiac_Patient_Monitoring_System.Middleware
 
                 await context.Response.WriteAsJsonAsync(problemDetails);
             }
+
+
         }
     }
 }

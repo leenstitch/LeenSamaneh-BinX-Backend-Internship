@@ -32,14 +32,12 @@ namespace Cardiac_Patient_Monitoring_System.Extensions
             services.AddScoped<IEmergencyContactService, EmergencyContactService>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IAppointmentService, AppointmentService>();
-
-            services.AddScoped<
-                IAdminDashboardRepository,
-                AdminDashboardRepository>();
-
-            services.AddScoped<
-                IAdminDashboardService,
-                AdminDashboardService>();
+            services.AddScoped<ICardiacEventRepository, CardiacEventRepository>();
+            services.AddScoped<ILabResultRepository, LabResultRepository>();
+            services.AddScoped<IHospitalizationRepository, HospitalizationRepository>();
+            services.AddScoped<IMedicalProcedureRepository,MedicalProcedureRepository>();
+            services.AddScoped< IAdminDashboardRepository,AdminDashboardRepository>();
+            services.AddScoped< IAdminDashboardService,AdminDashboardService>();
 
             return services;
         }

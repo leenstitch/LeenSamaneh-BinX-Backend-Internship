@@ -142,5 +142,19 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
                 .OrderByDescending(d => d.DiagnosedAt)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Diagnosis>>
+    GetRecordedBeforeEventAsync(
+        int patientId,
+        DateTime eventDate)
+        {
+            return await _context.Diagnoses
+                .AsNoTracking()
+                .Where(x =>
+                    x.PatientId == patientId &&
+                    x.DiagnosedAt <= eventDate)
+                .OrderByDescending(x => x.DiagnosedAt)
+                .ToListAsync();
+        }
     }
 }

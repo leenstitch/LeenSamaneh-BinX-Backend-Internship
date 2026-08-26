@@ -3,6 +3,7 @@
 // filtering, and comparing vital-sign records.
 
 using Cardiac_Patient_Monitoring_System.Data;
+using Cardiac_Patient_Monitoring_System.DTO_S.CardiacEvent_s;
 using Cardiac_Patient_Monitoring_System.DTO_S.VitalSignDto_s;
 using Cardiac_Patient_Monitoring_System.Models;
 using Cardiac_Patient_Monitoring_System.Repositories.Interfaces;
@@ -44,6 +45,8 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
         public async Task<(IEnumerable<VitalSign> Data, int TotalCount)>
             GetAllAsync(VitalSignQueryDto query)
         {
+            // Start building the database query.
+            // Include Patient because we need patient information for filtering.
             var vitalSignsQuery = _context.VitalSigns
                 .Include(v => v.Patient)
                 .AsQueryable();
@@ -59,15 +62,15 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
             // Filtering by gender
             if (!string.IsNullOrWhiteSpace(query.Gender))
             {
-                if (Enum.TryParse<Patient.Gender>(
-                    query.Gender,
-                    true,
-                    out var parsedGender))
-                {
-                    vitalSignsQuery = vitalSignsQuery.Where(v =>
-                        v.Patient.PatientGender == parsedGender);
-                }
+                var parsedGender =
+                    Enum.Parse<Patient.Gender>(
+                        query.Gender,
+                        true);
+
+                vitalSignsQuery = vitalSignsQuery.Where(v =>
+                    v.Patient.PatientGender == parsedGender);
             }
+        
 
             // Count records after filtering
             var totalCount = await vitalSignsQuery.CountAsync();
@@ -240,6 +243,106 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
                 .Where(p => p.UserId == userId)
                 .Select(p => (int?)p.PatientId)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<(IEnumerable<VitalSign> Data, int TotalCount)>
+    GetByPatientAndDateRangeAsync(
+        int patientId,
+        DateTime startDate,
+        DateTime endDate,
+        CardiacEventVitalQueryDto query)
+        {
+            var vitalSigns = _context.VitalSigns
+                .AsNoTracking()
+                .Where(v =>
+                    v.PatientId == patientId &&
+                    v.MeasuredAt >= startDate &&
+                    v.MeasuredAt <= endDate);
+
+            // Filtering
+
+            if (query.MinHeartRate.HasValue)
+            {
+                vitalSigns = vitalSigns.Where(
+                    v => v.HeartRate >= query.MinHeartRate.Value);
+            }
+
+            if (query.MaxHeartRate.HasValue)
+            {
+                vitalSigns = vitalSigns.Where(
+                    v => v.HeartRate <= query.MaxHeartRate.Value);
+            }
+
+            if (query.MinSystolicPressure.HasValue)
+            {
+                vitalSigns = vitalSigns.Where(
+                    v => v.SystolicPressure >=
+                         query.MinSystolicPressure.Value);
+            }
+
+            if (query.MaxSystolicPressure.HasValue)
+            {
+                vitalSigns = vitalSigns.Where(
+                    v => v.SystolicPressure <=
+                         query.MaxSystolicPressure.Value);
+            }
+
+            if (query.MinOxygenSaturation.HasValue)
+            {
+                vitalSigns = vitalSigns.Where(
+                    v => v.OxygenSaturation >=
+                         query.MinOxygenSaturation.Value);
+            }
+
+            if (query.MaxOxygenSaturation.HasValue)
+            {
+                vitalSigns = vitalSigns.Where(
+                    v => v.OxygenSaturation <=
+                         query.MaxOxygenSaturation.Value);
+            }
+
+            // Sorting
+
+            vitalSigns = query.SortBy?.ToLower() switch
+            {
+                "heartrate" =>
+                    query.SortDescending
+                        ? vitalSigns.OrderByDescending(
+                            v => v.HeartRate)
+                        : vitalSigns.OrderBy(
+                            v => v.HeartRate),
+
+                "systolicpressure" =>
+                    query.SortDescending
+                        ? vitalSigns.OrderByDescending(
+                            v => v.SystolicPressure)
+                        : vitalSigns.OrderBy(
+                            v => v.SystolicPressure),
+
+                "oxygensaturation" =>
+                    query.SortDescending
+                        ? vitalSigns.OrderByDescending(
+                            v => v.OxygenSaturation)
+                        : vitalSigns.OrderBy(
+                            v => v.OxygenSaturation),
+
+                _ =>
+                    query.SortDescending
+                        ? vitalSigns.OrderByDescending(
+                            v => v.MeasuredAt)
+                        : vitalSigns.OrderBy(
+                            v => v.MeasuredAt)
+            };
+
+            var totalCount =
+                await vitalSigns.CountAsync();
+
+            var data = await vitalSigns
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+            return (data, totalCount);
         }
     }
 }

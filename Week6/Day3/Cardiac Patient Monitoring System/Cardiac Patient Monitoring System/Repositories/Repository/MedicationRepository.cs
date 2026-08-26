@@ -158,5 +158,24 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
                 .OrderByDescending(m => m.StartDate)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Medication>>
+    GetHistoricalMedicationsAsync(
+        int patientId,
+        DateTime startDate,
+        DateTime eventDate)
+        {
+            return await _context.Medications
+                .AsNoTracking()
+                .Where(x =>
+                    x.PatientId == patientId &&
+                    x.StartDate <= eventDate &&
+                    (
+                        x.EndDate == null ||
+                        x.EndDate >= startDate
+                    ))
+                .OrderBy(x => x.StartDate)
+                .ToListAsync();
+        }
     }
 }
