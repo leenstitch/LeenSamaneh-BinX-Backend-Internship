@@ -1,0 +1,937 @@
+{
+  "info": {
+    "_postman_id": "5d28c862-c1fc-4b5b-a064-8cdcecc5d696",
+    "name": "Week6-Day5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-5d28c862-c1fc-4b5b-a064-8cdcecc5d696?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Patient Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"AccessToken\", response.accessToken);\r",
+                  "pm.environment.set(\"RefrehToken\", response.refreshToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"leen@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AuthController/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AuthController",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Patient Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"leen@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:23:49 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDA1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxMDA1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoibGVlbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJQYXRpZW50IiwiUGVybWlzc2lvbiI6WyJQYXRpZW50LlJlYWQiLCJQYXRpZW50LlVwZGF0ZSIsIlZpdGFsU2lnbi5SZWFkIiwiTWVkaWNhdGlvbi5SZWFkIiwiQXBwb2ludG1lbnQuUmVhZCIsIkFwcG9pbnRtZW50LkNyZWF0ZSJdLCJleHAiOjE3ODc4MTI3MjgsImlzcyI6IkNhcmRpYWNQYXRpZW50TW9uaXRvcmluZ1N5c3RlbSIsImF1ZCI6IkNhcmRpYWNQYXRpZW50TW9uaXRvcmluZ1N5c3RlbUNsaWVudCJ9.VnREeZy_0YFfPlJh-xlaGG-nfnB7bhkri-j_px5Kjpc\",\n    \"refreshToken\": \"ehec5oRigivwAeTuTNX7VspoUvwXvg9KjoUCthd8cpGiE6kfM+GHwaPSfMOVHKa1yRdxFQMaFkP8pFZgI9PxNw==\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "New Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"AdminAccessToken\",\r",
+                  "    response.accessToken\r",
+                  ");\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"AdminRefreshToken\",\r",
+                  "    response.refreshToken\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@cardiac.com\",\r\n  \"password\": \"Admin@12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AuthController/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AuthController",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Admin Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"admin@cardiac.com\",\r\n  \"password\": \"Admin@12345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:52:00 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDA0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxMDA0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiYWRtaW5AY2FyZGlhYy5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIlBlcm1pc3Npb24iOlsiUGF0aWVudC5SZWFkIiwiUGF0aWVudC5VcGRhdGUiLCJQYXRpZW50LkRlbGV0ZSIsIkRpYWdub3Npcy5SZWFkIiwiRGlhZ25vc2lzLkNyZWF0ZSIsIk1lZGljYXRpb24uUmVhZCIsIk1lZGljYXRpb24uQ3JlYXRlIl0sImV4cCI6MTc4NzgxNDQyMSwiaXNzIjoiQ2FyZGlhY1BhdGllbnRNb25pdG9yaW5nU3lzdGVtIiwiYXVkIjoiQ2FyZGlhY1BhdGllbnRNb25pdG9yaW5nU3lzdGVtQ2xpZW50In0.gzAeZlFgl68dR_IsUas_zqqP0_W8m4GkF0dmUyTSBSQ\",\n    \"refreshToken\": \"z/j1Nr/S2g5Lk4ZWPJglNVFAnI8jUWFOG/1QicJo5kk22JE4dhklpKPRtghLIPHNvn4E+mYRB1iSQwzgkOkNrQ==\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CardiacEventAnalysis",
+      "item": [
+        {
+          "name": "CardiacEventAnalysis for the patient days befor the stroke",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/CardiacEventAnalysis/1002?daysBefore=5",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "CardiacEventAnalysis",
+                "1002"
+              ],
+              "query": [
+                {
+                  "key": "daysBefore",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "CardiacEventAnalysis for the patient days befor the stroke",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/CardiacEventAnalysis/1002?daysBefore=5",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "CardiacEventAnalysis",
+                    "1002"
+                  ],
+                  "query": [
+                    {
+                      "key": "daysBefore",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:32:01 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"cardiacEventId\": 1002,\n    \"patientId\": 1004,\n    \"eventType\": \"heart attack\",\n    \"eventDate\": \"2026-08-25T14:21:57.394\",\n    \"description\": \"nothing\",\n    \"location\": \"nablus\",\n    \"outcome\": \"now he is good\",\n    \"daysBeforeEvent\": 5,\n    \"analysisStartDate\": \"2026-08-20T14:21:57.394\",\n    \"analysisEndDate\": \"2026-08-25T14:21:57.394\",\n    \"vitalSigns\": {\n        \"readingCount\": 3,\n        \"averageHeartRate\": 170,\n        \"minimumHeartRate\": 160,\n        \"minimumHeartRateDate\": \"2026-08-23T14:28:35.723\",\n        \"maximumHeartRate\": 180,\n        \"maximumHeartRateDate\": \"2026-08-24T14:28:35.723\",\n        \"averageSystolicPressure\": 170,\n        \"minimumSystolicPressure\": 130,\n        \"minimumSystolicPressureDate\": \"2026-08-24T14:28:35.723\",\n        \"maximumSystolicPressure\": 200,\n        \"maximumSystolicPressureDate\": \"2026-08-22T14:28:35.723\",\n        \"averageDiastolicPressure\": 134,\n        \"minimumDiastolicPressure\": 111,\n        \"minimumDiastolicPressureDate\": \"2026-08-23T14:28:35.723\",\n        \"maximumDiastolicPressure\": 161,\n        \"maximumDiastolicPressureDate\": \"2026-08-24T14:28:35.723\",\n        \"averageOxygenSaturation\": 81.66666666666666,\n        \"minimumOxygenSaturation\": 75,\n        \"minimumOxygenSaturationDate\": \"2026-08-23T14:28:35.723\",\n        \"maximumOxygenSaturation\": 90,\n        \"maximumOxygenSaturationDate\": \"2026-08-24T14:28:35.723\",\n        \"averageTemperature\": 36.666666666666664,\n        \"minimumTemperature\": 36,\n        \"minimumTemperatureDate\": \"2026-08-24T14:28:35.723\",\n        \"maximumTemperature\": 37,\n        \"maximumTemperatureDate\": \"2026-08-22T14:28:35.723\",\n        \"abnormalReadingCount\": 3\n    },\n    \"labResults\": [\n        {\n            \"labResultId\": 3,\n            \"patientId\": 1004,\n            \"testName\": \"Troponin I\",\n            \"result\": \"0.08\",\n            \"unit\": \"ng/mL\",\n            \"referenceRange\": \"< 0.04\",\n            \"testDate\": \"2026-08-22T14:25:44.823\",\n            \"laboratoryName\": \"Nablus Medical Laboratory\",\n            \"notes\": \"Troponin level is elevated and requires clinical evaluation.\"\n        }\n    ],\n    \"medications\": [\n        {\n            \"medicationId\": 6,\n            \"patientId\": 1004,\n            \"prescribedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"prescribedBySpecialization\": \"Cardiology\",\n            \"name\": \"Aspirin\",\n            \"dosage\": \"100 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-17T08:00:00\",\n            \"endDate\": \"2026-09-18T08:00:00\",\n            \"notes\": \"Take after breakfast.\",\n            \"createdAt\": \"2026-08-19T11:30:23.7029072\",\n            \"updatedAt\": \"2026-08-19T11:30:23.7029073\"\n        },\n        {\n            \"medicationId\": 5,\n            \"patientId\": 1004,\n            \"prescribedByDoctorName\": \"Dr. Ahmad Hassan\",\n            \"prescribedBySpecialization\": \"Cardiology\",\n            \"name\": \"Aspirin\",\n            \"dosage\": \"100 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-19T08:00:00\",\n            \"endDate\": \"2026-09-25T08:00:00\",\n            \"notes\": \"Take after breakfast.\",\n            \"createdAt\": \"2026-08-19T11:30:09.2804488\",\n            \"updatedAt\": \"2026-08-19T11:30:09.2805523\"\n        },\n        {\n            \"medicationId\": 2004,\n            \"patientId\": 1004,\n            \"prescribedByDoctorName\": \"Dr. Ahmad Khalil\",\n            \"prescribedBySpecialization\": \"Cardiologist\",\n            \"name\": \"Aspirin\",\n            \"dosage\": \"81 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-22T08:00:00\",\n            \"endDate\": \"2026-08-24T08:00:00\",\n            \"notes\": \"Take after food. Continue as prescribed.\",\n            \"createdAt\": \"2026-08-26T14:28:26.0556618\",\n            \"updatedAt\": \"2026-08-26T14:28:26.0557485\"\n        }\n    ],\n    \"diagnoses\": [\n        {\n            \"diagnosisId\": 2003,\n            \"patientId\": 1004,\n            \"diagnosedByName\": \"dr.ahmad\",\n            \"diagnosedBySpecialization\": \"doctor\",\n            \"diagnosisName\": \"headach\",\n            \"diagnosedAt\": \"2026-08-23T14:23:20.024\",\n            \"notes\": \"nothing\",\n            \"createdAt\": \"2026-08-26T14:23:57.4472206\",\n            \"updatedAt\": \"2026-08-26T14:23:57.4472637\"\n        },\n        {\n            \"diagnosisId\": 2004,\n            \"patientId\": 1004,\n            \"diagnosedByName\": \"dr.ahmad\",\n            \"diagnosedBySpecialization\": \"doctor\",\n            \"diagnosisName\": \"chest pain\",\n            \"diagnosedAt\": \"2026-08-22T14:23:20.024\",\n            \"notes\": \"nothing\",\n            \"createdAt\": \"2026-08-26T14:24:27.8252186\",\n            \"updatedAt\": \"2026-08-26T14:24:27.8252189\"\n        },\n        {\n            \"diagnosisId\": 1006,\n            \"patientId\": 1004,\n            \"diagnosedByName\": \"Dr. Lina Khaled\",\n            \"diagnosedBySpecialization\": \"Cardiology\",\n            \"diagnosisName\": \"Tachycardia\",\n            \"diagnosedAt\": \"2026-08-18T09:30:00\",\n            \"notes\": \"Elevated heart rate observed during the visit.\",\n            \"createdAt\": \"2026-08-19T11:29:31.9204851\",\n            \"updatedAt\": \"2026-08-19T11:29:31.9204852\"\n        },\n        {\n            \"diagnosisId\": 1005,\n            \"patientId\": 1004,\n            \"diagnosedByName\": \"Dr. Ahmad Hassan\",\n            \"diagnosedBySpecialization\": \"Cardiology\",\n            \"diagnosisName\": \"Hypertension\",\n            \"diagnosedAt\": \"2026-08-10T09:00:00\",\n            \"notes\": \"Patient requires regular blood pressure monitoring.\",\n            \"createdAt\": \"2026-08-19T11:29:12.9698942\",\n            \"updatedAt\": \"2026-08-19T11:29:12.9699832\"\n        }\n    ],\n    \"medicalProcedures\": [\n        {\n            \"procedureId\": 1002,\n            \"patientId\": 1004,\n            \"procedureName\": \"Cardiac Catheterization\",\n            \"procedureDate\": \"2026-08-20T14:26:52\",\n            \"hospitalName\": \"Rafidia Hospital\",\n            \"reason\": \"Evaluation of suspected coronary artery disease\",\n            \"outcome\": \"No significant coronary artery blockage detected\",\n            \"notes\": \"Patient tolerated the procedure well.\",\n            \"doctorId\": null\n        },\n        {\n            \"procedureId\": 1003,\n            \"patientId\": 1004,\n            \"procedureName\": \"Cardiac Catheterization\",\n            \"procedureDate\": \"2026-08-21T14:26:52\",\n            \"hospitalName\": \"Rafidia Hospital\",\n            \"reason\": \"Evaluation of suspected coronary artery disease\",\n            \"outcome\": \"No significant coronary artery blockage detected\",\n            \"notes\": \"Patient tolerated the procedure well.\",\n            \"doctorId\": null\n        }\n    ],\n    \"hospitalizations\": [\n        {\n            \"hospitalizationId\": 2,\n            \"patientId\": 1004,\n            \"hospitalName\": \"arabic hospital\",\n            \"admissionDate\": \"2026-08-22T14:24:39.416\",\n            \"dischargeDate\": \"2026-08-23T14:24:39.416\",\n            \"reason\": \"tired\",\n            \"diagnosis\": \"tired\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"hospitalizationId\": 3,\n            \"patientId\": 1004,\n            \"hospitalName\": \"arabic hospital\",\n            \"admissionDate\": \"2026-08-20T14:24:39.416\",\n            \"dischargeDate\": \"2026-08-21T14:24:39.416\",\n            \"reason\": \"tired\",\n            \"diagnosis\": \"tired\",\n            \"notes\": \"nothing\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create  a CardiacEvent",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"doctorId\": null,\r\n  \"eventType\": \"stroke\",\r\n  \"eventDate\": \"2026-08-26T06:25:21.561Z\",\r\n  \"description\": \"not good case\",\r\n  \"location\": \"nablus\",\r\n  \"outcome\": \"nothing\",\r\n  \"notes\": \"nothing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/CardiacEventAnalysis",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "CardiacEventAnalysis"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create  a CardiacEvent",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"doctorId\": null,\r\n  \"eventType\": \"stroke\",\r\n  \"eventDate\": \"2026-08-26T06:25:21.561Z\",\r\n  \"description\": \"not good case\",\r\n  \"location\": \"nablus\",\r\n  \"outcome\": \"nothing\",\r\n  \"notes\": \"nothing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/CardiacEventAnalysis",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "CardiacEventAnalysis"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:36:20 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"cardiacEventId\": 1003,\n    \"patientId\": 1004,\n    \"doctorId\": null,\n    \"eventType\": \"stroke\",\n    \"eventDate\": \"2026-08-26T06:25:21.561Z\",\n    \"description\": \"not good case\",\n    \"location\": \"nablus\",\n    \"outcome\": \"nothing\",\n    \"notes\": \"nothing\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Patient",
+      "item": [
+        {
+          "name": "Get Patient Health Summery",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": [
+            {
+              "name": "Get Patient Health Summery",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/PatientsController/me/health-summary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PatientsController",
+                    "me",
+                    "health-summary"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:38:20 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"patient\": {\n        \"patientId\": 1004,\n        \"fullName\": \"leeee samaneh\",\n        \"age\": 22,\n        \"gender\": \"Female\",\n        \"primaryPhone\": \"0568313173\"\n    },\n    \"latestVitalSigns\": {\n        \"heartRate\": 180,\n        \"systolicPressure\": 130,\n        \"diastolicPressure\": 161,\n        \"oxygenSaturation\": 90,\n        \"temperature\": 36,\n        \"measuredAt\": \"2026-08-24T14:28:35.723\",\n        \"notes\": \"nothing\"\n    },\n    \"activeMedications\": [\n        {\n            \"medicationId\": 5,\n            \"name\": \"Aspirin\",\n            \"dosage\": \"100 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-19T08:00:00\",\n            \"endDate\": \"2026-09-25T08:00:00\"\n        },\n        {\n            \"medicationId\": 6,\n            \"name\": \"Aspirin\",\n            \"dosage\": \"100 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-17T08:00:00\",\n            \"endDate\": \"2026-09-18T08:00:00\"\n        }\n    ],\n    \"recentDiagnoses\": [\n        {\n            \"diagnosisId\": 2003,\n            \"diagnosisName\": \"headach\",\n            \"diagnosedAt\": \"2026-08-23T14:23:20.024\",\n            \"diagnosedByName\": \"dr.ahmad\",\n            \"diagnosedBySpecialization\": \"doctor\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"diagnosisId\": 2004,\n            \"diagnosisName\": \"chest pain\",\n            \"diagnosedAt\": \"2026-08-22T14:23:20.024\",\n            \"diagnosedByName\": \"dr.ahmad\",\n            \"diagnosedBySpecialization\": \"doctor\",\n            \"notes\": \"nothing\"\n        },\n        {\n            \"diagnosisId\": 1006,\n            \"diagnosisName\": \"Tachycardia\",\n            \"diagnosedAt\": \"2026-08-18T09:30:00\",\n            \"diagnosedByName\": \"Dr. Lina Khaled\",\n            \"diagnosedBySpecialization\": \"Cardiology\",\n            \"notes\": \"Elevated heart rate observed during the visit.\"\n        },\n        {\n            \"diagnosisId\": 1005,\n            \"diagnosisName\": \"Hypertension\",\n            \"diagnosedAt\": \"2026-08-10T09:00:00\",\n            \"diagnosedByName\": \"Dr. Ahmad Hassan\",\n            \"diagnosedBySpecialization\": \"Cardiology\",\n            \"notes\": \"Patient requires regular blood pressure monitoring.\"\n        }\n    ],\n    \"upcomingAppointment\": {\n        \"appointmentId\": 2005,\n        \"appointmentDate\": \"2026-08-29T14:21:05.068\",\n        \"reason\": \"tired\",\n        \"status\": \"Scheduled\",\n        \"location\": \"nablus\",\n        \"notes\": \"nothing\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Patient Health Status",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/PatientsController/me/health-status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "PatientsController",
+                "me",
+                "health-status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Patient Health Status",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/PatientsController/me/health-status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PatientsController",
+                    "me",
+                    "health-status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:40:17 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"Needs Attention\",\n    \"alerts\": [\n        \"High heart rate.\",\n        \"High diastolic pressure.\",\n        \"Low oxygen saturation.\"\n    ],\n    \"latestMeasuredAt\": \"2026-08-24T14:28:35.723\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "VitalSigns",
+      "item": [
+        {
+          "name": "compare-latest vital signs",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController/my/compare-latest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController",
+                "my",
+                "compare-latest"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "compare-latest vital signs",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/VitalSignsController/my/compare-latest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "VitalSignsController",
+                    "my",
+                    "compare-latest"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:44:45 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"previous\": {\n        \"heartRate\": 160,\n        \"systolicPressure\": 180,\n        \"diastolicPressure\": 111,\n        \"oxygenSaturation\": 75,\n        \"temperature\": 37,\n        \"measuredAt\": \"2026-08-23T14:28:35.723\"\n    },\n    \"latest\": {\n        \"heartRate\": 180,\n        \"systolicPressure\": 130,\n        \"diastolicPressure\": 161,\n        \"oxygenSaturation\": 90,\n        \"temperature\": 36,\n        \"measuredAt\": \"2026-08-24T14:28:35.723\"\n    },\n    \"comparison\": {\n        \"heartRate\": {\n            \"change\": 20,\n            \"status\": \"Worsened\"\n        },\n        \"systolicPressure\": {\n            \"change\": -50,\n            \"status\": \"Improved\"\n        },\n        \"diastolicPressure\": {\n            \"change\": 50,\n            \"status\": \"Worsened\"\n        },\n        \"oxygenSaturation\": {\n            \"change\": 15,\n            \"status\": \"Improved\"\n        },\n        \"temperature\": {\n            \"change\": -1,\n            \"status\": \"Worsened\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Compare two vitalSigns with specific dates",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController/my/compare-dates?firstDate=2026-08-19T14%3A28%3A35.723&secondDate=2026-08-23T14%3A28%3A35.723",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController",
+                "my",
+                "compare-dates"
+              ],
+              "query": [
+                {
+                  "key": "firstDate",
+                  "value": "2026-08-19T14%3A28%3A35.723"
+                },
+                {
+                  "key": "secondDate",
+                  "value": "2026-08-23T14%3A28%3A35.723"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Compare two vitalSigns with specific dates",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/VitalSignsController/my/compare-dates?firstDate=2026-08-19T14%3A28%3A35.723&secondDate=2026-08-23T14%3A28%3A35.723",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "VitalSignsController",
+                    "my",
+                    "compare-dates"
+                  ],
+                  "query": [
+                    {
+                      "key": "firstDate",
+                      "value": "2026-08-19T14%3A28%3A35.723"
+                    },
+                    {
+                      "key": "secondDate",
+                      "value": "2026-08-23T14%3A28%3A35.723"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:47:45 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"firstDate\": {\n        \"heartRate\": 78,\n        \"systolicPressure\": 120,\n        \"diastolicPressure\": 80,\n        \"oxygenSaturation\": 98,\n        \"temperature\": 36.5,\n        \"measuredAt\": \"2026-08-19T11:25:22.993\"\n    },\n    \"secondDate\": {\n        \"heartRate\": 160,\n        \"systolicPressure\": 180,\n        \"diastolicPressure\": 111,\n        \"oxygenSaturation\": 75,\n        \"temperature\": 37,\n        \"measuredAt\": \"2026-08-23T14:28:35.723\"\n    },\n    \"comparison\": {\n        \"heartRate\": {\n            \"change\": 82,\n            \"status\": \"Worsened\"\n        },\n        \"systolicPressure\": {\n            \"change\": 60,\n            \"status\": \"Worsened\"\n        },\n        \"diastolicPressure\": {\n            \"change\": 31,\n            \"status\": \"Worsened\"\n        },\n        \"oxygenSaturation\": {\n            \"change\": -23,\n            \"status\": \"Worsened\"\n        },\n        \"temperature\": {\n            \"change\": 0.5,\n            \"status\": \"No Change\"\n        }\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AdminDashboard",
+      "item": [
+        {
+          "name": "Patient Over View",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AdminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/AdminDashboard/overview",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AdminDashboard",
+                "overview"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Patient Over View",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/AdminDashboard/overview",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AdminDashboard",
+                    "overview"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 06:55:13 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"totalPatients\": 4,\n    \"totalVitalSigns\": 16,\n    \"totalMedications\": 5,\n    \"totalDiagnoses\": 6,\n    \"totalAppointments\": 7,\n    \"scheduledAppointments\": 5,\n    \"completedAppointments\": 2,\n    \"cancelledAppointments\": 0,\n    \"appointmentsToday\": 0,\n    \"patientsNeedingAttention\": 3\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get patients-at-risk",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AdminAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/AdminDashboard/patients-at-risk",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AdminDashboard",
+                "patients-at-risk"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get patients-at-risk",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/AdminDashboard/patients-at-risk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AdminDashboard",
+                    "patients-at-risk"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 07:02:03 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"patientId\": 1004,\n        \"patientName\": \"leeee samaneh\",\n        \"alerts\": [\n            \"High heart rate.\",\n            \"High diastolic pressure.\",\n            \"Low oxygen saturation.\"\n        ]\n    },\n    {\n        \"patientId\": 1005,\n        \"patientName\": \"saba sacmaneh\",\n        \"alerts\": [\n            \"High diastolic pressure.\",\n            \"Low oxygen saturation.\"\n        ]\n    },\n    {\n        \"patientId\": 2006,\n        \"patientName\": \"leen3 samaneh\",\n        \"alerts\": [\n            \"High heart rate.\",\n            \"High systolic pressure.\",\n            \"High diastolic pressure.\",\n            \"Low oxygen saturation.\"\n        ]\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Viatl signs",
+      "item": [
+        {
+          "name": "Get All Patients Vital Data(when i apply<page=1,pagesize=10,gender=male,sort,asc)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10&Gender=male&Sort=asc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "VitalSignsController"
+              ],
+              "query": [
+                {
+                  "key": "Page",
+                  "value": "1"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "Gender",
+                  "value": "male"
+                },
+                {
+                  "key": "Sort",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Patients Vital Data(when i apply<page=1,pagesize=10,gender=male,sort,asc)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/VitalSignsController?Page=1&PageSize=10&Gender=male&Sort=asc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "VitalSignsController"
+                  ],
+                  "query": [
+                    {
+                      "key": "Page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "Gender",
+                      "value": "male"
+                    },
+                    {
+                      "key": "Sort",
+                      "value": "asc"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 27 Aug 2026 07:15:39 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"vitalSignId\": 1007,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 10,\n            \"systolicPressure\": 80,\n            \"diastolicPressure\": 200,\n            \"oxygenSaturation\": 60,\n            \"temperature\": 35,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:33.383793\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1008,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:37:51.262618\",\n            \"notes\": \"string\"\n        },\n        {\n            \"vitalSignId\": 1009,\n            \"patientId\": 1005,\n            \"recordedByDoctorName\": \"string\",\n            \"heartRate\": 60,\n            \"systolicPressure\": 90,\n            \"diastolicPressure\": 170,\n            \"oxygenSaturation\": 50,\n            \"temperature\": 36,\n            \"measuredAt\": \"2026-08-19T08:36:36.669\",\n            \"createdAt\": \"2026-08-19T08:38:18.8381302\",\n            \"notes\": \"string\"\n        }\n    ],\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"totalCount\": 3,\n    \"totalPages\": 1\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
