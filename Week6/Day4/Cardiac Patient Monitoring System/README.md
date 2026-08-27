@@ -16,6 +16,9 @@ The registration process creates and links:
 Both operations are handled within the same transaction.
 
 If any step fails, the transaction is rolled back to prevent incomplete or inconsistent data from being stored in the database.
+<img width="765" height="741" alt="image" src="https://github.com/user-attachments/assets/d788597d-cee5-4b94-ad31-328a93227110" />
+<img width="782" height="731" alt="image" src="https://github.com/user-attachments/assets/559efe79-52e7-489a-a7a5-36036508862a" />
+<img width="577" height="200" alt="image" src="https://github.com/user-attachments/assets/7bd65411-33a6-4256-a32c-86e6507a699f" />
 
 ### 2. Cardiac Event Management
 
