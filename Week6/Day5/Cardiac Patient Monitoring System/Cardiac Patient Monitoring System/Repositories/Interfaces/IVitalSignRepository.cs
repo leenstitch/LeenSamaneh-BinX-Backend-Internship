@@ -73,11 +73,11 @@ namespace Cardiac_Patient_Monitoring_System.Repositories.Interfaces
         DateTime startDate,
         DateTime endDate);
 
-        // Returns the latest vital-sign record 
-        // recorded before the specified cardiac event date.
-        Task<VitalSign?> GetLatestBeforeDateAsync(
-       int patientId,
-       DateTime eventDate);
+       ////// // Returns the latest vital-sign record 
+       ////// // recorded before the specified cardiac event date.
+       ////// Task<VitalSign?> GetLatestBeforeDateAsync(
+       //////int patientId,
+       //////DateTime eventDate);
     }
 
 

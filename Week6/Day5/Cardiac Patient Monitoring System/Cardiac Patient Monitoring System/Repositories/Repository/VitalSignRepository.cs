@@ -246,7 +246,7 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
         }
 
         // Retrieves ALL vital-sign records for cardiac event analysis.
-        // No pagination or filtering is applied here.
+       
         public async Task<IEnumerable<VitalSign>>
             GetForCardiacEventAnalysisAsync(
                 int patientId,
@@ -282,20 +282,20 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
         }
 
 
-        // Retrieves the latest vital-sign record measured
-        // before a specific cardiac event date.
-        public async Task<VitalSign?>
-    GetLatestBeforeDateAsync(
-        int patientId,
-        DateTime eventDate)
-        {
-            return await _context.VitalSigns
-                .AsNoTracking()
-                .Where(v =>
-                    v.PatientId == patientId &&
-                    v.MeasuredAt < eventDate)
-                .OrderByDescending(v => v.MeasuredAt)
-                .FirstOrDefaultAsync();
-        }
+    //    // Retrieves the latest vital-sign record measured
+    //    // before a specific cardiac event date.
+    //    public async Task<VitalSign?>
+    //GetLatestBeforeDateAsync(
+    //    int patientId,
+    //    DateTime eventDate)
+    //    {
+    //        return await _context.VitalSigns
+    //            .AsNoTracking()
+    //            .Where(v =>
+    //                v.PatientId == patientId &&
+    //                v.MeasuredAt < eventDate)
+    //            .OrderByDescending(v => v.MeasuredAt)
+    //            .FirstOrDefaultAsync();
+    //    }
     }
     }

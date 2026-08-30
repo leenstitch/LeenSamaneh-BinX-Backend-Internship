@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.37027.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cardiac Patient Monitoring System", "Cardiac Patient Monitoring System\Cardiac Patient Monitoring System.csproj", "{417763EB-A362-410D-BF1B-97128851E112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardiacPatientMonitoringSystem", "..\Week5\Day3\Cardiac Patient Monitoring System\CardiacPatientMonitoringSystem\CardiacPatientMonitoringSystem.csproj", "{4271D602-090B-4CF1-DBE9-F914D95C027E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardiacPatientMonitoringSystem", "..\..\Day5\Cardiac Patient Monitoring System\CardiacPatientMonitoringSystem\CardiacPatientMonitoringSystem.csproj", "{1D8AE9A4-7E52-A656-BA28-3A4AE14775DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{417763EB-A362-410D-BF1B-97128851E112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{417763EB-A362-410D-BF1B-97128851E112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{417763EB-A362-410D-BF1B-97128851E112}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4271D602-090B-4CF1-DBE9-F914D95C027E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4271D602-090B-4CF1-DBE9-F914D95C027E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4271D602-090B-4CF1-DBE9-F914D95C027E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4271D602-090B-4CF1-DBE9-F914D95C027E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8AE9A4-7E52-A656-BA28-3A4AE14775DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8AE9A4-7E52-A656-BA28-3A4AE14775DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8AE9A4-7E52-A656-BA28-3A4AE14775DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8AE9A4-7E52-A656-BA28-3A4AE14775DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

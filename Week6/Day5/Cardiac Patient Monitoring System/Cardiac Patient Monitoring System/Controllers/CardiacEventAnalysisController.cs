@@ -100,28 +100,28 @@ namespace Cardiac_Patient_Monitoring_System.Controllers
 
             return Ok(result);
         }
-        // Returns the latest vital sign recorded before a cardiac event.
-        [HttpGet("{cardiacEventId}/latest-vital")]
-        public async Task<IActionResult>
-    GetLatestVitalBeforeEvent(
-        int cardiacEventId)
-        {
-            var userId = int.Parse(
-                User.FindFirst("sub")!.Value);
+    ////    // Returns the latest vital sign recorded before a cardiac event.
+    ////    [HttpGet("{cardiacEventId}/latest-vital")]
+    ////    public async Task<IActionResult>
+    ////GetLatestVitalBeforeEvent(
+    ////    int cardiacEventId)
+    ////    {
+    ////        var userId = int.Parse(
+    ////            User.FindFirst("sub")!.Value);
 
-            var result =
-                await _cardiacEventAnalysisService
-                    .GetLatestVitalBeforeEventAsync(
-                        userId,
-                        cardiacEventId);
+    ////        var result =
+    ////            await _cardiacEventAnalysisService
+    ////                .GetLatestVitalBeforeEventAsync(
+    ////                    userId,
+    ////                    cardiacEventId);
 
-            if (result == null)
-            {
-                return NotFound(
-                    "No vital sign found before this cardiac event.");
-            }
+    ////        if (result == null)
+    ////        {
+    ////            return NotFound(
+    ////                "No vital sign found before this cardiac event.");
+    ////        }
 
-            return Ok(result);
-        }
+    ////        return Ok(result);
+    ////    }
     }
 }

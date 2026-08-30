@@ -22,11 +22,11 @@ namespace Cardiac_Patient_Monitoring_System.Services.Interfaces
               int userId,
               CreateCardiacEventDto dto);
 
-        // Returns the latest vital-sign record recorded before
-        // the specified cardiac event.
-        Task<VitalSign?> GetLatestVitalBeforeEventAsync(
-    int userId,
-    int cardiacEventId);
+    ////////    // Returns the latest vital-sign record recorded before
+    ////////    // the specified cardiac event.
+    ////////    Task<VitalSign?> GetLatestVitalBeforeEventAsync(
+    ////////int userId,
+    ////////int cardiacEventId);
     }
 
 

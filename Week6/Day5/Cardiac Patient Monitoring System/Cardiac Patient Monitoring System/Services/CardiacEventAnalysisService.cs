@@ -726,39 +726,39 @@ namespace Cardiac_Patient_Monitoring_System.Services
 
         // Retrieves the latest vital-sign record recorded
         // before the specified cardiac event.
-        public async Task<VitalSign?>
-    GetLatestVitalBeforeEventAsync(
-        int userId,
-        int cardiacEventId)
-        {
-            var patientId =
-                await _cardiacEventRepository
-                    .GetPatientIdByUserIdAsync(userId);
+    ////////    public async Task<VitalSign?>
+    ////////GetLatestVitalBeforeEventAsync(
+    ////////    int userId,
+    ////////    int cardiacEventId)
+    ////////    {
+    ////////        var patientId =
+    ////////            await _cardiacEventRepository
+    ////////                .GetPatientIdByUserIdAsync(userId);
 
-            if (!patientId.HasValue)
-            {
-                return null;
-            }
+    ////////        if (!patientId.HasValue)
+    ////////        {
+    ////////            return null;
+    ////////        }
 
-            var cardiacEvent =
-                await _cardiacEventRepository
-                    .GetByIdAsync(cardiacEventId);
+    ////////        var cardiacEvent =
+    ////////            await _cardiacEventRepository
+    ////////                .GetByIdAsync(cardiacEventId);
 
-            if (cardiacEvent == null)
-            {
-                return null;
-            }
+    ////////        if (cardiacEvent == null)
+    ////////        {
+    ////////            return null;
+    ////////        }
 
-            if (cardiacEvent.PatientId != patientId.Value)
-            {
-                return null;
-            }
+    ////////        if (cardiacEvent.PatientId != patientId.Value)
+    ////////        {
+    ////////            return null;
+    ////////        }
 
-            return await _vitalSignRepository
-                .GetLatestBeforeDateAsync(
-                    patientId.Value,
-                    cardiacEvent.EventDate);
-        }
+    ////////        return await _vitalSignRepository
+    ////////            .GetLatestBeforeDateAsync(
+    ////////                patientId.Value,
+    ////////                cardiacEvent.EventDate);
+    ////////    }
 
     }
     }
