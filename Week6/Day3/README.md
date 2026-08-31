@@ -10,7 +10,7 @@
 
   <img width="663" height="342" alt="image" src="https://github.com/user-attachments/assets/919ff563-483c-4b85-ad03-30fe490677a6" />
 
-- Implemented sorting by measurement date using asc and descending order.
+- Implemented sorting by measurement date or name using asc and descending order.
 <img width="676" height="617" alt="image" src="https://github.com/user-attachments/assets/f02be66c-28d6-4dea-8d65-4726f42e1325" />
 
 
