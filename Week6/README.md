@@ -147,17 +147,8 @@ Completed testing and verification of the implemented Sprint 1 features.
 * Tested cardiac event functionality.
 * Verified patient-specific data access.
 * Verified error cases and invalid input handling.
+<img width="980" height="626" alt="image" src="https://github.com/user-attachments/assets/bb3f2a06-4bbd-49a1-b07f-77567a015c86" />
 
-### Automated Testing
-
-Implemented and verified tests for important Vital Signs business logic, including:
-
-* Comparing the latest two vital-sign records.
-* Handling insufficient vital-sign records.
-* Comparing vital signs between two dates.
-* Handling missing records.
-* Verifying calculated changes.
-* Verifying `Improved`, `Worsened`, and `No Change` statuses.
 
 ---
 
