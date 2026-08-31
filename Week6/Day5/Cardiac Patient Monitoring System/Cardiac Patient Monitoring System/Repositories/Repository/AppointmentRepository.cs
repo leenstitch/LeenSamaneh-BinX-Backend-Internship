@@ -141,5 +141,26 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
                 .Select(p => (int?)p.PatientId)
                 .FirstOrDefaultAsync();
         }
+
+        public async Task<bool> HasConflictAsync(
+           DateTime appointmentDate)
+        {
+            return await _context.Appointments
+                .AnyAsync(a =>
+                    a.AppointmentDate == appointmentDate &&
+                    a.Status != Appointment.AppointmentStatus.Cancelled);
+        }
+        public async Task<Appointment> CreateAsync(
+          Appointment appointment)
+        {
+            await _context.Appointments.AddAsync(appointment);
+
+            return appointment;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

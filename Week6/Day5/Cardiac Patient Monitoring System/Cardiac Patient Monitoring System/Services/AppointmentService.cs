@@ -2,21 +2,48 @@
 // It provides operations for retrieving, creating, filtering,
 // updating, and changing appointment status.
 
+using Cardiac_Patient_Monitoring_System.Data;
 using Cardiac_Patient_Monitoring_System.DTO_S.AppointmentDto_s;
+using Cardiac_Patient_Monitoring_System.DTO_S.AppointmentDto_s.AppointmentWithMedicalIntakeDto_s;
 using Cardiac_Patient_Monitoring_System.Interfaces;
 using Cardiac_Patient_Monitoring_System.Models;
+using Cardiac_Patient_Monitoring_System.Repositories;
 using Cardiac_Patient_Monitoring_System.Repositories.Interfaces;
+using Cardiac_Patient_Monitoring_System.Repositories.Repository;
 
 namespace Cardiac_Patient_Monitoring_System.Services
 {
     public class AppointmentService : IAppointmentService
     {
         private readonly IAppointmentRepository _repository;
-
+        private readonly IAppointmentRepository _appointmentRepository;
+        private readonly IAllergyRepository _allergyRepository;
+        private readonly IFamilyMedicalHistoryRepository _familyHistoryRepository;
+        private readonly IMedicationRepository _medicationRepository;
+        private readonly IDiagnosisRepository _diagnosisRepository;
+        private readonly IEmergencyMedicalInformationRepository _emergencyRepository;
+        private readonly IPatientRepository _patientRepository;
+        private readonly ApplicationDbContext _context;
         public AppointmentService(
-            IAppointmentRepository repository)
+            IAppointmentRepository repository,
+            IAppointmentRepository appointmentRepository,
+            IAllergyRepository allergyRepository,
+            IFamilyMedicalHistoryRepository familyHistoryRepository,
+            IMedicationRepository medicationRepository,
+            IDiagnosisRepository diagnosisRepository,
+            IEmergencyMedicalInformationRepository emergencyRepository,
+            IPatientRepository patientRepository,
+            ApplicationDbContext context)
         {
             _repository = repository;
+            _appointmentRepository = appointmentRepository;
+            _allergyRepository = allergyRepository;
+            _familyHistoryRepository = familyHistoryRepository;
+            _medicationRepository = medicationRepository;
+            _diagnosisRepository = diagnosisRepository;
+            _emergencyRepository = emergencyRepository;
+            _patientRepository = patientRepository;
+            _context = context;
         }
 
         // Returns a single appointment by its ID.
@@ -116,11 +143,9 @@ namespace Cardiac_Patient_Monitoring_System.Services
 
                 Notes = dto.Notes,
 
-                RecordedByDoctorName =
-                    dto.RecordedByDoctorName,
+                RecordedByDoctorName = dto.RecordedByDoctorName,
 
-                Status =
-                    Appointment.AppointmentStatus.Scheduled,
+                Status = Appointment.AppointmentStatus.Scheduled,
 
                 CreatedAt = DateTime.UtcNow,
 
@@ -321,6 +346,312 @@ namespace Cardiac_Patient_Monitoring_System.Services
             await _repository.UpdateAsync(appointment);
 
             return true;
+        }
+        public async Task<AppointmentWithMedicalIntakeResponseDto>
+      CreateWithMedicalIntakeAsync(
+          int userId,
+          CreateAppointmentWithMedicalIntakeDto dto)
+        {
+            // 1. Get patient using UserId from token
+            var patient =
+                await _patientRepository
+                    .GetByUserIdAsync(userId);
+
+            if (patient == null)
+            {
+                throw new InvalidOperationException(
+                    "Patient profile was not found.");
+            }
+
+            var patientId = patient.PatientId;
+
+            // 2. Start transaction
+            await using var transaction =
+                await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                // 3. Get existing medical information
+
+                var allergies =
+                    await _allergyRepository
+                        .GetByPatientIdAsync(patientId);
+
+                var familyHistory =
+                    await _familyHistoryRepository
+                        .GetByPatientIdAsync(patientId);
+
+                var medications =
+                    await _medicationRepository
+                        .GetByPatientIdAsync(patientId);
+
+                var diagnoses =
+                    await _diagnosisRepository
+                        .GetByPatientIdAsync(patientId);
+
+                var emergencyMedicalInformation =
+                    await _emergencyRepository
+                        .GetByPatientIdAsync(patientId);
+
+
+                // 4. Create new allergies
+
+                var newAllergies = dto.NewAllergies
+                    .Select(a => new Allergy
+                    {
+                        PatientId = patientId,
+
+                        Name = a.Name,
+                        Reaction = a.Reaction,
+                        Severity = a.Severity,
+                        DiagnosedAt = a.DiagnosedAt,
+                        Notes = a.Notes,
+
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    })
+                    .ToList();
+
+                if (newAllergies.Any())
+                {
+                    await _allergyRepository
+                        .CreateRangeAsync(newAllergies);
+
+                    allergies.AddRange(newAllergies);
+                }
+
+
+                // 5. Create new family medical history
+
+                var newFamilyHistory = dto.NewFamilyHistory
+                    .Select(f => new FamilyMedicalHistory
+                    {
+                        PatientId = patientId,
+
+                        Relationship = f.Relationship,
+                        Condition = f.Condition,
+                        AgeAtDiagnosis = f.AgeAtDiagnosis,
+                        Notes = f.Notes,
+
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    })
+                    .ToList();
+
+                if (newFamilyHistory.Any())
+                {
+                    await _familyHistoryRepository
+                        .CreateRangeAsync(newFamilyHistory);
+
+                    familyHistory.AddRange(newFamilyHistory);
+                }
+
+
+                // 6. Create appointment
+
+                var appointment = new Appointment
+                {
+                    PatientId = patientId,
+
+                    AppointmentDate =
+                        dto.AppointmentDate,
+
+                    Reason =
+                        dto.Reason,
+
+                    Notes =
+                        dto.Notes,
+
+                    Status =
+                        Appointment.AppointmentStatus.Scheduled,
+
+                    CreatedAt =
+                        DateTime.UtcNow,
+
+                    UpdatedAt =
+                        DateTime.UtcNow
+                };
+
+                _context.Appointments.Add(appointment);
+
+
+                // 7. Save all changes
+
+                await _context.SaveChangesAsync();
+
+
+                // 8. Commit transaction
+
+                await transaction.CommitAsync();
+
+
+                // 9. Map entities to DTOs
+
+                return new AppointmentWithMedicalIntakeResponseDto
+                {
+                    AppointmentId =
+                        appointment.AppointmentId,
+
+                    PatientId =
+                        appointment.PatientId,
+
+                    DoctorId =
+                        appointment.DoctorId,
+
+                    AppointmentDate =
+                        appointment.AppointmentDate,
+
+                    Reason =
+                        appointment.Reason,
+
+                    Notes =
+                        appointment.Notes,
+
+
+                    // Existing + newly created allergies
+
+                    Allergies = allergies
+                        .Select(a => new AllergyResponseDto
+                        {
+                            AllergyId =
+                                a.AllergyId,
+
+                            Name =
+                                a.Name,
+
+                            Reaction =
+                                a.Reaction,
+
+                            Severity =
+                                a.Severity,
+
+                            DiagnosedAt =
+                                a.DiagnosedAt,
+
+                            Notes =
+                                a.Notes
+                        })
+                        .ToList(),
+
+
+                    // Existing + newly created family history
+
+                    FamilyHistory = familyHistory
+                        .Select(f => new FamilyHistoryResponseDto
+                        {
+                            FamilyHistoryId =
+                                f.FamilyHistoryId,
+
+                            Relationship =
+                                f.Relationship,
+
+                            Condition =
+                                f.Condition,
+
+                            AgeAtDiagnosis =
+                                f.AgeAtDiagnosis,
+
+                            Notes =
+                                f.Notes
+                        })
+                        .ToList(),
+
+
+                    // Existing medications
+
+                    Medications = medications
+                        .Select(m => new MedicationResponseDto
+                        {
+                            MedicationId =
+                                m.MedicationId,
+
+                            PrescribedByDoctorName =
+                                m.PrescribedByDoctorName,
+
+                            PrescribedBySpecialization =
+                                m.PrescribedBySpecialization,
+
+                            Name =
+                                m.Name,
+
+                            Dosage =
+                                m.Dosage,
+
+                            Frequency =
+                                m.Frequency,
+
+                            StartDate =
+                                m.StartDate,
+
+                            EndDate =
+                                m.EndDate
+                        })
+                        .ToList(),
+
+
+                    // Existing diagnoses
+
+                    Diagnoses = diagnoses
+                        .Select(d => new DiagnosisResponseDto
+                        {
+                            DiagnosisId =
+                                d.DiagnosisId,
+
+                            DiagnosedByName =
+                                d.DiagnosedByName,
+
+                            DiagnosedBySpecialization =
+                                d.DiagnosedBySpecialization,
+
+                            DiagnosisName =
+                                d.DiagnosisName,
+
+                            DiagnosedAt =
+                                d.DiagnosedAt,
+
+                            Notes =
+                                d.Notes,
+
+                            ConditionStartDate =
+                                d.ConditionStartDate
+                        })
+                        .ToList(),
+
+
+                    // Emergency medical information
+
+                    EmergencyMedicalInformation =
+                        emergencyMedicalInformation == null
+                            ? null
+                            : new EmergencyMedicalInformationResponseDto
+                            {
+                                EmergencyMedicalInformationId =
+                                    emergencyMedicalInformation
+                                        .EmergencyMedicalInformationId,
+
+                                BloodType =
+                                    emergencyMedicalInformation
+                                        .BloodType,
+
+                                PreferredHospital =
+                                    emergencyMedicalInformation
+                                        .PreferredHospital,
+
+                                SpecialInstructions =
+                                    emergencyMedicalInformation
+                                        .SpecialInstructions,
+
+                                EmergencyNotes =
+                                    emergencyMedicalInformation
+                                        .EmergencyNotes
+                            }
+                };
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
     }
 }

@@ -1088,6 +1088,432 @@ namespace CardiacPatientMonitoringSystem.XunitMoq
                 Notes =
                     "Test vital sign"
             };
+
         }
+// =========================================================
+// Test 4: Get All Vital Signs - Valid Query
+// Verifies that GetAllAsync returns paginated vital-sign
+// records correctly and maps the entities to DTOs.
+// =========================================================
+
+[Fact]
+public async Task GetAllAsync_ValidQuery_ReturnsPaginatedData()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 1,
+                PageSize = 10,
+                Gender = "Female"
+            };
+
+            var vitalSigns =
+                new List<VitalSign>
+                {
+            CreateVitalSign(
+                id: 1,
+                patientId: 1),
+
+            CreateVitalSign(
+                id: 2,
+                patientId: 2)
+                };
+
+            _repositoryMock
+                .Setup(x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()))
+                .ReturnsAsync(
+                    (vitalSigns.AsEnumerable(), 2));
+
+            try
+            {
+                // Act
+
+                var result =
+                    await _service.GetAllAsync(query);
+
+                // Assert 
+
+                Assert.NotNull(result);
+
+                Assert.Equal(
+                    2,
+                    result.Data.Count());
+
+                Assert.Equal(
+                    2,
+                    result.TotalCount);
+
+                Assert.Equal(
+                    1,
+                    result.TotalPages);
+
+                Assert.Equal(
+                    1,
+                    result.Page);
+
+                Assert.Equal(
+                    10,
+                    result.PageSize);
+
+                Assert.Equal(
+                    1,
+                    result.Data.First().VitalSignId);
+
+                Assert.Equal(
+                    80,
+                    result.Data.First().HeartRate);
+
+                _repositoryMock.Verify(
+                    x =>
+                        x.GetAllAsync(
+                            It.IsAny<VitalSignQueryDto>()),
+                    Times.Once);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "GetAllAsync_ValidQuery_ReturnsPaginatedData " +
+                    "failed unexpectedly.",
+                    ex);
+            }
+        }
+
+
+        // =========================================================
+        // Test 4.1: Get All Vital Signs - Page Less Than One
+        // Verifies that Page is changed to 1 when an invalid
+        // page number less than 1 is provided.
+        // =========================================================
+
+        [Fact]
+        public async Task GetAllAsync_PageLessThanOne_SetsPageToOne()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 0,
+                PageSize = 10
+            };
+
+            VitalSignQueryDto? capturedQuery = null;
+
+            _repositoryMock
+                .Setup(x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()))
+                .Callback<VitalSignQueryDto>(
+                    q => capturedQuery = q)
+                .ReturnsAsync(
+                    (Enumerable.Empty<VitalSign>(), 0));
+
+            try
+            {
+                // Act
+
+                var result =
+                    await _service.GetAllAsync(query);
+
+                // Assert
+
+                Assert.Equal(
+                    1,
+                    result.Page);
+
+                Assert.NotNull(capturedQuery);
+
+                Assert.Equal(
+                    1,
+                    capturedQuery!.Page);
+
+                _repositoryMock.Verify(
+                    x =>
+                        x.GetAllAsync(
+                            It.IsAny<VitalSignQueryDto>()),
+                    Times.Once);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "GetAllAsync_PageLessThanOne_SetsPageToOne " +
+                    "failed unexpectedly.",
+                    ex);
+            }
+        }
+
+
+        // =========================================================
+        // Test 4.2: Get All Vital Signs - Page Size Less Than One
+        // Verifies that PageSize is changed to the default value
+        // of 10 when an invalid PageSize is provided.
+        // =========================================================
+
+        [Fact]
+        public async Task GetAllAsync_PageSizeLessThanOne_SetsDefaultPageSize()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 1,
+                PageSize = 0
+            };
+
+            VitalSignQueryDto? capturedQuery = null;
+
+            _repositoryMock
+                .Setup(x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()))
+                .Callback<VitalSignQueryDto>(
+                    q => capturedQuery = q)
+                .ReturnsAsync(
+                    (Enumerable.Empty<VitalSign>(), 0));
+
+            try
+            {
+                // Act
+
+                var result =
+                    await _service.GetAllAsync(query);
+
+                // Assert
+
+                Assert.Equal(
+                    10,
+                    result.PageSize);
+
+                Assert.NotNull(capturedQuery);
+
+                Assert.Equal(
+                    10,
+                    capturedQuery!.PageSize);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "GetAllAsync_PageSizeLessThanOne_" +
+                    "SetsDefaultPageSize failed unexpectedly.",
+                    ex);
+            }
+        }
+
+
+        // =========================================================
+        // Test 4.3: Get All Vital Signs - Page Size Greater Than 100
+        // Verifies that PageSize is limited to 100 when the provided
+        // PageSize is greater than the maximum allowed value.
+        // =========================================================
+
+        [Fact]
+        public async Task GetAllAsync_PageSizeGreaterThan100_LimitsPageSizeTo100()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 1,
+                PageSize = 150
+            };
+
+            VitalSignQueryDto? capturedQuery = null;
+
+            _repositoryMock
+                .Setup(x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()))
+                .Callback<VitalSignQueryDto>(
+                    q => capturedQuery = q)
+                .ReturnsAsync(
+                    (Enumerable.Empty<VitalSign>(), 0));
+
+            try
+            {
+                // Act
+
+                var result =
+                    await _service.GetAllAsync(query);
+
+                // Assert
+
+                Assert.Equal(
+                    100,
+                    result.PageSize);
+
+                Assert.NotNull(capturedQuery);
+
+                Assert.Equal(
+                    100,
+                    capturedQuery!.PageSize);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "GetAllAsync_PageSizeGreaterThan100_" +
+                    "LimitsPageSizeTo100 failed unexpectedly.",
+                    ex);
+            }
+        }
+
+
+        // =========================================================
+        // Test 4.4: Get All Vital Signs - Invalid Gender
+        // Verifies that ArgumentException is thrown when an invalid
+        // gender value is provided.
+        // =========================================================
+
+        [Fact]
+        public async Task GetAllAsync_InvalidGender_ThrowsArgumentException()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 1,
+                PageSize = 10,
+                Gender = "Unknown"
+            };
+
+            // Act & Assert
+
+            var exception =
+                await Assert.ThrowsAsync<ArgumentException>(
+                    () =>
+                        _service.GetAllAsync(query));
+
+            // Verify exception message.
+
+            Assert.Equal(
+                "Invalid gender. Allowed values are Male or Female.",
+                exception.Message);
+
+            // Repository must not be called because
+            // validation happens before repository access.
+
+            _repositoryMock.Verify(
+                x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()),
+                Times.Never);
+        }
+
+
+        // =========================================================
+        // Test 4.5: Get All Vital Signs - No Data
+        // Verifies that an empty result is returned when the
+        // repository contains no matching vital-sign records.
+        // =========================================================
+
+        [Fact]
+        public async Task GetAllAsync_NoData_ReturnsEmptyResult()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 1,
+                PageSize = 10
+            };
+
+            _repositoryMock
+                .Setup(x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()))
+                .ReturnsAsync(
+                    (Enumerable.Empty<VitalSign>(), 0));
+
+            try
+            {
+                // Act
+
+                var result =
+                    await _service.GetAllAsync(query);
+
+                // Assert
+
+                Assert.NotNull(result);
+
+                Assert.Empty(result.Data);
+
+                Assert.Equal(
+                    0,
+                    result.TotalCount);
+
+                Assert.Equal(
+                    0,
+                    result.TotalPages);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "GetAllAsync_NoData_ReturnsEmptyResult " +
+                    "failed unexpectedly.",
+                    ex);
+            }
+        }
+
+
+        // =========================================================
+        // Test 4.6: Get All Vital Signs - Total Pages Calculation
+        // Verifies that TotalPages is calculated correctly when
+        // the total number of records is not evenly divisible
+        // by PageSize.
+        // Example: 25 records / 10 per page = 3 pages.
+        // =========================================================
+
+        [Fact]
+        public async Task GetAllAsync_CalculatesTotalPagesCorrectly()
+        {
+            // Arrange
+
+            var query = new VitalSignQueryDto
+            {
+                Page = 1,
+                PageSize = 10
+            };
+
+            var vitalSigns =
+                new List<VitalSign>
+                {
+            CreateVitalSign(1, 1)
+                };
+
+            _repositoryMock
+                .Setup(x =>
+                    x.GetAllAsync(
+                        It.IsAny<VitalSignQueryDto>()))
+                .ReturnsAsync(
+                    (vitalSigns.AsEnumerable(), 25));
+
+            try
+            {
+                // Act
+
+                var result =
+                    await _service.GetAllAsync(query);
+
+                // Assert
+
+                Assert.Equal(
+                    25,
+                    result.TotalCount);
+
+                Assert.Equal(
+                    3,
+                    result.TotalPages);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "GetAllAsync_CalculatesTotalPagesCorrectly " +
+                    "failed unexpectedly.",
+                    ex);
+            }
+        }
+
+
     }
 }

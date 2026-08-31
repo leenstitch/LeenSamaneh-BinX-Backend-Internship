@@ -104,7 +104,7 @@
           ]
         },
         {
-          "name": "New Request",
+          "name": "AdminLogin",
           "event": [
             {
               "listen": "test",
@@ -497,6 +497,174 @@
               ],
               "cookie": [],
               "body": "{\n    \"status\": \"Needs Attention\",\n    \"alerts\": [\n        \"High heart rate.\",\n        \"High diastolic pressure.\",\n        \"Low oxygen saturation.\"\n    ],\n    \"latestMeasuredAt\": \"2026-08-24T14:28:35.723\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Return a  MedicalTimeline for a specific patient",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/MedicalTimelineController/patient/1004?page=1&pageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "MedicalTimelineController",
+                "patient",
+                "1004"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Return a  MedicalTimeline for a specific patient",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicalTimelineController/patient/1004?page=1&pageSize=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicalTimelineController",
+                    "patient",
+                    "1004"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 31 Aug 2026 06:44:26 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"patientId\": 1004,\n    \"page\": 1,\n    \"pageSize\": 10,\n    \"totalCount\": 27,\n    \"totalPages\": 3,\n    \"items\": [\n        {\n            \"eventType\": \"Appointment\",\n            \"recordId\": 2007,\n            \"date\": \"2026-09-03T14:00:00\",\n            \"title\": \"Regular cardiac follow-up\",\n            \"description\": \"Follow-up appointment.\"\n        },\n        {\n            \"eventType\": \"Appointment\",\n            \"recordId\": 2006,\n            \"date\": \"2026-09-01T10:00:00\",\n            \"title\": \"Cardiology follow-up\",\n            \"description\": \"Patient reports occasional chest discomfort.\"\n        },\n        {\n            \"eventType\": \"Family Medical History\",\n            \"recordId\": 2,\n            \"date\": \"2026-08-30T19:49:36.2415886\",\n            \"title\": \"Type 2 Diabetes\",\n            \"description\": \"Relationship: Mother\"\n        },\n        {\n            \"eventType\": \"Family Medical History\",\n            \"recordId\": 1,\n            \"date\": \"2026-08-30T19:49:36.2412515\",\n            \"title\": \"Hypertension\",\n            \"description\": \"Relationship: Father\"\n        },\n        {\n            \"eventType\": \"Allergy\",\n            \"recordId\": 2,\n            \"date\": \"2026-08-30T19:49:36.1112788\",\n            \"title\": \"Peanuts\",\n            \"description\": \"Swelling\"\n        },\n        {\n            \"eventType\": \"Allergy\",\n            \"recordId\": 1,\n            \"date\": \"2026-08-30T19:49:36.110946\",\n            \"title\": \"Penicillin\",\n            \"description\": \"Skin rash\"\n        },\n        {\n            \"eventType\": \"Appointment\",\n            \"recordId\": 2005,\n            \"date\": \"2026-08-29T14:21:05.068\",\n            \"title\": \"tired\",\n            \"description\": \"nothing\"\n        },\n        {\n            \"eventType\": \"Medication\",\n            \"recordId\": 1004,\n            \"date\": \"2026-08-26T10:29:54.166\",\n            \"title\": \"string\",\n            \"description\": \"string - string\"\n        },\n        {\n            \"eventType\": \"Appointment\",\n            \"recordId\": 1005,\n            \"date\": \"2026-08-25T10:00:00\",\n            \"title\": \"Cardiology follow-up\",\n            \"description\": \"Review blood pressure and heart rate.\"\n        },\n        {\n            \"eventType\": \"Vital Sign\",\n            \"recordId\": 2011,\n            \"date\": \"2026-08-24T14:28:35.723\",\n            \"title\": \"Vital Signs\",\n            \"description\": \"Heart Rate: 180, BP: 130/161, Oxygen: 90.00%\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "CreateAppointmentWithMedicalInformation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{AccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"appointmentDate\": \"2026-09-01T10:00:00\",\r\n  \"reason\": \"Cardiac follow-up\",\r\n  \"notes\": \"Patient needs regular monitoring\",\r\n  \"newAllergies\": [\r\n    {\r\n      \"name\": \"Aspirin\",\r\n      \"reaction\": \"Stomach pain\",\r\n      \"severity\": \"Mild\",\r\n      \"diagnosedAt\": \"2026-08-01T00:00:00\",\r\n      \"notes\": \"Newly reported allergy\"\r\n    }\r\n  ],\r\n  \"newFamilyHistory\": [\r\n    {\r\n      \"relationship\": \"Father\",\r\n      \"condition\": \"Hypertension\",\r\n      \"ageAtDiagnosis\": 50,\r\n      \"notes\": \"Father was diagnosed with hypertension at age 50\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AppointmentService/with-medical-intake",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AppointmentService",
+                "with-medical-intake"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "CreateAppointmentWithMedicalInformation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"appointmentDate\": \"2026-09-01T10:00:00\",\r\n  \"reason\": \"Cardiac follow-up\",\r\n  \"notes\": \"Patient needs regular monitoring\",\r\n  \"newAllergies\": [\r\n    {\r\n      \"name\": \"Aspirin\",\r\n      \"reaction\": \"Stomach pain\",\r\n      \"severity\": \"Mild\",\r\n      \"diagnosedAt\": \"2026-08-01T00:00:00\",\r\n      \"notes\": \"Newly reported allergy\"\r\n    }\r\n  ],\r\n  \"newFamilyHistory\": [\r\n    {\r\n      \"relationship\": \"Father\",\r\n      \"condition\": \"Hypertension\",\r\n      \"ageAtDiagnosis\": 50,\r\n      \"notes\": \"Father was diagnosed with hypertension at age 50\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AppointmentService/with-medical-intake",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AppointmentService",
+                    "with-medical-intake"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 31 Aug 2026 06:47:53 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"appointmentId\": 2008,\n    \"patientId\": 1004,\n    \"doctorId\": null,\n    \"appointmentDate\": \"2026-09-01T10:00:00\",\n    \"reason\": \"Cardiac follow-up\",\n    \"notes\": \"Patient needs regular monitoring\",\n    \"allergies\": [\n        {\n            \"allergyId\": 1,\n            \"name\": \"Penicillin\",\n            \"reaction\": \"Skin rash\",\n            \"severity\": \"Moderate\",\n            \"diagnosedAt\": \"2024-05-10T00:00:00\",\n            \"notes\": \"Avoid penicillin-based medications.\"\n        },\n        {\n            \"allergyId\": 2,\n            \"name\": \"Peanuts\",\n            \"reaction\": \"Swelling\",\n            \"severity\": \"Severe\",\n            \"diagnosedAt\": \"2020-08-15T00:00:00\",\n            \"notes\": \"Known allergy.\"\n        },\n        {\n            \"allergyId\": 3,\n            \"name\": \"Aspirin\",\n            \"reaction\": \"Stomach pain\",\n            \"severity\": \"Mild\",\n            \"diagnosedAt\": \"2026-08-01T00:00:00\",\n            \"notes\": \"Newly reported allergy\"\n        }\n    ],\n    \"familyHistory\": [\n        {\n            \"familyHistoryId\": 1,\n            \"relationship\": \"Father\",\n            \"condition\": \"Hypertension\",\n            \"ageAtDiagnosis\": 50,\n            \"notes\": \"Currently receiving treatment.\"\n        },\n        {\n            \"familyHistoryId\": 2,\n            \"relationship\": \"Mother\",\n            \"condition\": \"Type 2 Diabetes\",\n            \"ageAtDiagnosis\": 55,\n            \"notes\": null\n        },\n        {\n            \"familyHistoryId\": 3,\n            \"relationship\": \"Father\",\n            \"condition\": \"Hypertension\",\n            \"ageAtDiagnosis\": 50,\n            \"notes\": \"Father was diagnosed with hypertension at age 50\"\n        }\n    ],\n    \"medications\": [\n        {\n            \"medicationId\": 2004,\n            \"name\": \"Aspirin\",\n            \"dosage\": \"81 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-22T08:00:00\",\n            \"endDate\": \"2026-08-24T08:00:00\",\n            \"prescribedBySpecialization\": \"Cardiologist\",\n            \"prescribedByDoctorName\": \"Dr. Ahmad Khalil\"\n        },\n        {\n            \"medicationId\": 1004,\n            \"name\": \"string\",\n            \"dosage\": \"string\",\n            \"frequency\": \"string\",\n            \"startDate\": \"2026-08-26T10:29:54.166\",\n            \"endDate\": \"2026-08-26T10:29:54.166\",\n            \"prescribedBySpecialization\": \"string\",\n            \"prescribedByDoctorName\": \"string\"\n        },\n        {\n            \"medicationId\": 6,\n            \"name\": \"Aspirin\",\n            \"dosage\": \"100 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-17T08:00:00\",\n            \"endDate\": \"2026-09-18T08:00:00\",\n            \"prescribedBySpecialization\": \"Cardiology\",\n            \"prescribedByDoctorName\": \"Dr. Ahmad Hassan\"\n        },\n        {\n            \"medicationId\": 5,\n            \"name\": \"Aspirin\",\n            \"dosage\": \"100 mg\",\n            \"frequency\": \"Once daily\",\n            \"startDate\": \"2026-08-19T08:00:00\",\n            \"endDate\": \"2026-09-25T08:00:00\",\n            \"prescribedBySpecialization\": \"Cardiology\",\n            \"prescribedByDoctorName\": \"Dr. Ahmad Hassan\"\n        }\n    ],\n    \"diagnoses\": [\n        {\n            \"diagnosisId\": 2003,\n            \"diagnosisName\": \"headach\",\n            \"diagnosedAt\": \"2026-08-23T14:23:20.024\",\n            \"diagnosedByName\": \"dr.ahmad\",\n            \"diagnosedBySpecialization\": \"doctor\",\n            \"conditionStartDate\": null,\n            \"notes\": \"nothing\"\n        },\n        {\n            \"diagnosisId\": 2004,\n            \"diagnosisName\": \"chest pain\",\n            \"diagnosedAt\": \"2026-08-22T14:23:20.024\",\n            \"diagnosedByName\": \"dr.ahmad\",\n            \"diagnosedBySpecialization\": \"doctor\",\n            \"conditionStartDate\": null,\n            \"notes\": \"nothing\"\n        },\n        {\n            \"diagnosisId\": 1006,\n            \"diagnosisName\": \"Tachycardia\",\n            \"diagnosedAt\": \"2026-08-18T09:30:00\",\n            \"diagnosedByName\": \"Dr. Lina Khaled\",\n            \"diagnosedBySpecialization\": \"Cardiology\",\n            \"conditionStartDate\": null,\n            \"notes\": \"Elevated heart rate observed during the visit.\"\n        },\n        {\n            \"diagnosisId\": 1005,\n            \"diagnosisName\": \"Hypertension\",\n            \"diagnosedAt\": \"2026-08-10T09:00:00\",\n            \"diagnosedByName\": \"Dr. Ahmad Hassan\",\n            \"diagnosedBySpecialization\": \"Cardiology\",\n            \"conditionStartDate\": null,\n            \"notes\": \"Patient requires regular blood pressure monitoring.\"\n        }\n    ],\n    \"emergencyMedicalInformation\": null\n}"
             }
           ]
         }

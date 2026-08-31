@@ -3,7 +3,9 @@
 
 using System.Security.Claims;
 using Cardiac_Patient_Monitoring_System.DTO_S.AppointmentDto_s;
+using Cardiac_Patient_Monitoring_System.DTO_S.AppointmentDto_s.AppointmentWithMedicalIntakeDto_s;
 using Cardiac_Patient_Monitoring_System.Interfaces;
+using Cardiac_Patient_Monitoring_System.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -247,6 +249,49 @@ namespace Cardiac_Patient_Monitoring_System.Controllers
                 message =
                     "Appointment status updated successfully."
             });
+        }
+
+        [HttpPost("with-medical-intake")]
+        public async Task<IActionResult> CreateWithMedicalIntake(
+             [FromBody] CreateAppointmentWithMedicalIntakeDto dto)
+        {
+            try
+            {
+                // Get UserId from JWT token
+
+                var userIdClaim =
+                    User.FindFirst(ClaimTypes.NameIdentifier);
+
+                if (userIdClaim == null)
+                {
+                    return Unauthorized(new
+                    {
+                        message = "User ID was not found in token."
+                    });
+                }
+
+                var userId =
+                    int.Parse(userIdClaim.Value);
+
+
+                // Create appointment + medical intake
+
+                var result =
+                    await _service
+                        .CreateWithMedicalIntakeAsync(
+                            userId,
+                            dto);
+
+
+                return Ok(result);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new
+                {
+                    message = ex.Message
+                });
+            }
         }
     }
 }

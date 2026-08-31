@@ -43,5 +43,7 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
         int patientId,
         DateTime startDate,
         DateTime eventDate);
+
+       
     }
 }

@@ -42,5 +42,7 @@ namespace Cardiac_Patient_Monitoring_System.Repositories.Interfaces
         Task<IEnumerable<Diagnosis>>GetRecordedBeforeEventAsync(
         int patientId,
         DateTime eventDate);
+
+      
     }
 }

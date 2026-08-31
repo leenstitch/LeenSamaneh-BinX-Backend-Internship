@@ -2,6 +2,7 @@
 // It handles retrieving, creating, filtering, and updating appointments.
 
 using Cardiac_Patient_Monitoring_System.DTO_S.AppointmentDto_s;
+using Cardiac_Patient_Monitoring_System.DTO_S.AppointmentDto_s.AppointmentWithMedicalIntakeDto_s;
 using Cardiac_Patient_Monitoring_System.Models;
 
 namespace Cardiac_Patient_Monitoring_System.Interfaces
@@ -47,5 +48,10 @@ namespace Cardiac_Patient_Monitoring_System.Interfaces
             int id,
             int userId,
             UpdateAppointmentStatusDto dto);
+
+        Task<AppointmentWithMedicalIntakeResponseDto>
+          CreateWithMedicalIntakeAsync(
+               int patientId,
+               CreateAppointmentWithMedicalIntakeDto dto);
     }
 }

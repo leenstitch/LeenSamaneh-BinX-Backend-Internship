@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "5c624a8c-77be-4f92-b5b1-b88536b0740a",
+    "name": "Week7-Day2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-5c624a8c-77be-4f92-b5b1-b88536b0740a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register a new Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstName\": \"leen\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"leensamaneh@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"008080808080\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/AuthController/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "AuthController",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Register a new Customer",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"leen\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"leensamaneh@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"008080808080\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AuthController/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AuthController",
+                "register"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 31 Aug 2026 11:09:21 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Registration successful.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"leensamaneh@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/AuthController/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "AuthController",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Login Customer",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"leensamaneh@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AuthController/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AuthController",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 31 Aug 2026 11:11:25 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZW1haWwiOiJsZWVuc2FtYW5laEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDdXN0b21lciIsIkN1c3RvbWVySWQiOiIzIiwiZXhwIjoxNzg4MTc4Mjg0LCJpc3MiOiJMZW5zQm9vayIsImF1ZCI6IkxlbnNCb29rVXNlcnMifQ.JS3lMFZOrsdatzyelTzmWit0BLwJaXvlelU8fIaaojQ\",\n    \"refreshToken\": \"/sT4/p/j8YCn2TjFQTv69C/GpzxtOjP45T+HC8DhplWbL+e1l0RtxWdJjSE3CeC2Z3+avKWhzmJrt81M5J6Gvw==\",\n    \"accessTokenExpiration\": \"2026-08-31T12:11:24.9887244Z\",\n    \"refreshTokenExpiration\": \"2026-09-07T11:11:24.8098569Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Refresh Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"refreshToken\": \"/sT4/p/j8YCn2TjFQTv69C/GpzxtOjP45T+HC8DhplWbL+e1l0RtxWdJjSE3CeC2Z3+avKWhzmJrt81M5J6Gvw==\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/AuthController/refresh",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "AuthController",
+            "refresh"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Refresh Token",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"refreshToken\": \"/sT4/p/j8YCn2TjFQTv69C/GpzxtOjP45T+HC8DhplWbL+e1l0RtxWdJjSE3CeC2Z3+avKWhzmJrt81M5J6Gvw==\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AuthController/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AuthController",
+                "refresh"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 31 Aug 2026 11:12:44 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZW1haWwiOiJsZWVuc2FtYW5laEBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDdXN0b21lciIsIkN1c3RvbWVySWQiOiIzIiwiZXhwIjoxNzg4MTc4MzY0LCJpc3MiOiJMZW5zQm9vayIsImF1ZCI6IkxlbnNCb29rVXNlcnMifQ.iFAR0Ql-nOtJ-3H47zTDzX4mBA9zHrKx1d5kYq7r0fc\",\n    \"refreshToken\": \"ShCBXaKYXbX6vIVh8jMeTWJ9hqHXIefFTCivxxVepTJzUnotLkLWN/Xy+sKihPp+CZDZwYffjFkQLcLkqlyudA==\",\n    \"accessTokenExpiration\": \"2026-08-31T12:12:44.815291Z\",\n    \"refreshTokenExpiration\": \"2026-09-07T11:12:44.5710881Z\"\n}"
+        }
+      ]
+    }
+  ]
+}

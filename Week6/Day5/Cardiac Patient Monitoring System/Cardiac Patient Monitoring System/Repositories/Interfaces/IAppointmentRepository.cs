@@ -36,5 +36,13 @@ namespace Cardiac_Patient_Monitoring_System.Repositories.Interfaces
 
         // Finds the PatientId linked to the specified user.
         Task<int?> GetPatientIdByUserIdAsync(int userId);
+
+
+        Task<bool> HasConflictAsync(DateTime appointmentDate);
+
+        Task<Appointment> CreateAsync(Appointment appointment);
+
+        Task SaveChangesAsync();
+
     }
 }

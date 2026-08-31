@@ -75,20 +75,30 @@ namespace Cardiac_Patient_Monitoring_System.Repositories
             // Count records after filtering
             var totalCount = await vitalSignsQuery.CountAsync();
 
+          
             // Sorting
             if (query.Sort?.Equals(
-                "asc",
+                "name",
                 StringComparison.OrdinalIgnoreCase) == true)
             {
+                // Sort by patient's first name
+                vitalSignsQuery = vitalSignsQuery
+                    .OrderBy(v => v.Patient.FirstName);
+            }
+            else if (query.Sort?.Equals(
+                "date",
+                StringComparison.OrdinalIgnoreCase) == true)
+            {
+                // Sort by measurement date
                 vitalSignsQuery = vitalSignsQuery
                     .OrderBy(v => v.MeasuredAt);
             }
             else
             {
+                // Default: newest measurements first
                 vitalSignsQuery = vitalSignsQuery
                     .OrderByDescending(v => v.MeasuredAt);
             }
-
             // Pagination
             var data = await vitalSignsQuery
                 .Skip((query.Page - 1) * query.PageSize)
