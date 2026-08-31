@@ -65,6 +65,7 @@ The seeded reminder types include:
 - Doctor Follow-up
 - Medical Test
 - General
+<img width="852" height="556" alt="image" src="https://github.com/user-attachments/assets/eb7190c8-e094-40fe-a89a-0829214ec214" />
 
 The seed data was configured using EF Core HasData.
 
