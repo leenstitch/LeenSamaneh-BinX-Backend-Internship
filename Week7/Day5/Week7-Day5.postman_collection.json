@@ -1,0 +1,2117 @@
+{
+  "info": {
+    "_postman_id": "669fab9c-2576-42e3-9b19-8dcc82cf4422",
+    "name": "Week7-Day5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-669fab9c-2576-42e3-9b19-8dcc82cf4422?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Error cases",
+          "item": [
+            {
+              "name": "Login With Invalid Email",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"ownercom\",\r\n  \"password\": \"Owner@12345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Login With Invalid Email",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"ownercom\",\r\n  \"password\": \"Owner@12345\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:01:36 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "5452096b-0648-422f-a949-aea6410cdd99"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 401,\n    \"message\": \"Invalid email or password.\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Login With Invalid Password",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"owner@lensbook.com\",\r\n  \"password\": \"Owner@123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Login With Invalid Password",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"owner@lensbook.com\",\r\n  \"password\": \"Owner@123\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:14:49 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "0c50eed7-3ded-4ad7-aa17-0a894b627f7e"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 401,\n    \"message\": \"Invalid email or password.\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Register with email that already taken",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"leen\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"LeenSamaneh1@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "register"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Register with email that already taken",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"firstName\": \"leen\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"LeenSamaneh1@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/register",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "register"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:19:38 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "45b64b06-0048-4776-b612-947ed3a8987e"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 401,\n    \"message\": \"Failed to create user: Username 'LeenSamaneh1@gmail.com' is already taken., Email 'LeenSamaneh1@gmail.com' is already taken.\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Register With Weak Password",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"sarah\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"sarahSamaneh1@gmail.com\",\r\n  \"password\": \"string\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "register"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Register With Weak Password",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"firstName\": \"sarah\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"sarahSamaneh1@gmail.com\",\r\n  \"password\": \"string\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/register",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "register"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:26:59 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "04034aa6-0db7-4555-b3bf-1cf57c0b1c20"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 401,\n    \"message\": \"Failed to create user: Passwords must be at least 8 characters., Passwords must have at least one non alphanumeric character., Passwords must have at least one digit ('0'-'9')., Passwords must have at least one uppercase ('A'-'Z').\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Happy Cases",
+          "item": [
+            {
+              "name": "Admin Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"AdminAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"AdminRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"owner@lensbook.com\",\r\n  \"password\": \"Owner@12345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Admin Login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"owner@lensbook.com\",\r\n  \"password\": \"Owner@12345\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 14:19:47 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJvd25lckBsZW5zYm9vay5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJTdHVkaW9Pd25lciIsImV4cCI6MTc4ODI3NTk4NSwiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.oqsUOZ6kaOah7Y62eLiDEPSJGwygoVqKtV88xu1k8xc\",\n    \"refreshToken\": \"vrtFaGmlM8TxeODUtuTAiiXS26xuCQrU2F2Wj9DLUUDg1p6ltrY4/HmF+W0cExTwXn5+SGJCQ9PpnMmujZw3Ew==\",\n    \"accessTokenExpiration\": \"2026-09-01T15:19:47.397929Z\",\n    \"refreshTokenExpiration\": \"2026-09-08T14:19:46.3977012Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Customer login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"CustomerAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"CutomerRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"leensamaneh1@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Customer login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"leensamaneh1@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 17:38:56 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwiZW1haWwiOiJMZWVuU2FtYW5laDFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQ3VzdG9tZXIiLCJDdXN0b21lcklkIjoiNSIsImV4cCI6MTc4ODI4NzkzNiwiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.v6GRWnv3Sp1evXO0ElfG9yQXCq4GiJM5gRpWF6gZYMA\",\n    \"refreshToken\": \"2r5q+6NfRC+RRL4GuqdNdqnqs/38MqMLLuropoBGdrv6vfaGtea5+uXy+6s0BkxTtvdoVZHnjqyorBvPaJEHZA==\",\n    \"accessTokenExpiration\": \"2026-09-01T18:38:56.5701794Z\",\n    \"refreshTokenExpiration\": \"2026-09-08T17:38:56.5288083Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Photographer Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"PhotographerAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"PhotographerRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"rand@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Photographer Login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"rand@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 17:58:14 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3IiwiZW1haWwiOiJyYW5kQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlBob3RvZ3JhcGhlciIsIlBob3RvZ3JhcGhlcklkIjoiMSIsImV4cCI6MTc4ODI4OTA5NSwiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.PjD6iCgqHD1jBFXfwnT1o1zkPsIYsuxqn8Wbsb63Cvo\",\n    \"refreshToken\": \"Iq5wOpj8SRxOHacb0JxkJ1LSMEQfegDiAxQm+H08Lz8CO4DvHhZ9gjUSx74o6DBxKTqS1hZnCTcGGZDXPNmQpg==\",\n    \"accessTokenExpiration\": \"2026-09-01T18:58:15.596904Z\",\n    \"refreshTokenExpiration\": \"2026-09-08T17:58:15.5438991Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Photographer 2 Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"PhotographerAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"PhotographerRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Photographer 2 Login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 18:22:01 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5IiwiZW1haWwiOiJub29yQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlBob3RvZ3JhcGhlciIsIlBob3RvZ3JhcGhlcklkIjoiMyIsImV4cCI6MTc4ODI5MDUyMiwiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.XUBo3c4RBU6-o3mvg036EIqjKuv0cXfFlcCYQP_TYH8\",\n    \"refreshToken\": \"HYa/bOLRgPA0J83cMKhaltmTrmCagRVCrhxPNZQ2AZLbGRMol+ZBbKZ/fTrMmVa9DNbBtBiFs32wL9GpiON0Ng==\",\n    \"accessTokenExpiration\": \"2026-09-01T19:22:02.3619714Z\",\n    \"refreshTokenExpiration\": \"2026-09-08T18:22:02.1579823Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Register  A Customer",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"leen\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"LeenSamaneh1@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "register"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Register  A Customer",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"firstName\": \"leen\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"LeenSamaneh1@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/register",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "register"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 14:15:08 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"message\": \"Registration successful.\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Photographer",
+      "item": [
+        {
+          "name": "By StudioOwner Token",
+          "item": [
+            {
+              "name": "Happy cases",
+              "item": [
+                {
+                  "name": "Create Photographer By StudioOwner",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{AdminAccessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"noor\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/PhotographersController",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "PhotographersController"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Create Photographer By StudioOwner",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"noor\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/PhotographersController",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "PhotographersController"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 01 Sep 2026 18:01:15 GMT"
+                        },
+                        {
+                          "key": "Server",
+                          "value": "Kestrel"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"photographerId\": 3,\n    \"userId\": 9,\n    \"email\": \"\",\n    \"firstName\": \"noor\",\n    \"lastName\": \"samaneh\",\n    \"phoneNumber\": \"0567454654\",\n    \"bio\": \"the best photographer\",\n    \"role\": \"Photographer\"\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Error cases",
+              "item": [
+                {
+                  "name": "Create Photgraoher without token",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"sarah@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"sarah\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/PhotographersController",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "PhotographersController"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Create Photgraoher without token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"email\": \"sarah@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"sarah\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/PhotographersController",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "PhotographersController"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Length",
+                          "value": "0"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Thu, 03 Sep 2026 14:31:44 GMT"
+                        },
+                        {
+                          "key": "Server",
+                          "value": "Kestrel"
+                        },
+                        {
+                          "key": "WWW-Authenticate",
+                          "value": "Bearer"
+                        },
+                        {
+                          "key": "X-Correlation-ID",
+                          "value": "3f1dc569-2532-4917-a9e9-1dad66ee7ad9"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": null
+                    }
+                  ]
+                },
+                {
+                  "name": "Create Photographer with email that already taken",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{AdminAccessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"noor\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/PhotographersController",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "PhotographersController"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Create Photographer with email that already taken",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"noor\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/PhotographersController",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "PhotographersController"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Thu, 03 Sep 2026 14:36:09 GMT"
+                        },
+                        {
+                          "key": "Server",
+                          "value": "Kestrel"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        },
+                        {
+                          "key": "X-Correlation-ID",
+                          "value": "a1a5d376-4e42-4b58-9c2a-0e428ce0e6d4"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"statusCode\": 400,\n    \"message\": \"A user with this email already exists.\"\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "By Photographer Token",
+          "item": [
+            {
+              "name": "Happy cases",
+              "item": [
+                {
+                  "name": "Get All Sessions For  a Photographer",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{PhotographerAccessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/PhotographersController/my-bookings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "PhotographersController",
+                        "my-bookings"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Get All Sessions For  a Photographer",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/PhotographersController/my-bookings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "PhotographersController",
+                            "my-bookings"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 01 Sep 2026 17:58:47 GMT"
+                        },
+                        {
+                          "key": "Server",
+                          "value": "Kestrel"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n    {\n        \"bookingId\": 1,\n        \"customerId\": 5,\n        \"photographerId\": 1,\n        \"sessionTypeId\": 1,\n        \"startTime\": \"2026-09-01T17:39:34.2\",\n        \"endTime\": \"6109-09-24T19:46:34.2\",\n        \"status\": \"Pending\",\n        \"notes\": \"nothing\"\n    }\n]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Error cases",
+              "item": [
+                {
+                  "name": "Test that one Customer's token cannot access another Customer's specific order",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{PhotographerAccessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/PhotographersController/my-bookings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "PhotographersController",
+                        "my-bookings"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Test that one Photographer's token cannot access another Photographer's specific order",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/PhotographersController/my-bookings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "PhotographersController",
+                            "my-bookings"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 01 Sep 2026 18:23:38 GMT"
+                        },
+                        {
+                          "key": "Server",
+                          "value": "Kestrel"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[]"
+                    }
+                  ]
+                },
+                {
+                  "name": "get the photographer sessions with admin token",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{AdminAccessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/PhotographersController/my-bookings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "PhotographersController",
+                        "my-bookings"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "get the photographer sessions with admin token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/PhotographersController/my-bookings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "PhotographersController",
+                            "my-bookings"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Length",
+                          "value": "0"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Thu, 03 Sep 2026 14:43:45 GMT"
+                        },
+                        {
+                          "key": "Server",
+                          "value": "Kestrel"
+                        },
+                        {
+                          "key": "X-Correlation-ID",
+                          "value": "a7c5dfee-27cf-408e-9551-1c7c8d358df3"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Happy cases",
+          "item": [
+            {
+              "name": "Booking  a session",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Booking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Booking"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Booking  a session",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Booking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Booking"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 17:46:35 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"bookingId\": 1,\n    \"customerId\": 5,\n    \"photographerId\": 1,\n    \"sessionTypeId\": 1,\n    \"startTime\": \"2026-09-01T17:39:34.2Z\",\n    \"endTime\": \"6109-09-24T19:46:34.2Z\",\n    \"status\": \"Pending\",\n    \"notes\": \"nothing\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Error cases",
+          "item": [
+            {
+              "name": "Book session with invalid date",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Booking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Booking"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Book session with invalid date",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Booking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Booking"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:48:33 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "39523186-c9c5-46b0-97c6-8904d7d49654"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 400,\n    \"message\": \"Booking start time must be in the future.\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "book session with invalid photographer id",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"photographerId\": 0,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Booking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Booking"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "book session with invalid photographer id",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"photographerId\": 0,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Booking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Booking"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:52:06 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "d4bb96d9-d3c1-4f41-a0b2-b804de2ade42"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 404,\n    \"message\": \"Photographer not found.\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "book session with invalid sessiontype id",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 0,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Booking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Booking"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "book session with invalid sessiontype id",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 0,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Booking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Booking"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 14:55:58 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "e3be36a0-e283-4628-a763-cf3494f07dc4"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 404,\n    \"message\": \"Session type not found.\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sessions",
+      "item": [
+        {
+          "name": "Happy Cases",
+          "item": [
+            {
+              "name": "Create  Session",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{AdminAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"party\",\r\n  \"description\": \"party\",\r\n  \"durationInMinutes\": 21483647,\r\n  \"price\": 1000,\r\n  \"isActive\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SessionTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SessionTypes"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Create  Session",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"party\",\r\n  \"description\": \"party\",\r\n  \"durationInMinutes\": 21483647,\r\n  \"price\": 1000,\r\n  \"isActive\": true\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionTypes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionTypes"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 01 Sep 2026 18:00:19 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"sessionTypeId\": 2,\n    \"name\": \"party\",\n    \"description\": \"party\",\n    \"durationInMinutes\": 21483647,\n    \"price\": 1000,\n    \"isActive\": true\n}"
+                }
+              ]
+            },
+            {
+              "name": "get sessions  types",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": [
+                {
+                  "name": "get sessions  types",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionTypes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionTypes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 13:18:26 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "23994a73-e2de-4cd5-94ca-af8cb358f718"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n    {\n        \"sessionTypeId\": 1,\n        \"name\": \"wedding\",\n        \"description\": \"wedding\",\n        \"durationInMinutes\": 2147483647,\n        \"price\": 1000,\n        \"isActive\": true\n    },\n    {\n        \"sessionTypeId\": 2,\n        \"name\": \"party\",\n        \"description\": \"party\",\n        \"durationInMinutes\": 21483647,\n        \"price\": 1000,\n        \"isActive\": true\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "get sessiontype by id",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": [
+                {
+                  "name": "get sessiontype by id",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionTypes/1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionTypes",
+                        "1"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 13:20:06 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "2cdd69cb-917f-4c65-b58e-8eb20ec88393"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"sessionTypeId\": 1,\n    \"name\": \"wedding\",\n    \"description\": \"wedding\",\n    \"durationInMinutes\": 2147483647,\n    \"price\": 1000,\n    \"isActive\": true\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Error Cases",
+          "item": [
+            {
+              "name": "Get Session with invalid id",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": [
+                {
+                  "name": "Get Session with invalid id",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/SessionTypes/11",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "SessionTypes",
+                        "11"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 03 Sep 2026 15:11:01 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "3a2897b8-b284-44c7-bce8-29fa3b80f834"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"message\": \"Session type not found.\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Test that a Customer token is correctly rejected from Admin-only endpoint(AddSession)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{CustomerAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"party\",\r\n  \"description\": \"party\",\r\n  \"durationInMinutes\": 21483647,\r\n  \"price\": 1000,\r\n  \"isActive\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/SessionTypes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "SessionTypes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Test that a Customer token is correctly rejected from Admin-only endpoint(AddSession)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"party\",\r\n  \"description\": \"party\",\r\n  \"durationInMinutes\": 21483647,\r\n  \"price\": 1000,\r\n  \"isActive\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/SessionTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SessionTypes"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 01 Sep 2026 18:15:10 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Test that a Customer token is correctly rejected from Admin-only endpoint(AddPhotographer)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{CustomerAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"noor\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/PhotographersController",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "PhotographersController"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Test that a Customer token is correctly rejected from Admin-only endpoint(AddPhotographer)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"noor@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"firstName\": \"noor\",\r\n  \"lastName\": \"samaneh\",\r\n  \"phoneNumber\": \"0567454654\",\r\n  \"bio\": \"the best photographer\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/PhotographersController",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "PhotographersController"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 01 Sep 2026 18:17:25 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

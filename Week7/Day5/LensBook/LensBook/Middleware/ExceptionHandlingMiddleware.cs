@@ -46,17 +46,11 @@ namespace LensBook.Middleware
 
             var statusCode = exception switch
             {
-                ArgumentException =>
-                    HttpStatusCode.BadRequest,
-
-                KeyNotFoundException =>
-                    HttpStatusCode.NotFound,
-
-                UnauthorizedAccessException =>
-                    HttpStatusCode.Unauthorized,
-
-                _ =>
-                    HttpStatusCode.InternalServerError
+                ArgumentException => HttpStatusCode.BadRequest,
+                KeyNotFoundException => HttpStatusCode.NotFound,
+                UnauthorizedAccessException => HttpStatusCode.Unauthorized,
+                InvalidOperationException => HttpStatusCode.Conflict,
+                _ => HttpStatusCode.InternalServerError
             };
 
             context.Response.StatusCode =
