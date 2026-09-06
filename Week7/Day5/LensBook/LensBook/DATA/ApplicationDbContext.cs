@@ -27,6 +27,7 @@ namespace LensBook.DATA
         public DbSet<ExternalSchedule> ExternalSchedules { get; set; }
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         protected override void OnModelCreating(
             ModelBuilder modelBuilder)
         {

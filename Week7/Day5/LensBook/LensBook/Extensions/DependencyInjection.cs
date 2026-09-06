@@ -19,6 +19,9 @@ namespace LensBook.Extensions
             services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<ISessionTypeRepository, SessionTypeRepository>();
             services.AddScoped<ISessionTypeService, SessionTypeService>();
+            services.AddScoped<IExternalScheduleRepository, ExternalScheduleRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<INotificationService, NotificationService>();
             return services;
         }
     }

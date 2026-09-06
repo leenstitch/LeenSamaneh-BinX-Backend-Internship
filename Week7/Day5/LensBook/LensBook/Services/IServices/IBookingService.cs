@@ -7,6 +7,9 @@ namespace LensBook.Services.IServices
         //create booking
         Task<BookingResponseDto> CreateAsync(
            CreateBookingDto dto);
+        Task<BookingResponseDto> UpdateStatusAsync(
+           int bookingId,
+           UpdateBookingStatusDto dto);
 
     }
 }

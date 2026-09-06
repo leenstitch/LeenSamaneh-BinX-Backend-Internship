@@ -1328,7 +1328,7 @@
           "name": "Happy cases",
           "item": [
             {
-              "name": "Booking  a session",
+              "name": "Book a session",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -1344,7 +1344,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                  "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\":1,\r\n  \"startTime\": \"2026-10-26T21:14:42.840Z\",\r\n  \"notes\": \"string\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1363,13 +1363,13 @@
               },
               "response": [
                 {
-                  "name": "Booking  a session",
+                  "name": "Book a session",
                   "originalRequest": {
                     "method": "POST",
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\": 1,\r\n  \"startTime\": \"2026-09-01T17:39:34.200Z\",\r\n  \"notes\": \"nothing\"\r\n}",
+                      "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\":1,\r\n  \"startTime\": \"2026-10-26T21:14:42.840Z\",\r\n  \"notes\": \"string\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -1377,11 +1377,15 @@
                       }
                     },
                     "url": {
-                      "raw": "{{baseUrl}}/Booking",
+                      "raw": "https://localhost:7287/api/v1/Booking",
+                      "protocol": "https",
                       "host": [
-                        "{{baseUrl}}"
+                        "localhost"
                       ],
+                      "port": "7287",
                       "path": [
+                        "api",
+                        "v1",
                         "Booking"
                       ]
                     }
@@ -1396,7 +1400,7 @@
                     },
                     {
                       "key": "Date",
-                      "value": "Tue, 01 Sep 2026 17:46:35 GMT"
+                      "value": "Sun, 06 Sep 2026 10:36:07 GMT"
                     },
                     {
                       "key": "Server",
@@ -1405,10 +1409,115 @@
                     {
                       "key": "Transfer-Encoding",
                       "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "3637c2c7-4fda-4156-96cc-8e47bb9bff7a"
                     }
                   ],
                   "cookie": [],
-                  "body": "{\n    \"bookingId\": 1,\n    \"customerId\": 5,\n    \"photographerId\": 1,\n    \"sessionTypeId\": 1,\n    \"startTime\": \"2026-09-01T17:39:34.2Z\",\n    \"endTime\": \"6109-09-24T19:46:34.2Z\",\n    \"status\": \"Pending\",\n    \"notes\": \"nothing\"\n}"
+                  "body": "{\n    \"bookingId\": 5,\n    \"customerId\": 5,\n    \"photographerId\": 1,\n    \"sessionTypeId\": 1,\n    \"startTime\": \"2026-10-26T21:14:42.84Z\",\n    \"endTime\": \"2026-10-26T23:14:42.84Z\",\n    \"status\": \"Pending\",\n    \"notes\": \"string\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update booking status by the customer(he cancelled the session)",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"Cancelled\"\r\n\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://localhost:7287/api/v1/Booking/5/status",
+                  "protocol": "https",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "7287",
+                  "path": [
+                    "api",
+                    "v1",
+                    "Booking",
+                    "5",
+                    "status"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Update booking status by the customer(he cancelled the session)",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"status\": \"Cancelled\"\r\n\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://localhost:7287/api/v1/Booking/5/status",
+                      "protocol": "https",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "7287",
+                      "path": [
+                        "api",
+                        "v1",
+                        "Booking",
+                        "5",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 06 Sep 2026 10:36:54 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "e719760b-3f23-490d-b3c6-f528dca01334"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"bookingId\": 5,\n    \"customerId\": 5,\n    \"photographerId\": 1,\n    \"sessionTypeId\": 1,\n    \"startTime\": \"2026-10-26T21:14:42.84\",\n    \"endTime\": \"2026-10-26T23:14:42.84\",\n    \"status\": \"Cancelled\",\n    \"notes\": \"string\"\n}"
                 }
               ]
             }
@@ -1681,6 +1790,107 @@
                   ],
                   "cookie": [],
                   "body": "{\n    \"statusCode\": 404,\n    \"message\": \"Session type not found.\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update booking status by the customer(he cancelled the session with invalid session id))",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"Cancelled\"\r\n\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://localhost:7287/api/v1/Booking/5/status",
+                  "protocol": "https",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "7287",
+                  "path": [
+                    "api",
+                    "v1",
+                    "Booking",
+                    "5",
+                    "status"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Update booking status by the customer(he cancelled the session with invalid session id))",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"status\": \"Cancelled\"\r\n\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://localhost:7287/api/v1/Booking/55/status",
+                      "protocol": "https",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "7287",
+                      "path": [
+                        "api",
+                        "v1",
+                        "Booking",
+                        "55",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 06 Sep 2026 10:48:02 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "a170faad-670f-4ac1-9be4-e46f430875e9"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 404,\n    \"message\": \"Booking not found.\"\n}"
                 }
               ]
             }
@@ -2108,6 +2318,153 @@
               ],
               "cookie": [],
               "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get Notification for the photographer",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{PhotographerAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/NotificationContr",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "NotificationContr"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Notification for the photographer",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/NotificationContr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "NotificationContr"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Sep 2026 10:45:00 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-ID",
+                  "value": "35c82b52-8d52-4d85-a6d6-6d9c8ee0ebc3"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"notificationId\": 8,\n        \"title\": \"Booking Cancelled\",\n        \"message\": \"A customer has cancelled the booking.\",\n        \"isRead\": false,\n        \"createdAt\": \"2026-09-06T10:36:54.7026047\"\n    },\n    {\n        \"notificationId\": 7,\n        \"title\": \"New Booking Request\",\n        \"message\": \"You have received a new booking request.\",\n        \"isRead\": false,\n        \"createdAt\": \"2026-09-06T10:36:08.084438\"\n    },\n    {\n        \"notificationId\": 5,\n        \"title\": \"New Booking Request\",\n        \"message\": \"You have received a new booking request.\",\n        \"isRead\": false,\n        \"createdAt\": \"2026-09-06T10:34:51.6513336\"\n    },\n    {\n        \"notificationId\": 3,\n        \"title\": \"New Booking Request\",\n        \"message\": \"You have received a new booking request.\",\n        \"isRead\": false,\n        \"createdAt\": \"2026-09-06T10:28:47.9794282\"\n    },\n    {\n        \"notificationId\": 1,\n        \"title\": \"New Booking Request\",\n        \"message\": \"You have received a new booking request.\",\n        \"isRead\": false,\n        \"createdAt\": \"2026-09-06T09:59:46.3978823\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Notification for the Customer",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{CustomerAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/NotificationContr",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "NotificationContr"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Notification for the Customer",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/NotificationContr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "NotificationContr"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Sep 2026 10:36:58 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-ID",
+                  "value": "010fd360-66bf-4175-8eb0-3273a3d127b5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"notificationId\": 6,\n        \"title\": \"Booking Confirmed\",\n        \"message\": \"Your booking has been confirmed by the photographer.\",\n        \"isRead\": false,\n        \"createdAt\": \"2026-09-06T10:35:34.6173879\"\n    }\n]"
             }
           ]
         }

@@ -39,7 +39,22 @@ namespace LensBook.Controllers
                 result);
         }
 
-        
+
+        [HttpPatch("{bookingId}/status")]
+        [Authorize]
+        public async Task<ActionResult<BookingResponseDto>> UpdateStatus(
+             int bookingId,
+             UpdateBookingStatusDto dto)
+        {
+            var result =
+                await _bookingService
+                    .UpdateStatusAsync(
+                        bookingId,
+                        dto);
+
+            return Ok(result);
+        }
+
     }
 }
 

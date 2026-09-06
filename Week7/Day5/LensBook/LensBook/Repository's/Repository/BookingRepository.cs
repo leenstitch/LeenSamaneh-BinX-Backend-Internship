@@ -15,6 +15,17 @@ namespace LensBook.Repositories
             _context = context;
         }
 
+        // get booking by ID
+        public async Task<Booking?> GetByIdAsync(
+     int bookingId)
+        {
+            return await _context.Bookings
+                .Include(b => b.Customer)
+                .Include(b => b.Photographer)
+                .FirstOrDefaultAsync(b =>
+                    b.BookingId == bookingId);
+        }
+
         //create booking
         public async Task AddAsync(
             Booking booking)
@@ -28,10 +39,13 @@ namespace LensBook.Repositories
         {
             await _context.SaveChangesAsync();
         }
+
+
+
         public async Task<bool> HasOverlappingBookingAsync(
-    int photographerId,
-    DateTime startTime,
-    DateTime endTime)
+           int photographerId,
+           DateTime startTime,
+           DateTime endTime)
         {
             return await _context.Bookings
                 .AnyAsync(b =>

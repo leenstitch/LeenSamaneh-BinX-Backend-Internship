@@ -15,5 +15,8 @@ namespace LensBook.Repository_s.IRepository
     int photographerId,
     DateTime startTime,
     DateTime endTime);
+    
+
+    Task<Booking?> GetByIdAsync(int bookingId);
     }
 }

@@ -8,8 +8,9 @@ namespace LensBook.Models
         {
             Pending,
             Confirmed,
-            Completed,
-            Cancelled
+            Rejected,
+            Cancelled,
+            Completed
         }
 
         [Key]
