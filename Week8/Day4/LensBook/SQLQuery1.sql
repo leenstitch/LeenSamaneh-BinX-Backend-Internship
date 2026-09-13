@@ -1,0 +1,6 @@
+﻿SET STATISTICS TIME ON;
+
+SELECT *
+FROM Bookings
+WHERE PhotographerId = 1
+ORDER BY StartTime;

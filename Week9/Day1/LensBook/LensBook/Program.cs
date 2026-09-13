@@ -32,6 +32,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(
                 LogLevel.Information)
             .EnableSensitiveDataLogging());
 
+
+//
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration =
+        builder.Configuration.GetConnectionString("Redis");
+});
 // =====================================================
 // Authentication + Identity + JWT
 // =====================================================

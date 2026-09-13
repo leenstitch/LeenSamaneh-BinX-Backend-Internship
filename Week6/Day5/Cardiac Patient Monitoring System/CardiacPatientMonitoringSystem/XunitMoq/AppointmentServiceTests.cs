@@ -584,67 +584,67 @@ namespace CardiacPatientMonitoringSystem.XunitMoq
         // exception is actually thrown.
         // =========================================================
 
-        //[Fact]
-        //public async Task CreateWithMedicalIntakeAsync_ThrowsException_WhenPatientDoesNotExist()
-        //{
-        //    // Arrange
+        [Fact]
+        public async Task CreateWithMedicalIntakeAsync_ThrowsException_WhenPatientDoesNotExist()
+        {
+            // Arrange
 
-        //    _patientRepositoryMock
-        //        .Setup(x =>
-        //            x.GetByUserIdAsync(999))
-        //        .ReturnsAsync(
-        //            (Patient?)null);
-
-
-        //    var dto =
-        //        new CreateAppointmentWithMedicalIntakeDto
-        //        {
-        //            AppointmentDate =
-        //                new DateTime(
-        //                    2026,
-        //                    9,
-        //                    1,
-        //                    10,
-        //                    0,
-        //                    0),
-
-        //            Reason =
-        //                "Cardiac follow-up",
-
-        //            Notes =
-        //                "Test"
-        //        };
+            _patientRepositoryMock
+                .Setup(x =>
+                    x.GetByUserIdAsync(999))
+                .ReturnsAsync(
+                    (Patient?)null);
 
 
-        //    // Act + Assert
+            var dto =
+                new CreateAppointmentWithMedicalIntakeDto
+                {
+                    AppointmentDate =
+                        new DateTime(
+                            2026,
+                            9,
+                            1,
+                            10,
+                            0,
+                            0),
 
-        //    var exception =
-        //        await Assert.ThrowsAsync<InvalidOperationException>(
-        //            () =>
-        //                _service
-        //                    .CreateWithMedicalIntakeAsync(
-        //                        999,
-        //                        dto));
+                    Reason =
+                        "Cardiac follow-up",
 
-
-        //    // Verify exception message
-
-        //    Assert.Equal(
-        //        "Patient profile was not found.",
-        //        exception.Message);
-
-
-        //    // Make sure no appointment was saved.
-
-        //    Assert.Empty(
-        //        await _context.Appointments.ToListAsync());
+                    Notes =
+                        "Test"
+                };
 
 
-        //    _patientRepositoryMock.Verify(
-        //        x =>
-        //            x.GetByUserIdAsync(999),
-        //        Times.Once);
-        //}
+            // Act + Assert
+
+            var exception =
+                await Assert.ThrowsAsync<InvalidOperationException>(
+                    () =>
+                        _service
+                            .CreateWithMedicalIntakeAsync(
+                                999,
+                                dto));
+
+
+            // Verify exception message
+
+            Assert.Equal(
+                "Patient profile was not found.",
+                exception.Message);
+
+
+            // Make sure no appointment was saved.
+
+            Assert.Empty(
+                await _context.Appointments.ToListAsync());
+
+
+            _patientRepositoryMock.Verify(
+                x =>
+                    x.GetByUserIdAsync(999),
+                Times.Once);
+        }
 
 
         // =========================================================
@@ -822,251 +822,251 @@ namespace CardiacPatientMonitoringSystem.XunitMoq
         //// - Returned medical lists are empty.
         //// =========================================================
 
-        //[Fact]
-        //public async Task
-        //    CreateWithMedicalIntakeAsync_CreatesAppointment_WhenNoMedicalDataExists()
-        //{
-        //    // =====================================================
-        //    // Arrange
-        //    // =====================================================
+        [Fact]
+        public async Task
+            CreateWithMedicalIntakeAsync_CreatesAppointment_WhenNoMedicalDataExists()
+        {
+            // =====================================================
+            // Arrange
+            // =====================================================
 
-        //    // Create ApplicationUser
-        //    var user = new ApplicationUser
-        //    {
-        //        Id = 20,
-        //        UserName = "testuser2",
-        //        NormalizedUserName = "TESTUSER2",
-        //        Email = "testuser2@example.com",
-        //        NormalizedEmail = "TESTUSER2@EXAMPLE.COM",
-        //        EmailConfirmed = true
-        //    };
+            // Create ApplicationUser
+            var user = new ApplicationUser
+            {
+                Id = 20,
+                UserName = "testuser2",
+                NormalizedUserName = "TESTUSER2",
+                Email = "testuser2@example.com",
+                NormalizedEmail = "TESTUSER2@EXAMPLE.COM",
+                EmailConfirmed = true
+            };
 
-        //    _context.Users.Add(user);
+            _context.Users.Add(user);
 
 
-        //    // Create Patient
-        //    var patient = new Patient
-        //    {
-        //        PatientId = 6,
-        //        UserId = 20
-        //    };
+            // Create Patient
+            var patient = new Patient
+            {
+                PatientId = 6,
+                UserId = 20
+            };
 
-        //    _context.Patients.Add(patient);
+            _context.Patients.Add(patient);
 
 
-        //    // Save User + Patient to SQLite
-        //    await _context.SaveChangesAsync();
+            // Save User + Patient to SQLite
+            await _context.SaveChangesAsync();
 
 
-        //    // -----------------------------------------------------
-        //    // Patient Repository
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Patient Repository
+            // -----------------------------------------------------
 
-        //    _patientRepositoryMock
-        //        .Setup(x => x.GetByUserIdAsync(20))
-        //        .ReturnsAsync(patient);
+            _patientRepositoryMock
+                .Setup(x => x.GetByUserIdAsync(20))
+                .ReturnsAsync(patient);
 
 
-        //    // -----------------------------------------------------
-        //    // No existing allergies
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // No existing allergies
+            // -----------------------------------------------------
 
-        //    _allergyRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(6))
-        //        .ReturnsAsync(
-        //            new List<Allergy>());
+            _allergyRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(6))
+                .ReturnsAsync(
+                    new List<Allergy>());
 
 
-        //    // -----------------------------------------------------
-        //    // No existing family history
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // No existing family history
+            // -----------------------------------------------------
 
-        //    _familyHistoryRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(6))
-        //        .ReturnsAsync(
-        //            new List<FamilyMedicalHistory>());
+            _familyHistoryRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(6))
+                .ReturnsAsync(
+                    new List<FamilyMedicalHistory>());
 
 
-        //    // -----------------------------------------------------
-        //    // No existing medications
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // No existing medications
+            // -----------------------------------------------------
 
-        //    _medicationRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(6))
-        //        .ReturnsAsync(
-        //            new List<Medication>());
+            _medicationRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(6))
+                .ReturnsAsync(
+                    new List<Medication>());
 
 
-        //    // -----------------------------------------------------
-        //    // No existing diagnoses
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // No existing diagnoses
+            // -----------------------------------------------------
 
-        //    _diagnosisRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(6))
-        //        .ReturnsAsync(
-        //            new List<Diagnosis>());
+            _diagnosisRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(6))
+                .ReturnsAsync(
+                    new List<Diagnosis>());
 
 
-        //    // -----------------------------------------------------
-        //    // No emergency information
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // No emergency information
+            // -----------------------------------------------------
 
-        //    _emergencyRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(6))
-        //        .ReturnsAsync(
-        //            (EmergencyMedicalInformation?)null);
+            _emergencyRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(6))
+                .ReturnsAsync(
+                    (EmergencyMedicalInformation?)null);
 
 
-        //    // -----------------------------------------------------
-        //    // DTO
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // DTO
+            // -----------------------------------------------------
 
-        //    var dto =
-        //        new CreateAppointmentWithMedicalIntakeDto
-        //        {
-        //            AppointmentDate =
-        //                new DateTime(
-        //                    2026,
-        //                    9,
-        //                    5,
-        //                    11,
-        //                    0,
-        //                    0),
+            var dto =
+                new CreateAppointmentWithMedicalIntakeDto
+                {
+                    AppointmentDate =
+                        new DateTime(
+                            2026,
+                            9,
+                            5,
+                            11,
+                            0,
+                            0),
 
-        //            Reason =
-        //                "Regular cardiac check-up",
+                    Reason =
+                        "Regular cardiac check-up",
 
-        //            Notes =
-        //                "No previous medical information",
+                    Notes =
+                        "No previous medical information",
 
-        //            NewAllergies =
-        //                new List<CreateAllergyDto>(),
+                    NewAllergies =
+                        new List<CreateAllergyDto>(),
 
-        //            NewFamilyHistory =
-        //                new List<CreateFamilyHistoryDto>()
-        //        };
+                    NewFamilyHistory =
+                        new List<CreateFamilyHistoryDto>()
+                };
 
 
-        //    // =====================================================
-        //    // Act
-        //    // =====================================================
+            // =====================================================
+            // Act
+            // =====================================================
 
-        //    var result =
-        //        await _service
-        //            .CreateWithMedicalIntakeAsync(
-        //                20,
-        //                dto);
+            var result =
+                await _service
+                    .CreateWithMedicalIntakeAsync(
+                        20,
+                        dto);
 
 
-        //    // =====================================================
-        //    // Assert
-        //    // =====================================================
+            // =====================================================
+            // Assert
+            // =====================================================
 
-        //    // Response exists
-        //    Assert.NotNull(result);
+            // Response exists
+            Assert.NotNull(result);
 
 
-        //    // Patient
-        //    Assert.Equal(
-        //        6,
-        //        result.PatientId);
+            // Patient
+            Assert.Equal(
+                6,
+                result.PatientId);
 
 
-        //    // Appointment information
-        //    Assert.Equal(
-        //        dto.AppointmentDate,
-        //        result.AppointmentDate);
+            // Appointment information
+            Assert.Equal(
+                dto.AppointmentDate,
+                result.AppointmentDate);
 
-        //    Assert.Equal(
-        //        "Regular cardiac check-up",
-        //        result.Reason);
+            Assert.Equal(
+                "Regular cardiac check-up",
+                result.Reason);
 
-        //    Assert.Equal(
-        //        "No previous medical information",
-        //        result.Notes);
+            Assert.Equal(
+                "No previous medical information",
+                result.Notes);
 
 
-        //    // No allergies
-        //    Assert.Empty(
-        //        result.Allergies);
+            // No allergies
+            Assert.Empty(
+                result.Allergies);
 
 
-        //    // No family history
-        //    Assert.Empty(
-        //        result.FamilyHistory);
+            // No family history
+            Assert.Empty(
+                result.FamilyHistory);
 
 
-        //    // No medications
-        //    Assert.Empty(
-        //        result.Medications);
+            // No medications
+            Assert.Empty(
+                result.Medications);
 
 
-        //    // No diagnoses
-        //    Assert.Empty(
-        //        result.Diagnoses);
+            // No diagnoses
+            Assert.Empty(
+                result.Diagnoses);
 
 
-        //    // No emergency information
-        //    Assert.Null(
-        //        result.EmergencyMedicalInformation);
+            // No emergency information
+            Assert.Null(
+                result.EmergencyMedicalInformation);
 
 
-        //    // =====================================================
-        //    // Verify Repository Calls
-        //    // =====================================================
+            // =====================================================
+            // Verify Repository Calls
+            // =====================================================
 
-        //    _patientRepositoryMock.Verify(
-        //        x => x.GetByUserIdAsync(20),
-        //        Times.Once);
+            _patientRepositoryMock.Verify(
+                x => x.GetByUserIdAsync(20),
+                Times.Once);
 
 
-        //    _allergyRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(6),
-        //        Times.Once);
+            _allergyRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(6),
+                Times.Once);
 
 
-        //    _familyHistoryRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(6),
-        //        Times.Once);
+            _familyHistoryRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(6),
+                Times.Once);
 
 
-        //    _medicationRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(6),
-        //        Times.Once);
+            _medicationRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(6),
+                Times.Once);
 
 
-        //    _diagnosisRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(6),
-        //        Times.Once);
+            _diagnosisRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(6),
+                Times.Once);
 
 
-        //    _emergencyRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(6),
-        //        Times.Once);
+            _emergencyRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(6),
+                Times.Once);
 
 
-        //    // =====================================================
-        //    // Verify Appointment Was Saved in SQLite
-        //    // =====================================================
+            // =====================================================
+            // Verify Appointment Was Saved in SQLite
+            // =====================================================
 
-        //    var savedAppointment =
-        //        await _context.Appointments
-        //            .FirstOrDefaultAsync(
-        //                a =>
-        //                    a.PatientId == 6
-        //                    &&
-        //                    a.Reason ==
-        //                        "Regular cardiac check-up");
+            var savedAppointment =
+                await _context.Appointments
+                    .FirstOrDefaultAsync(
+                        a =>
+                            a.PatientId == 6
+                            &&
+                            a.Reason ==
+                                "Regular cardiac check-up");
 
 
-        //    Assert.NotNull(
-        //        savedAppointment);
+            Assert.NotNull(
+                savedAppointment);
 
 
-        //    Assert.Equal(
-        //        Appointment.AppointmentStatus.Scheduled,
-        //        savedAppointment.Status);
-        //}
+            Assert.Equal(
+                Appointment.AppointmentStatus.Scheduled,
+                savedAppointment.Status);
+        }
         //// =========================================================
         //// Test 5: Emergency Medical Information Exists
         ////
@@ -1078,279 +1078,279 @@ namespace CardiacPatientMonitoringSystem.XunitMoq
         //// - Appointment is created successfully.
         //// =========================================================
 
-        //[Fact]
-        //public async Task
-        //    CreateWithMedicalIntakeAsync_ReturnsEmergencyInformation_WhenItExists()
-        //{
-        //    // =====================================================
-        //    // Arrange
-        //    // =====================================================
+        [Fact]
+        public async Task
+            CreateWithMedicalIntakeAsync_ReturnsEmergencyInformation_WhenItExists()
+        {
+            // =====================================================
+            // Arrange
+            // =====================================================
 
-        //    // Create ApplicationUser
-        //    var user = new ApplicationUser
-        //    {
-        //        Id = 30,
-        //        UserName = "testuser3",
-        //        NormalizedUserName = "TESTUSER3",
-        //        Email = "testuser3@example.com",
-        //        NormalizedEmail = "TESTUSER3@EXAMPLE.COM",
-        //        EmailConfirmed = true
-        //    };
+            // Create ApplicationUser
+            var user = new ApplicationUser
+            {
+                Id = 30,
+                UserName = "testuser3",
+                NormalizedUserName = "TESTUSER3",
+                Email = "testuser3@example.com",
+                NormalizedEmail = "TESTUSER3@EXAMPLE.COM",
+                EmailConfirmed = true
+            };
 
-        //    _context.Users.Add(user);
+            _context.Users.Add(user);
 
 
-        //    // Create Patient
-        //    var patient = new Patient
-        //    {
-        //        PatientId = 7,
-        //        UserId = 30
-        //    };
+            // Create Patient
+            var patient = new Patient
+            {
+                PatientId = 7,
+                UserId = 30
+            };
 
-        //    _context.Patients.Add(patient);
+            _context.Patients.Add(patient);
 
 
-        //    // Save User + Patient
-        //    await _context.SaveChangesAsync();
+            // Save User + Patient
+            await _context.SaveChangesAsync();
 
 
-        //    // -----------------------------------------------------
-        //    // Patient Repository
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Patient Repository
+            // -----------------------------------------------------
 
-        //    _patientRepositoryMock
-        //        .Setup(x => x.GetByUserIdAsync(30))
-        //        .ReturnsAsync(patient);
+            _patientRepositoryMock
+                .Setup(x => x.GetByUserIdAsync(30))
+                .ReturnsAsync(patient);
 
 
-        //    // -----------------------------------------------------
-        //    // Existing allergies
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Existing allergies
+            // -----------------------------------------------------
 
-        //    _allergyRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(7))
-        //        .ReturnsAsync(
-        //            new List<Allergy>());
+            _allergyRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(7))
+                .ReturnsAsync(
+                    new List<Allergy>());
 
 
-        //    // -----------------------------------------------------
-        //    // Existing family history
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Existing family history
+            // -----------------------------------------------------
 
-        //    _familyHistoryRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(7))
-        //        .ReturnsAsync(
-        //            new List<FamilyMedicalHistory>());
+            _familyHistoryRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(7))
+                .ReturnsAsync(
+                    new List<FamilyMedicalHistory>());
 
 
-        //    // -----------------------------------------------------
-        //    // Existing medications
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Existing medications
+            // -----------------------------------------------------
 
-        //    _medicationRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(7))
-        //        .ReturnsAsync(
-        //            new List<Medication>());
+            _medicationRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(7))
+                .ReturnsAsync(
+                    new List<Medication>());
 
 
-        //    // -----------------------------------------------------
-        //    // Existing diagnoses
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Existing diagnoses
+            // -----------------------------------------------------
 
-        //    _diagnosisRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(7))
-        //        .ReturnsAsync(
-        //            new List<Diagnosis>());
+            _diagnosisRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(7))
+                .ReturnsAsync(
+                    new List<Diagnosis>());
 
 
-        //    // -----------------------------------------------------
-        //    // Emergency Medical Information
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // Emergency Medical Information
+            // -----------------------------------------------------
 
-        //    var emergencyInformation =
-        //        new EmergencyMedicalInformation
-        //        {
-        //            EmergencyMedicalInformationId = 1,
+            var emergencyInformation =
+                new EmergencyMedicalInformation
+                {
+                    EmergencyMedicalInformationId = 1,
 
-        //            PatientId = 7,
+                    PatientId = 7,
 
-        //            BloodType = "O+",
+                    BloodType = "O+",
 
-        //            PreferredHospital =
-        //                "Nablus Specialty Hospital",
+                    PreferredHospital =
+                        "Nablus Specialty Hospital",
 
-        //            SpecialInstructions =
-        //                "Patient requires immediate cardiac monitoring.",
+                    SpecialInstructions =
+                        "Patient requires immediate cardiac monitoring.",
 
-        //            EmergencyNotes =
-        //                "History of cardiac problems."
-        //        };
+                    EmergencyNotes =
+                        "History of cardiac problems."
+                };
 
 
-        //    _emergencyRepositoryMock
-        //        .Setup(x => x.GetByPatientIdAsync(7))
-        //        .ReturnsAsync(
-        //            emergencyInformation);
+            _emergencyRepositoryMock
+                .Setup(x => x.GetByPatientIdAsync(7))
+                .ReturnsAsync(
+                    emergencyInformation);
 
 
-        //    // -----------------------------------------------------
-        //    // DTO
-        //    // -----------------------------------------------------
+            // -----------------------------------------------------
+            // DTO
+            // -----------------------------------------------------
 
-        //    var dto =
-        //        new CreateAppointmentWithMedicalIntakeDto
-        //        {
-        //            AppointmentDate =
-        //                new DateTime(
-        //                    2026,
-        //                    9,
-        //                    10,
-        //                    12,
-        //                    0,
-        //                    0),
+            var dto =
+                new CreateAppointmentWithMedicalIntakeDto
+                {
+                    AppointmentDate =
+                        new DateTime(
+                            2026,
+                            9,
+                            10,
+                            12,
+                            0,
+                            0),
 
-        //            Reason =
-        //                "Emergency cardiac follow-up",
+                    Reason =
+                        "Emergency cardiac follow-up",
 
-        //            Notes =
-        //                "Patient has emergency medical information.",
+                    Notes =
+                        "Patient has emergency medical information.",
 
-        //            NewAllergies =
-        //                new List<CreateAllergyDto>(),
+                    NewAllergies =
+                        new List<CreateAllergyDto>(),
 
-        //            NewFamilyHistory =
-        //                new List<CreateFamilyHistoryDto>()
-        //        };
+                    NewFamilyHistory =
+                        new List<CreateFamilyHistoryDto>()
+                };
 
 
-        //    // =====================================================
-        //    // Act
-        //    // =====================================================
+            // =====================================================
+            // Act
+            // =====================================================
 
-        //    var result =
-        //        await _service
-        //            .CreateWithMedicalIntakeAsync(
-        //                30,
-        //                dto);
+            var result =
+                await _service
+                    .CreateWithMedicalIntakeAsync(
+                        30,
+                        dto);
 
 
-        //    // =====================================================
-        //    // Assert
-        //    // =====================================================
+            // =====================================================
+            // Assert
+            // =====================================================
 
-        //    // Response exists
-        //    Assert.NotNull(result);
+            // Response exists
+            Assert.NotNull(result);
 
 
-        //    // Patient
-        //    Assert.Equal(
-        //        7,
-        //        result.PatientId);
+            // Patient
+            Assert.Equal(
+                7,
+                result.PatientId);
 
 
-        //    // Appointment
-        //    Assert.Equal(
-        //        dto.AppointmentDate,
-        //        result.AppointmentDate);
+            // Appointment
+            Assert.Equal(
+                dto.AppointmentDate,
+                result.AppointmentDate);
 
-        //    Assert.Equal(
-        //        "Emergency cardiac follow-up",
-        //        result.Reason);
+            Assert.Equal(
+                "Emergency cardiac follow-up",
+                result.Reason);
 
 
-        //    // =====================================================
-        //    // Emergency Information
-        //    // =====================================================
+            // =====================================================
+            // Emergency Information
+            // =====================================================
 
-        //    Assert.NotNull(
-        //        result.EmergencyMedicalInformation);
+            Assert.NotNull(
+                result.EmergencyMedicalInformation);
 
 
-        //    Assert.Equal(
-        //        1,
-        //        result.EmergencyMedicalInformation
-        //            .EmergencyMedicalInformationId);
+            Assert.Equal(
+                1,
+                result.EmergencyMedicalInformation
+                    .EmergencyMedicalInformationId);
 
 
-        //    Assert.Equal(
-        //        "O+",
-        //        result.EmergencyMedicalInformation
-        //            .BloodType);
+            Assert.Equal(
+                "O+",
+                result.EmergencyMedicalInformation
+                    .BloodType);
 
 
-        //    Assert.Equal(
-        //        "Nablus Specialty Hospital",
-        //        result.EmergencyMedicalInformation
-        //            .PreferredHospital);
+            Assert.Equal(
+                "Nablus Specialty Hospital",
+                result.EmergencyMedicalInformation
+                    .PreferredHospital);
 
 
-        //    Assert.Equal(
-        //        "Patient requires immediate cardiac monitoring.",
-        //        result.EmergencyMedicalInformation
-        //            .SpecialInstructions);
+            Assert.Equal(
+                "Patient requires immediate cardiac monitoring.",
+                result.EmergencyMedicalInformation
+                    .SpecialInstructions);
 
 
-        //    Assert.Equal(
-        //        "History of cardiac problems.",
-        //        result.EmergencyMedicalInformation
-        //            .EmergencyNotes);
+            Assert.Equal(
+                "History of cardiac problems.",
+                result.EmergencyMedicalInformation
+                    .EmergencyNotes);
 
 
-        //    // =====================================================
-        //    // Verify Repository Calls
-        //    // =====================================================
+            // =====================================================
+            // Verify Repository Calls
+            // =====================================================
 
-        //    _patientRepositoryMock.Verify(
-        //        x => x.GetByUserIdAsync(30),
-        //        Times.Once);
+            _patientRepositoryMock.Verify(
+                x => x.GetByUserIdAsync(30),
+                Times.Once);
 
 
-        //    _allergyRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(7),
-        //        Times.Once);
+            _allergyRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(7),
+                Times.Once);
 
 
-        //    _familyHistoryRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(7),
-        //        Times.Once);
+            _familyHistoryRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(7),
+                Times.Once);
 
 
-        //    _medicationRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(7),
-        //        Times.Once);
+            _medicationRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(7),
+                Times.Once);
 
 
-        //    _diagnosisRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(7),
-        //        Times.Once);
+            _diagnosisRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(7),
+                Times.Once);
 
 
-        //    _emergencyRepositoryMock.Verify(
-        //        x => x.GetByPatientIdAsync(7),
-        //        Times.Once);
+            _emergencyRepositoryMock.Verify(
+                x => x.GetByPatientIdAsync(7),
+                Times.Once);
 
 
-        //    // =====================================================
-        //    // Verify Appointment Was Saved in SQLite
-        //    // =====================================================
+            // =====================================================
+            // Verify Appointment Was Saved in SQLite
+            // =====================================================
 
-        //    var savedAppointment =
-        //        await _context.Appointments
-        //            .FirstOrDefaultAsync(
-        //                a =>
-        //                    a.PatientId == 7
-        //                    &&
-        //                    a.Reason ==
-        //                        "Emergency cardiac follow-up");
+            var savedAppointment =
+                await _context.Appointments
+                    .FirstOrDefaultAsync(
+                        a =>
+                            a.PatientId == 7
+                            &&
+                            a.Reason ==
+                                "Emergency cardiac follow-up");
 
- 
-        //    Assert.NotNull(
-        //        savedAppointment);
 
+            Assert.NotNull(
+                savedAppointment);
 
-        //    Assert.Equal(
-        //        Appointment.AppointmentStatus.Scheduled,
-        //        savedAppointment.Status);
-        //}
+
+            Assert.Equal(
+                Appointment.AppointmentStatus.Scheduled,
+                savedAppointment.Status);
+        }
     }
 }
