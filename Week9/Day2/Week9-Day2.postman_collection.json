@@ -1,0 +1,668 @@
+{
+  "info": {
+    "_postman_id": "f3804104-1ed7-4e7d-8501-33121133a617",
+    "name": "Week9-Day2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44931034",
+    "_collection_link": "https://go.postman.co/collection/44931034-f3804104-1ed7-4e7d-8501-33121133a617?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Happy Cases",
+          "item": [
+            {
+              "name": "Admin Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"AdminAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"AdminRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"owner@lensbook.com\",\r\n  \"password\": \"Owner@12345\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Admin Login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"owner@lensbook.com\",\r\n  \"password\": \"Owner@12345\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 14 Sep 2026 14:28:42 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "ef18d31a-ca6f-4b0e-97d1-14bf8d7bfe88"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJvd25lckBsZW5zYm9vay5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJTdHVkaW9Pd25lciIsImV4cCI6MTc4OTM5OTcyMiwiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.TwiUoCjvimrK-2lBpaGJkY4uYTozC6xDn6W6Uds6ckI\",\n    \"refreshToken\": \"AFNfw8ulaB+NfBJ2f57JiaWPvahaKFPkM2SzdAqmES172ps/2xbXELpWV3U5PsrkRFCYPBSPO6g7B9qK+0215g==\",\n    \"accessTokenExpiration\": \"2026-09-14T15:28:42.5050507Z\",\n    \"refreshTokenExpiration\": \"2026-09-21T14:28:42.440644Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Customer login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"CustomerAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"CutomerRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"leensamaneh1@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Customer login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"leensamaneh1@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 14 Sep 2026 14:17:32 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "2bcb40a3-9658-4285-ae80-408fa7313d67"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2IiwiZW1haWwiOiJMZWVuU2FtYW5laDFAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiI2IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQ3VzdG9tZXIiLCJDdXN0b21lcklkIjoiNSIsImV4cCI6MTc4OTM5OTA1MywiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.WVepczgcLhwBsrJ7lVy7dz_Omtj_wjKH-iC6Hv28g8A\",\n    \"refreshToken\": \"B8mCS5qCfM4qCptbp7t8I2BZTRtHnAOg2LrRyMC8xlNkJrpo3ZhBjeHwf9qIMZbtqx7od4sAUeVZzKDn3HaKNQ==\",\n    \"accessTokenExpiration\": \"2026-09-14T15:17:33.2634654Z\",\n    \"refreshTokenExpiration\": \"2026-09-21T14:17:33.2033165Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Photographer Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});\r",
+                      "const response = pm.response.json();\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"PhotographerAccessToken\",\r",
+                      "    response.accessToken\r",
+                      ");\r",
+                      "\r",
+                      "pm.environment.set(\r",
+                      "    \"PhotographerRefreshToken\",\r",
+                      "    response.refreshToken\r",
+                      ");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"rand@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Photographer Login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"rand@gmail.com\",\r\n  \"password\": \"String1@\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 14 Sep 2026 14:18:55 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "cbe2589f-4f9d-4d99-923d-0019392c4d21"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3IiwiZW1haWwiOiJyYW5kQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlBob3RvZ3JhcGhlciIsIlBob3RvZ3JhcGhlcklkIjoiMSIsImV4cCI6MTc4OTM5OTEzNSwiaXNzIjoiTGVuc0Jvb2siLCJhdWQiOiJMZW5zQm9va1VzZXJzIn0.uc8iBIIXPQjGN8n27GiR1vxi14WAv7MQZE-qYreifxg\",\n    \"refreshToken\": \"lFq7CK+tWC5Sa8SYGRfv3YHtzFbEljNjjoX3OWlyloxsME6aIEfCCgukTmrm1lFxvumB6hLgkIKLeGhGTKTAuw==\",\n    \"accessTokenExpiration\": \"2026-09-14T15:18:55.9264994Z\",\n    \"refreshTokenExpiration\": \"2026-09-21T14:18:55.7950356Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Register  A Customer",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"firstName\": \"leen11\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"LeenSamaneh111@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AuthController/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AuthController",
+                    "register"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Register  A Customer",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"firstName\": \"leen11\",\r\n  \"lastName\": \"samaneh\",\r\n  \"email\": \"LeenSamaneh111@gmail.com\",\r\n  \"password\": \"String1@\",\r\n  \"phoneNumber\": \"0568765454\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/AuthController/register",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "AuthController",
+                        "register"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 14 Sep 2026 14:20:56 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "266f62e6-e53d-4fc7-a661-ff8ed0802133"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"message\": \"Registration successful.\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Happy cases",
+          "item": [
+            {
+              "name": "Book a session",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(201);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\":1,\r\n  \"startTime\": \"2027-03-29T21:14:42.840Z\",\r\n  \"notes\": \"string\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Booking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Booking"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Book a session",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"photographerId\": 1,\r\n  \"sessionTypeId\":1,\r\n  \"startTime\": \"2027-03-29T21:14:42.840Z\",\r\n  \"notes\": \"string\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Booking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Booking"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 14 Sep 2026 14:25:51 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "3fe40ee1-a7bb-4486-a495-4682717052ea"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"bookingId\": 48,\n    \"customerId\": 5,\n    \"photographerId\": 1,\n    \"sessionTypeId\": 1,\n    \"startTime\": \"2027-03-29T21:14:42.84Z\",\n    \"endTime\": \"2027-03-29T23:14:42.84Z\",\n    \"status\": \"Pending\",\n    \"notes\": \"string\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update booking status by the customer(he cancelled the session)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(201);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{CustomerAccessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"Cancelled\"\r\n\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Booking/11/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Booking",
+                    "11",
+                    "status"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Update booking status by the customer(he cancelled the session)",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"status\": \"Cancelled\"\r\n\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://localhost:7287/api/v1/Booking/11/status",
+                      "protocol": "https",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "7287",
+                      "path": [
+                        "api",
+                        "v1",
+                        "Booking",
+                        "11",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 14 Sep 2026 14:22:19 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Kestrel"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "28772ae2-659c-4127-a8d9-5bd36d33304e"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"bookingId\": 11,\n    \"customerId\": 5,\n    \"photographerId\": 1,\n    \"sessionTypeId\": 1,\n    \"startTime\": \"2026-11-27T21:14:42.84\",\n    \"endTime\": \"2026-11-27T23:14:42.84\",\n    \"status\": \"Cancelled\",\n    \"notes\": \"string\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
