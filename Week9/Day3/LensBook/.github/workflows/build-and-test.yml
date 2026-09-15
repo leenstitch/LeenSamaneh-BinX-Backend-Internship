@@ -25,3 +25,4 @@ jobs:
 
       - name: Test
         run: dotnet test Week9/Day3/LensBook/LensBookTests/LensBookTests.csproj --no-restore
+        # LensBook CI pipeline
