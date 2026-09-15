@@ -1,0 +1,27 @@
+name: build-and-test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore Week9/Day3/LensBook/LensBook/LensBook.csproj
+
+      - name: Build
+        run: dotnet build Week9/Day3/LensBook/LensBook/LensBook.csproj --no-restore
+
+      - name: Test
+        run: dotnet test Week9/Day3/LensBook/LensBookTests/LensBookTests.csproj --no-restore
