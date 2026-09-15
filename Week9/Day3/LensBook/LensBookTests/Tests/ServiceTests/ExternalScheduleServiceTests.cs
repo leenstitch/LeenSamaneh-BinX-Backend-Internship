@@ -219,7 +219,7 @@ namespace LensBookTests.Tests.ServiceTests
                 result.ExternalScheduleId);
 
             Assert.Equal(
-                50,
+                5,
                 result.PhotographerId);
 
             Assert.Equal(
