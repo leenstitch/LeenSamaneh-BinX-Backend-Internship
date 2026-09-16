@@ -41,4 +41,4 @@ jobs:
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --detach
+        run: railway up --service 288337fb-314c-43bd-9d04-b8dfbab2d15f --detach
