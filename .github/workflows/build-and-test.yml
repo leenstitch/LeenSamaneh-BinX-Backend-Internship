@@ -18,10 +18,10 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore Week9/Day3/LensBook/LensBook.sln
+        run: dotnet restore Week9/Day4/LensBook/LensBook.sln
 
       - name: Build
-        run: dotnet build Week9/Day3/LensBook/LensBook.sln --no-restore
+        run: dotnet build Week9/Day4/LensBook/LensBook.sln --no-restore
 
       - name: Test
-        run: dotnet test Week9/Day3/LensBook/LensBook.sln --no-build --no-restore
+        run: dotnet test Week9/Day4/LensBook/LensBook.sln --no-build --no-restore
